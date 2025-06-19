@@ -43,12 +43,12 @@ sudo dnf remove -y code
 sudo rm /etc/yum.repos.d/vscode.repo
 ```
 
-## cli-install
+## user-install
 ```sh
 _installcode
 ```
 
-## cli-remove
+## user-remove
 ```sh
 rm -rf -f ${_codepath}/code
 ```
