@@ -1,5 +1,12 @@
 # Obsidian
 
+## info
+Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files.
+
+- Homepage: [https://obsidian.md](https://obsidian.md)
+- GitHub: [obsidianmd/obsidian-releases](https://github.com/obsidianmd/obsidian-releases)
+- AppImage: Downloads from latest GitHub release
+
 ## appimage-install
 ```sh
 latest=$(curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
