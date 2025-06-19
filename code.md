@@ -1,4 +1,18 @@
-# Code
+# Visual Studio Code
+
+
+## info
+
+**Visual Studio Code** (VS Code) is a free, open-source source-code editor developed by Microsoft. It is available for Windows, macOS, and Linux. VS Code features support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring. Extensions are available for additional languages, debuggers, and tools.
+
+- Homepage: [https://code.visualstudio.com](https://code.visualstudio.com)
+- GitHub: [microsoft/vscode](https://github.com/microsoft/vscode)
+- Snap: `snap install code --classic`
+- Flatpak: `flatpak install flathub com.visualstudio.code`
+- Arch (AUR): `yay -S visual-studio-code-bin`
+- Ubuntu/Debian: [Official .deb download](https://code.visualstudio.com/Download)
+- Fedora/RHEL: [Official .rpm download](https://code.visualstudio.com/Download)
+
 
 ## apt-install
 ```sh
