@@ -1,6 +1,13 @@
-#install
-curl -fsSL https://tailscale.com/install.sh | sh
+# Tailscale
 
-#run
+## install
+```sh
+curl -fsSL https://tailscale.com/install.sh | sh
+```
+
+## run
+```sh
 systemctl enable --now tailscaled
 tailscale status
+```
+
