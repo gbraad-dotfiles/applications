@@ -1,3 +1,13 @@
+#run
+vivaldi
+
+#dnf-install
+echo -e "[vivaldi]\nname=vivaldi\nbaseurl=https://repo.vivaldi.com/archive/rpm/x86_64\nenabled=1\ngpgcheck=1\ngpgkey=https://repo.vivaldi.com/archive/linux_signing_key.pub" | sudo tee /etc/yum.repos.d/vivaldi.repo > /dev/null
+sudo dnf install -y vivaldi-stable
+
+#dnf-remove
+sudo dnf remove -y vivaldi-stable
+
 #flatpak-install
 flatpak install flathub com.vivaldi.Vivaldi
 
