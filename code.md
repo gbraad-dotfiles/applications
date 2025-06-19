@@ -64,18 +64,17 @@ mkdir -p ${APPSHOME}/code
 curl -L "$(curl -s https://api.github.com/repos/microsoft/vscode/releases/latest | grep "browser_download_url.*linux-x64.tar.gz" | cut -d '"' -f 4)" -o /tmp/vscode.tar.gz
 tar -xzf /tmp/vscode.tar.gz --strip-components=1 -C ${APPSHOME}/code
 rm /tmp/vscode.tar.gz
-ln -s ${LOCALBIN}/code ${APPSHOME}/code/code
+#ln -s ${LOCALBIN}/code ${APPSHOME}/code/code
 ```
 
 ## user-remove
 ```sh
 rm -rf ${APPSHOME}/code
-rm -f ${LOCALBIN}/code
 ```
 
 ## user-run
 ```sh
-${LOCALBIN}/code
+${APPSHOME}/code/code
 ```
 
 ## run
