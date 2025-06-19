@@ -1,0 +1,9 @@
+#flatpak-install
+flatpak install flathub com.vivaldi.Vivaldi
+
+#flatpak-run
+flatpak run flathub com.vivaldi.Vivaldi
+
+#flatpak-remove
+flatpak uninstall com.Vivaldi.vivaldi
+rm -rf ~/.var/app/com.vivaldi.Vivaldi/config/vivaldi
