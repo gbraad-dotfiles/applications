@@ -5,15 +5,15 @@ The most important applications
 
 ## install
 ```sh
-apps obsidian install
+apps obsidian install user
+apps code install user
 apps vivaldi install
-apps code install
 ```
 
 ## remove
 ```sh
-apps obsidian remove
+apps obsidian remove user
+apps code remove user
 apps vivaldi remove
-apps code remove
 ```
 
