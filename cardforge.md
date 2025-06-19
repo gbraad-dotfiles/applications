@@ -3,6 +3,9 @@
 ## info
 Forge is a dynamic and open-source Rules Engine tailored for Magic: The Gathering enthusiasts.
 
+  - Website: https://card-forge.github.io/forge/
+  - Source: https://github.com/Card-Forge/forge
+
 
 ## fedora-install
 ```sh
