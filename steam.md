@@ -12,7 +12,7 @@ dnf install -y steam
 if [ -x /usr/bin/steam ]; then
     /usr/bin/steam
 else
-    flatpak run com.valvesoftware.Steam
+    apps libreoffice run flatpak
 fi
 ```
 
