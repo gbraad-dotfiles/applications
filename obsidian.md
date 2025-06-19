@@ -25,12 +25,32 @@ rm -rf ${APPSHOME}/Obsidian.AppImage
 ${APPSHOME}/Obsidian.AppImage
 ```
 
-## install
+## user-install
 ```sh
 apps obsidian install appimage
 ${APPSHOME}/Obsidian.AppImage --appimage-extract
 mv squashfs-root ${APPSHOME}/Obsidian
 apps obsidian remove appimage
+```
+
+## user-remove
+```sh
+rm -rf ${APPSHOME}/Obsidian
+```
+
+## flatpak-install
+```sh
+flatpak install --assumeyes flathub md.obsidian.Obsidian
+```
+
+## flatpak-run
+```sh
+flatpak run md.obsidian.Obsidian
+```
+
+## flatpak-check
+```sh
+flatpak info md.obsidian.Obsidian
 ```
 
 ## run
@@ -39,6 +59,8 @@ if [ -x "${APPSHOME}/Obsidian/obsidian" ]; then
     "${APPSHOME}/Obsidian/obsidian" --no-sandbox
 elif [ -x "${APPSHOME}/Obsidian.AppImage" ]; then
     "${APPSHOME}/Obsidian.AppImage"
+elif apps obsidian check flatpak; then
+    apps obsidian run flatpak
 else
     echo "Obsidian is not installed in ${APPSHOME}."
 fi
