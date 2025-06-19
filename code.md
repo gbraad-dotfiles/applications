@@ -58,3 +58,23 @@ rm -rf -f ${_codepath}/code
 code
 ```
 
+## user-serveweb
+```sh
+mkdir -p ~/.config/systemd/user/
+curl -fsSL  https://raw.githubusercontent.com/gbraad-vscode/code-systemd/refs/heads/main/user/code-serveweb.service \
+  -o ~/.config/systemd/user/code-serveweb.service
+curl -fsSL  https://raw.githubusercontent.com/gbraad-vscode/code-systemd/refs/heads/main/user/code-tunnel.service   \
+  -o ~/.config/systemd/user/code-tunnel.service
+systemctl --user daemon-reload
+systemctl --user enable --now code-serveweb
+```
+
+## system-serveweb
+```sh
+sudo curl -fsSL https://raw.githubusercontent.com/gbraad-vscode/code-systemd/refs/heads/main/system/code-serveweb%40.service \
+  -o /etc/systemd/system/code-serveweb@.service
+sudo curl -fsSL https://raw.githubusercontent.com/gbraad-vscode/code-systemd/refs/heads/main/system/code-tunnel%40.service   \
+  -o /etc/systemd/system/code-tunnel@.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now code-serveweb@${USER}
+```
