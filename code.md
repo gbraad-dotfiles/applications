@@ -7,11 +7,6 @@
 
 - Homepage: [https://code.visualstudio.com](https://code.visualstudio.com)
 - GitHub: [microsoft/vscode](https://github.com/microsoft/vscode)
-- Snap: `snap install code --classic`
-- Flatpak: `flatpak install flathub com.visualstudio.code`
-- Arch (AUR): `yay -S visual-studio-code-bin`
-- Ubuntu/Debian: [Official .deb download](https://code.visualstudio.com/Download)
-- Fedora/RHEL: [Official .rpm download](https://code.visualstudio.com/Download)
 
 
 ## apt-install
@@ -41,6 +36,16 @@ sudo dnf install -y code
 ```sh
 sudo dnf remove -y code
 sudo rm /etc/yum.repos.d/vscode.repo
+```
+
+## flatpak-install
+```sh
+flatpak install flathub com.visualstudio.code
+```
+
+## flatpak-run
+```sh
+flatpak run com.visualstudio.code
 ```
 
 ## cli-install
