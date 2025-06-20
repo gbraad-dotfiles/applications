@@ -1,0 +1,23 @@
+{
+    "name": "Application dotfiles environment",
+    "image": "ghcr.io/gbraad-dotfiles/fedora:latest",
+
+    "runArgs": [ "--cap-add=NET_ADMIN", "--cap-add=NET_RAW", "--device=/dev/net/tun", "--device=/dev/fuse" ],
+    "overrideCommand": false,
+    "privileged": true,
+    "remoteUser": "gbraad",
+
+    "postStartCommand": "ln -s /workspaces/applications/ ~/.dotapps",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.Theme-TomorrowKit",
+                "gbraad.analogue-clock",
+                "gbraad.dotfiles-checker",
+                "gbraad.dotfiles-tools",
+                "gbraad.systemd-universal-manager"
+            ]
+        }
+    }
+}
