@@ -20,6 +20,11 @@ chmod +x ${APPSHOME}/Obsidian.AppImage
 rm -rf ${APPSHOME}/Obsidian.AppImage
 ```
 
+## appimage-check
+```sh
+[ -x "${APPSHOME}/Obsidian.AppImage" ]
+```
+
 ## appimage-run
 ```sh
 ${APPSHOME}/Obsidian.AppImage
@@ -36,6 +41,16 @@ apps obsidian remove appimage
 ## user-remove
 ```sh
 rm -rf ${APPSHOME}/Obsidian
+```
+
+## user-check
+```sh
+[ -x "${APPSHOME}/Obsidian/obsidian" ]
+```
+
+## user-run
+```sh
+"${APPSHOME}/Obsidian/obsidian" --no-sandbox
 ```
 
 ## flatpak-install
@@ -55,10 +70,10 @@ flatpak info md.obsidian.Obsidian
 
 ## run
 ```sh
-if [ -x "${APPSHOME}/Obsidian/obsidian" ]; then
-    "${APPSHOME}/Obsidian/obsidian" --no-sandbox
-elif [ -x "${APPSHOME}/Obsidian.AppImage" ]; then
-    "${APPSHOME}/Obsidian.AppImage"
+if apps obsidian check user; then
+    apps obsidian run user
+elif apps obsidian check appimage; then
+    apps obsidian run appimage
 elif apps obsidian check flatpak; then
     apps obsidian run flatpak
 else
