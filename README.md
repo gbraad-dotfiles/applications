@@ -12,7 +12,6 @@ The `apps` helper script is a Zsh utility designed to provide a fuzzy, interacti
   - **Modular App Definitions:** Application actions are defined in Markdown files (one per app), allowing for easy organization and documentation.
   - **Exit Code Propagation:** Correctly returns the exit status of script blocks, enabling use in shell conditionals (`if apps ...; then ...`).
   - **Pipeable Output:** Ensures only script output is sent to `stdout`; logs and info go to `stderr`, so you can safely pipe output (e.g. `apps tailscale status | grep online`).
-  - **Symlink-Safe:** Robustly handles app definition directories that are symlinks.
   - **Lightweight & Extensible:** Easily add new apps or actions by creating or editing Markdown files.
 
 
