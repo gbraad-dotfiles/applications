@@ -16,6 +16,11 @@
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
+## dnf-update
+```sh
+sudo dnf update -y tailscale
+```
+
 ## run
 ```sh
 systemctl enable --now tailscaled
@@ -31,7 +36,17 @@ tailscale up
 tailscale status
 ```
 
-## dnf-update
+## online-status
 ```sh
-sudo dnf update -y tailscale
+tailscale status | offline_filter
+```
+
+## direct-status
+```sh
+tailscale status | direct_filter
+```
+
+## exitnode-status
+```sh
+tailscale status | direct_filter
 ```
