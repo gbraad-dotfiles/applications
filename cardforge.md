@@ -16,7 +16,7 @@ apps cardforge install user
 ## user-install
 ```sh
 mkdir -p ${APPSHOME}/cardforge
-wget https://github.com/Card-Forge/forge/releases/download/forge-2.0.00/forge-installer-2.0.00.tar.bz2 -O /tmp/forge-install.tar.bz2
+curl -L https://github.com/Card-Forge/forge/releases/download/forge-2.0.00/forge-installer-2.0.00.tar.bz2 -o /tmp/forge-install.tar.bz2
 tar -xjvf /tmp/forge-install.tar.bz2 -C ${APPSHOME}/cardforge/
 rm -f /tmp/forge-install.tar.bz2
 ```
