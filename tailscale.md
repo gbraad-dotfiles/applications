@@ -30,3 +30,8 @@ tailscale up
 ```sh
 tailscale status
 ```
+
+## dnf-update
+```sh
+sudo dnf update -y tailscale
+```
