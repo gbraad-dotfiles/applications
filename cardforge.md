@@ -25,3 +25,19 @@ rm -f /tmp/forge-install.tar.bz2
 ```sh
 ${APPSHOME}/cardforge/forge.sh
 ```
+
+## devenv-install
+```sh
+devenv cardforge system
+```
+
+## podman-install
+```sh
+podman run -d --name cardforge \
+   --hostname ${HOSTNAME}-cardforge -p 8444:8444 \
+   -v ~/.cache/forge:/home/gbraad/.cache/forge \
+   ghcr.io/gbraad-gaming/cardforge:latest
+podman exec cardforge tailscale up
+podman exec cardforge tailscale ip
+```
+
