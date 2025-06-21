@@ -8,8 +8,6 @@ sudo dnf install -y \
     https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-sudo dnf config-manager addrepo --from-repofile=https://repo.vivaldi.com/archive/vivaldi-fedora.repo
-
 sudo dnf group install -y \
     base-graphical \
     container-management \
@@ -23,9 +21,6 @@ sudo dnf group install -y \
     printing \
     virtualization \
     workstation-product
-
-dudo dnf install -y \
-    vivaldi-stable
 
 sudo systemctl set-default graphical.target
 
