@@ -1,16 +1,26 @@
 # Steam
 
 
+## vars
+```sh
+cmd="/usr/bin/steam"
+```
+
 ## dnf-install
 ```sh
 sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf install -y steam
 ```
 
+## check
+```sh
+[ -x ${cmd} ]
+```
+
 ## run
 ```sh
-if [ -x /usr/bin/steam ]; then
-    /usr/bin/steam
+if apps steam check; then
+    ${cmd}
 else
     apps libreoffice run flatpak
 fi
