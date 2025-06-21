@@ -138,7 +138,11 @@ ${APPSHOME}/code/code
 
 ## run
 ```sh
-code
+if apps code check user; then
+   apps code run user
+else
+   code
+fi
 ```
 
 ## user-serveweb
