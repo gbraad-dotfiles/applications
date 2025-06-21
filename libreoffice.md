@@ -5,7 +5,7 @@
 
 ## vars
 ```sh
-cmd="/usr/bin/office"
+cmd=/usr/bin/libreoffice
 ```
 
 
