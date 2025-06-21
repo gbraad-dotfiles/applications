@@ -3,6 +3,12 @@
 ## info
 
 
+## vars
+```sh
+cmd="/usr/bin/office"
+```
+
+
 ## dnf-install
 ```
 sudo dnf install -y libreoffice
@@ -10,7 +16,7 @@ sudo dnf install -y libreoffice
 
 ## flatpak-install
 ```sh
-flatpak install flathub org.libreoffice.LibreOffice
+flatpak install --assumeyes flathub org.libreoffice.LibreOffice
 ```
 
 ## flatpak-run
@@ -18,12 +24,24 @@ flatpak install flathub org.libreoffice.LibreOffice
 flatpak run org.libreoffice.LibreOffice
 ```
 
+## flatpak-check
+```sh
+flatpak info org.libreoffice.LibreOffice > /dev/null
+```
+
+## check
+```sh
+[ -x $cmd ]
+```
+
 ## run
 ```sh
-if [ -x /usr/bin/libreoffice ]; then
-    /usr/bin/libreoffice
-else
+if apps libreoffice check; then
+    $cmd
+elif apps libreoffice check flatpak; then
     apps libreoffice run flatpak
+else
+    echo "LibreOffice not installed"
 fi
 ```
 
