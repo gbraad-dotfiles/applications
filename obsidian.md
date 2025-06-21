@@ -70,7 +70,7 @@ flatpak run md.obsidian.Obsidian
 
 ## flatpak-check
 ```sh
-flatpak info md.obsidian.Obsidian
+flatpak info md.obsidian.Obsidian > /dev/null
 ```
 
 ## run
