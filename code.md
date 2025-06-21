@@ -9,6 +9,34 @@
 - GitHub: [microsoft/vscode](https://github.com/microsoft/vscode)
 
 
+## shared
+```sh
+get_download_arch() {
+    local arch download_target
+    arch=$(uname -m)
+
+    case "$arch" in
+        x86_64)
+            download_target="x64"
+            ;;
+        i386 | i686)
+            download_target="x86"
+            ;;
+        armv7l)
+            download_target="arm32"
+            ;;
+        aarch64)
+            download_target="arm64"
+            ;;
+        *)
+            echo "Unsupported architecture: $arch" >&2
+            return 1
+            ;;
+    esac
+    echo "$download_target"
+}
+```
+
 ## apt-install
 ```sh
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -50,7 +78,12 @@ flatpak run com.visualstudio.code
 
 ## cli-install
 ```sh
-_installcode
+download_target=$(get_download_arch)
+tempfile=$(mktemp)
+curl -fsSL "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-${download_target}" -o ${tempfile}
+tar -zxvf ${tempfile} -C ${_codepath} > /dev/null 2>&1
+rm -f ${tempfile}
+echo "Installed code-cli for: ${download_target}"
 ```
 
 ## cli-remove
@@ -60,11 +93,13 @@ rm -f ${LOCALBIN}/code
 
 ## user-install
 ```sh
+download_target=$(get_download_arch)
 mkdir -p ${APPSHOME}/code
-curl -fL "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64" -o /tmp/vscode.tar.gz
+curl -fL "https://code.visualstudio.com/sha/download?build=stable&os=linux-${download_target}" -o /tmp/vscode.tar.gz
 tar -xzf /tmp/vscode.tar.gz --strip-components=1 -C ${APPSHOME}/code
 rm /tmp/vscode.tar.gz
 #ln -s ${LOCALBIN}/code ${APPSHOME}/code/code
+echo "Installed code for: ${download_target}"
 ```
 
 ## user-remove
