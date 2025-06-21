@@ -9,6 +9,12 @@
 - GitHub: [microsoft/vscode](https://github.com/microsoft/vscode)
 
 
+## vars
+```sh
+host=0.0.0.0
+port=8000
+```
+
 ## shared
 ```sh
 get_download_arch() {
@@ -154,4 +160,19 @@ sudo curl -fsSL https://raw.githubusercontent.com/gbraad-vscode/code-systemd/ref
   -o /etc/systemd/system/code-tunnel@.service
 sudo systemctl daemon-reload
 sudo systemctl enable --now code-serveweb@${USER}
+```
+
+## serveweb
+```sh
+screen ${LOCALBIN}/code serve-web --without-connection-token --host ${host} --port ${port}
+```
+
+## tunnel
+```sh
+if [ -z "${HOSTNAME}" ]; then
+    echo "HOSTNAME not set"
+    return 1
+fi
+
+screen ${LOCALBIN}/code tunnel --accept-server-license-terms --name ${HOSTNAME}
 ```
