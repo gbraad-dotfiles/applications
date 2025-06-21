@@ -5,52 +5,57 @@ Obsidian is a powerful knowledge base that works on top of a local folder of pla
 
 - Homepage: [https://obsidian.md](https://obsidian.md)
 - GitHub: [obsidianmd/obsidian-releases](https://github.com/obsidianmd/obsidian-releases)
-- AppImage: Downloads from latest GitHub release
+
+
+## shared
+```sh
+APPNAME="Obsidian"
+```
 
 ## appimage-install
 ```sh
 latest=$(curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 url="https://github.com/obsidianmd/obsidian-releases/releases/download/${latest}/Obsidian-${latest#v}.AppImage"
-curl -L "$url" -o ${APPSHOME}/Obsidian.AppImage
-chmod +x ${APPSHOME}/Obsidian.AppImage
+curl -L "$url" -o ${APPSHOME}/${APPNAME}.AppImage
+chmod +x ${APPSHOME}/${APPNAME}.AppImage
 ```
 
 ## appimage-remove
 ```sh
-rm -rf ${APPSHOME}/Obsidian.AppImage
+rm -rf ${APPSHOME}/${APPNAME}.AppImage
 ```
 
 ## appimage-check
 ```sh
-[ -x "${APPSHOME}/Obsidian.AppImage" ]
+[ -x "${APPSHOME}/${APPNAME}.AppImage" ]
 ```
 
 ## appimage-run
 ```sh
-${APPSHOME}/Obsidian.AppImage
+${APPSHOME}/${APPNAME}.AppImage
 ```
 
 ## user-install
 ```sh
 apps obsidian install appimage
-${APPSHOME}/Obsidian.AppImage --appimage-extract
-mv squashfs-root ${APPSHOME}/Obsidian
+${APPSHOME}/${APPNAME}.AppImage --appimage-extract
+mv squashfs-root ${APPSHOME}/${APPNAME}
 apps obsidian remove appimage
 ```
 
 ## user-remove
 ```sh
-rm -rf ${APPSHOME}/Obsidian
+rm -rf ${APPSHOME}/${APPNAME}
 ```
 
 ## user-check
 ```sh
-[ -x "${APPSHOME}/Obsidian/obsidian" ]
+[ -x "${APPSHOME}/${APPNAME}/obsidian" ]
 ```
 
 ## user-run
 ```sh
-"${APPSHOME}/Obsidian/obsidian" --no-sandbox
+"${APPSHOME}/${APPNAME}/obsidian" --no-sandbox
 ```
 
 ## flatpak-install
@@ -77,6 +82,6 @@ elif apps obsidian check appimage; then
 elif apps obsidian check flatpak; then
     apps obsidian run flatpak
 else
-    echo "Obsidian is not installed in ${APPSHOME}."
+    echo "${APPNAME} is not installed in ${APPSHOME}."
 fi
 
