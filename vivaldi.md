@@ -24,7 +24,7 @@ vivaldi
 
 ## dnf-install
 ```sh
-echo -e "[vivaldi]\nname=vivaldi\nbaseurl=https://repo.vivaldi.com/archive/rpm/x86_64\nenabled=1\ngpgcheck=1\ngpgkey=https://repo.vivaldi.com/archive/linux_signing_key.pub" | sudo tee /etc/yum.repos.d/vivaldi.repo > /dev/null
+sudo dnf config-manager addrepo --from-repofile=https://repo.vivaldi.com/archive/vivaldi-fedora.repo
 sudo dnf install -y vivaldi-stable
 ```
 
