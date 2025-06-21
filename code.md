@@ -78,6 +78,10 @@ flatpak run com.visualstudio.code
 
 ## cli-install
 ```sh
+if apps code check cli; then
+   echo "Already installed"
+   exit 0
+fi
 download_target=$(get_download_arch)
 tempfile=$(mktemp)
 curl -fsSL "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-${download_target}" -o ${tempfile}
@@ -91,8 +95,17 @@ echo "Installed code-cli for: ${download_target}"
 rm -f ${LOCALBIN}/code
 ```
 
+## cli-check
+```sh
+[ -x ${LOCALBIN}/code ]
+```
+
 ## user-install
 ```sh
+if apps code check user; then
+   echo "Already installed"
+   exit 0
+fi
 download_target=$(get_download_arch)
 mkdir -p ${APPSHOME}/code
 curl -fL "https://code.visualstudio.com/sha/download?build=stable&os=linux-${download_target}" -o /tmp/vscode.tar.gz
@@ -110,6 +123,11 @@ rm -rf ${APPSHOME}/code
 ## user-run
 ```sh
 ${APPSHOME}/code/code
+```
+
+## user-check
+```sh
+[ -x ${APPSHOME}/code/code ]
 ```
 
 ## run
