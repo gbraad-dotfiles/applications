@@ -16,3 +16,8 @@ git fetch
 git branch --set-upstream-to=origin/main main
 cd -
 ```
+
+## show
+```sh
+tree ${_appsdefpath} | less
+```
