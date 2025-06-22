@@ -1,5 +1,10 @@
 # Tailscale (container)
 
+## info
+
+  - https://github.com/spotsnel/tailscale-systemd
+
+
 ## podman-install
 ```sh 
 podman run -d --name=scalesys \
