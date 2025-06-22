@@ -17,9 +17,23 @@
   - Support for Chrome extensions
 
 
+## vars
+```sh
+cmd=/usr/bin/vivaldi
+```
+
+## check
+```sh
+[ -x $cmd ]
+```
+
 ## run
 ```sh
-vivaldi
+if apps vivaldi check; then
+    $cmd
+elif apps vivaldi check flatpak; then
+    apps vivaldi run flatpak
+fi
 ```
 
 ## dnf-install
@@ -41,6 +55,11 @@ flatpak install flathub com.vivaldi.Vivaldi
 ## flatpak-run
 ```sh
 flatpak run com.vivaldi.Vivaldi
+```
+
+## flatpak-check
+```sh
+flatpak info com.vivaldi.Vivaldi > /dev/null
 ```
 
 ## flatpak-remove
