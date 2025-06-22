@@ -16,7 +16,7 @@ sudo dnf install -y libreoffice
 
 ## flatpak-install
 ```sh
-flatpak install --assumeyes flathub org.libreoffice.LibreOffice
+flatpak install --user --assumeyes flathub org.libreoffice.LibreOffice
 ```
 
 ## flatpak-run

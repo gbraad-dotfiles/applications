@@ -60,7 +60,7 @@ rm -rf ${APPSHOME}/${APPNAME}
 
 ## flatpak-install
 ```sh
-flatpak install --assumeyes flathub md.obsidian.Obsidian
+flatpak install --user --assumeyes flathub md.obsidian.Obsidian
 ```
 
 ## flatpak-run

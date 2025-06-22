@@ -49,7 +49,7 @@ sudo dnf remove -y vivaldi-stable
 
 ## flatpak-install
 ```sh
-flatpak install flathub com.vivaldi.Vivaldi
+flatpak install --user --assumeyes flathub com.vivaldi.Vivaldi
 ```
 
 ## flatpak-run

@@ -28,8 +28,7 @@ fi
 
 ## flatpak-install
 ```sh
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install --assumeyes flathub com.valvesoftware.Steam
+flatpak install --user --assumeyes flathub com.valvesoftware.Steam
 ```
 
 ## flatpak-run
