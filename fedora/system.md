@@ -21,7 +21,8 @@ sudo dnf install -y \
 
 # optiona
 sudo dnf install -y \
-    python3-pygments
+    python3-pygments \
+    python3-pip
 pip install pygments-style-tomorrownightbright
 
 # vim
@@ -33,7 +34,6 @@ sudo dnf install -y \
     vim-syntastic-yaml \
     vim-syntastic-json \
     vim-syntastic-go \
-    vim-syntastic-javascript \
     vim-syntastic-zsh \
     vim-airline \
     vim-go \
