@@ -168,7 +168,7 @@ sudo systemctl enable --now code-serveweb@${USER}
 
 ## serveweb
 ```sh
-screen ${LOCALBIN}/code serve-web --without-connection-token --host ${host} --port ${port}
+${LOCALBIN}/code serve-web --without-connection-token --host ${host} --port ${port}
 ```
 
 ## tunnel
@@ -178,5 +178,16 @@ if [ -z "${HOSTNAME}" ]; then
     return 1
 fi
 
-screen ${LOCALBIN}/code tunnel --accept-server-license-terms --name ${HOSTNAME}
+${LOCALBIN}/code tunnel --accept-server-license-terms --name ${HOSTNAME}
 ```
+
+## tmux-serveweb
+```sh
+screen code serveweb
+```
+
+## tmux-tunnel
+```sh
+screen apps code tunnel
+```
+

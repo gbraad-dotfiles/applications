@@ -22,3 +22,7 @@ sudo apt install -y mc
 brew install mc
 ```
 
+## run
+```sh
+screen mc
+```
