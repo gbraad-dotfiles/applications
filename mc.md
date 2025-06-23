@@ -2,11 +2,6 @@
 
 ## info
 
-## bluefin-install
-```sh
-apps mc install brew
-```
-
 ## dnf-install
 ```sh
 sudo dnf install -y mc
@@ -17,7 +12,7 @@ sudo dnf install -y mc
 sudo apt install -y mc
 ```
 
-## brew-install
+## brew-install bluefin-install
 ```sh
 brew install mc
 ```

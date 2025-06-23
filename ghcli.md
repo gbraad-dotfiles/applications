@@ -16,11 +16,6 @@ sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.re
 sudo dnf install gh --repo gh-cli
 ```
 
-## bluefin-install
-```sh
-apps ghcli install brew
-```
-
 ## apt-install
 ```sh
 sudo mkdir -p -m 755 /etc/apt/keyrings \
@@ -32,7 +27,7 @@ sudo apt update \
 sudo apt install gh -y
 ```
 
-## brew-install
+## bluefin-install brew-install
 ```sh
 brew install gh
 ```
