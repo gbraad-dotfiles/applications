@@ -1,4 +1,4 @@
-# Toolbix packages
+# Toolbox/Distrobox packages
 
 ## info
 
