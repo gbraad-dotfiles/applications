@@ -73,6 +73,14 @@ flatpak run md.obsidian.Obsidian
 flatpak info md.obsidian.Obsidian > /dev/null
 ```
 
+## podman-install
+```sh
+podman run -d --name obsidian --cap-add=NET_ADMIN --cap-add=NET_RAW --device=/dev/net/tun --device=/dev/fuse ghcr.io/gbraad-apps/obsidian:latest
+podman exec obsidian tailscale up -qr
+ip=`podman exec obsidian tailscale ip -4`
+echo "Open Obsidian at https://${ip}:8444"
+```
+
 ## run
 ```sh
 if apps obsidian check user; then
