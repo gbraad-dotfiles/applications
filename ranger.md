@@ -7,6 +7,11 @@
 sudo dnf install -y ranger
 ```
 
+## apt-install
+```sh
+sudo apt install -y ranger
+```
+
 ## brew-install bluefin-install
 ```sh
 brew install ranger
