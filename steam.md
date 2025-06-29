@@ -22,7 +22,7 @@ dnf install -y steam
 if apps steam check; then
     ${cmd}
 else
-    apps libreoffice run flatpak
+    apps steam run flatpak
 fi
 ```
 
