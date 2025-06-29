@@ -110,7 +110,7 @@ Categories=Utility;
 > This can be generated with `apps-export onlyoffice "OnlyOffice desktop editors"` or using F5 in the `apps` launcher.
 
 ### For launcher
-```sh
+```ini
 [Desktop Entry]
 Version=1.0
 Type=Application
