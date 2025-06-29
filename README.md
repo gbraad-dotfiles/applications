@@ -88,3 +88,36 @@ apps tailscale status | grep online
 ```
 
 Only the output from the script block is sent to stdout, so piping and grepping works as expected.
+
+
+## Desktop entries
+
+### For applications
+`~/.local/share/applications/apps-onlyoffice.desktop`
+```ini
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OnlyOffice desktop editors
+Exec=zsh -c "dotfiles source; apps onlyoffice run -bg"
+Icon=prompt-icon-128.png
+Keywords=apps
+Terminal=false
+Categories=Utility;
+```
+
+> [!Note]
+> This can be generated with `apps-export onlyoffice "OnlyOffice desktop editors"` or using F5 in the `apps` launcher.
+
+### For launcher
+```sh
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=apps launcher
+Exec=zsh -c "dotfiles source; apps"
+Icon=prompt-icon-128.png
+Keywords=apps
+Terminal=false
+Categories=Utility;
+```
