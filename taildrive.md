@@ -3,7 +3,7 @@
 ## info
 
 Select directories you would like to share with other nodes on your tailnet. They can be accessed by WebDAV via http://100.100.100.100:8080/...
-You can select multiple directories with `<TAB>`, and confirm the selection with `<ENTER>`.
+You can select multiple directories with `<TAB>`, and confirm the selection with `<ENTER>`. `<ESC>` cancels the function.
 
 
 ## run
