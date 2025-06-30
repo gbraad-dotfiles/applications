@@ -1,0 +1,33 @@
+# Taildrop - Tailscale file transfer
+
+## info
+
+## run
+```sh
+files=$(find . -type f ! -path './.*/*' | sed 's|^\./||' | fzf --multi --prompt="Select files to send: ")
+if [ -z "$files" ]; then
+  echo "No files selected."
+  return 1
+fi
+
+nodes=$(tailscale status --json | jq -r '.Peer[] | select(.Online == true) | [.HostName, .DNSName, .TailscaleIPs[0]] | @tsv')
+if [ -z "$nodes" ]; then
+  echo "No online Tailscale nodes found."
+  return 2
+fi
+
+target=$(echo "$nodes" | awk -F'\t' '{print $1 " (" $2 ") [" $3 "]"}' | fzf --prompt="Select Tailscale node: ")
+if [ -z "$target" ]; then
+  echo "No target selected."
+  return 3
+fi
+
+# Extract DNSName (inside parentheses)
+target_dns=$(echo "$target" | sed -E 's/.*\(([^)]+)\).*/\1/')
+
+# 3. Send files in a single command, using final colon only.
+echo "Sending files to $target_dns..."
+tailscale file cp $files "$target_dns:"
+
+echo "All files sent."
+```
