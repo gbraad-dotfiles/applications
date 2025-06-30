@@ -7,7 +7,7 @@ Uses Tailscale and fzf to send files to a target machine. Use `<TAB>` to select 
 
 ## run
 ```sh
-files=$(find . -type f ! -path './.*/*' | sed 's|^\./||' | fzf --multi --prompt="Select files to send: ")
+files=$(find . -type f ! -path './.*/*' | sed 's|^\./||' | fzf --multi --prompt="Select files to send: " --exit-0)
 if [ -z "$files" ]; then
   echo "No files selected."
   return 1
@@ -19,7 +19,7 @@ if [ -z "$nodes" ]; then
   return 2
 fi
 
-target=$(echo "$nodes" | awk -F'\t' '{print $1 " (" $2 ") [" $3 "]"}' | fzf --prompt="Select Tailscale node: ")
+target=$(echo "$nodes" | awk -F'\t' '{print $1 " (" $2 ") [" $3 "]"}' | fzf --prompt="Select Tailscale node: "  --exit-0)
 if [ -z "$target" ]; then
   echo "No target selected."
   return 3
