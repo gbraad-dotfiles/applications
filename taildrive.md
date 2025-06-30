@@ -2,6 +2,10 @@
 
 ## info
 
+Select directories you would like to share with other nodes on your tailnet. They can be accessed by WebDAV via http://100.100.100.100:8080/...
+You can select multiple directories with `<TAB>`, and confirm the selection with `<ENTER>`.
+
+
 ## run
 ```sh
 dirs=$(find . -maxdepth 2 -type d ! -path './.*' ! -path './*/.*' | sed 's|^\./||' | grep -v '^$' | fzf --multi --prompt="Select directories to share: ")
