@@ -25,9 +25,6 @@ fi
 # Extract DNSName (inside parentheses)
 target_dns=$(echo "$target" | sed -E 's/.*\(([^)]+)\).*/\1/')
 
-# 3. Send files in a single command, using final colon only.
 echo "Sending files to $target_dns..."
 tailscale file cp $files "$target_dns:"
-
-echo "All files sent."
 ```
