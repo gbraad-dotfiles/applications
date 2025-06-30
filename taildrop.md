@@ -2,7 +2,8 @@
 
 ## info
 
-Uses Tailscale and fzf to send files to a target machine. Use `<TAB>` to select multiple files and `<ENTER>` to confirm selection.
+Uses Tailscale and `fzf` to send files to a target machine. Use `<TAB>` to select multiple files and `<ENTER>` to confirm selection.
+`<ESC>` cancels the function.
 
 
 ## run
