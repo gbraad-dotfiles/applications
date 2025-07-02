@@ -74,7 +74,7 @@ if [[ -z "$exitnodes" ]]; then
   return 1
 fi
 
-selected=$(echo "$exitnodes" | fzf --header="Select an exit node (tab to preview details)" --with-nth=1,2 --delimiter=$'\t' | cut -f1)
+selected=$(echo "$exitnodes" | fzf --header="Select an exit node" --with-nth=1,2 --delimiter=$'\t' | cut -f1)
 
 if [[ -z "$selected" ]]; then
   #echo "No exit node selected."
@@ -100,4 +100,34 @@ apps taildrop run
 ## drive
 ```sh
 apps taildrive run
+```
+
+## ping
+```sh
+onlinenodes=$(tailscale status --json | jq -r '
+  .Peer[] | select(.Online == true) | "\(.DNSName)\t\(.HostName)\t\(.TailscaleIPs[0])"
+')
+
+if [[ -z "$onlinenodes" ]]; then
+  echo "No online nodes found."
+  exit 1
+fi
+
+# User selects a node
+selected=$(echo "$onlinenodes" | fzf --header="Select an online node to ping" --with-nth=1,2 --delimiter=$'\t')
+if [[ -z "$selected" ]]; then
+  echo "No node selected."
+  exit 2
+fi
+
+# Use the DNS name for ping; fallback to IP if DNS is empty
+node_dns=$(echo "$selected" | awk -F'\t' '{print $1}')
+node_ip=$(echo "$selected" | awk -F'\t' '{print $3}')
+
+target=$node_dns
+if [[ -z "$target" ]]; then
+  target=$node_ip
+fi
+
+tailscale ping $target
 ```
