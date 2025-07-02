@@ -77,7 +77,8 @@ fi
 selected=$(echo "$exitnodes" | fzf --header="Select an exit node (tab to preview details)" --with-nth=1,2 --delimiter=$'\t' | cut -f1)
 
 if [[ -z "$selected" ]]; then
-  echo "No exit node selected."
+  #echo "No exit node selected."
+  apps tailscale exitnode clear
   return 2
 fi
 
