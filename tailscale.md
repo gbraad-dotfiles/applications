@@ -92,3 +92,12 @@ tailscale set --exit-node ""
 echo "Exit node cleared"
 ```
 
+## file
+```sh
+apps taildrop run
+```
+
+## drive
+```sh
+apps taildrive run
+```
