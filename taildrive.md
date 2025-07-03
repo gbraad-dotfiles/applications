@@ -8,6 +8,11 @@ You can select multiple directories with `<TAB>`, and confirm the selection with
 
 ## run
 ```sh
+if [ ! -n "$(find . -mindepth 1 -maxdepth 1 -type d)" ]; then
+  echo "No directories in the current folder."
+  return 1
+fi
+
 dirs=$(find . -maxdepth 2 -type d ! -path './.*' ! -path './*/.*' | sed 's|^\./||' | grep -v '^$' | fzf --multi --prompt="Select directories to share: ")
 if [ -z "$dirs" ]; then
   echo "No directory selected."

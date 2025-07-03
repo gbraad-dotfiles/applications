@@ -8,6 +8,11 @@ Uses Tailscale and `fzf` to send files to a target machine. Use `<TAB>` to selec
 
 ## run
 ```sh
+if [ ! -n "$(find . -maxdepth 1 -type f)" ]; then
+  echo "No files in the current folder."
+  return 1
+fi
+
 files=$(find . -type f ! -path './.*/*' | sed 's|^\./||' | fzf --multi --prompt="Select files to send: " --exit-0)
 if [ -z "$files" ]; then
   echo "No files selected."
