@@ -20,6 +20,7 @@
 ## vars
 ```sh
 cmd=/usr/bin/vivaldi
+APPNAME=Vivaldi
 ```
 
 ## check
@@ -68,3 +69,57 @@ flatpak uninstall com.Vivaldi.vivaldi
 rm -rf ~/.var/app/com.vivaldi.Vivaldi/config/vivaldi
 ```
 
+## appimage-install
+Unofficial releases
+
+```sh
+BASE_URL="https://github.com/ivan-hc/Vivaldi-appimage/releases/download/continuous"
+FILENAME=$(curl -sL "https://github.com/ivan-hc/Vivaldi-appimage/releases/expanded_assets/continuous" \
+  | grep -oP 'Vivaldi-stable-[^"]+x86_64\.AppImage' | head -n 1)
+
+if [ -z "$FILENAME" ]; then
+  echo "Could not find the latest Vivaldi AppImage."
+  exit 1
+fi
+curl -L "$BASE_URL/$FILENAME" -o ${APPSHOME}/${APPNAME}.AppImage
+
+chmod +x ${APPSHOME}/${APPNAME}.AppImage
+```
+
+## appimage-remove
+```sh
+rm -f ${APPSHOME}/${APPNAME}.AppImage
+```
+
+## appimage-run
+```sh
+${APPSHOME}/${APPNAME}.AppImage
+```
+
+## appimage-check
+```sh
+[ -x ${APPSHOME}/${APPNAME}.AppImage ]
+```
+
+## user-install
+```sh
+apps vivaldi install appimage
+${APPSHOME}/${APPNAME}.AppImage --appimage-extract
+mv squashfs-root ${APPSHOME}/${APPNAME}
+apps vivaldi remove appimage
+```
+
+## user-remove
+```sh
+rm -rf ${APPSHOME}/${APPNAME}
+```
+
+## user-check
+```sh
+[ -x "${APPSHOME}/${APPNAME}/vivaldi" ]
+```
+
+## user-run
+```sh
+${APPSHOME}/${APPNAME}/vivaldi
+```
