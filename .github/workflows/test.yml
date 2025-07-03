@@ -1,0 +1,39 @@
+name: Test apps install
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+  pull_request: {}
+
+jobs:
+  test-apps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup environment
+        uses: gbraad-dotfiles/install-action@main
+        
+      - name: Run apps command - install code
+        id: devenv
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: code
+          action: install
+
+      - name: Run apps command - install clion
+        uses: gbraad-dotfiles/apps-action@main
+        with: 
+          appname: clion
+          action: install
+
+      - name: Run apps command - install obsidian
+        uses: gbraad-dotfiles/apps-action@main
+        with: 
+          appname: obsidian
+          action: install
+          packager: user
+
