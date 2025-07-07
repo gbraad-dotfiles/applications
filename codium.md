@@ -50,11 +50,20 @@ sudo dnf install -y /tmp/vscodium-latest.rpm
 
 ## apt-install
 ```sh
-download_url=$(echo "$response" | grep -oP '(?<="browser_download_url": ")[^"]*\.deb(?!.*sha)')
+arch=$(uname -m)
+case "$arch" in
+    x86_64)  deb_arch="amd64" ;;
+    aarch64) deb_arch="arm64" ;;
+    armv7l)  deb_arch="armhf" ;;
+    *)       echo "Unsupported architecture: $arch"; exit 1 ;;
+esac
+
+download_url=$(echo "$response" | grep -oP '(?<="browser_download_url": ")[^"]*\.deb' | grep "${deb_arch}" | head -n1)
 if [[ -z "$download_url" ]]; then
-    echo "DEB download URL not found"
+    echo "DEB download URL for architecture $deb_arch not found"
     return 1
 fi
+
 curl -L -o /tmp/vscodium-latest.deb "$download_url"
 sudo apt install -y /tmp/vscodium-latest.deb
 ```
