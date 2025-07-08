@@ -57,7 +57,7 @@ fi
 
 ## status
 ```sh
-tailproxy status
+tailproxy status | comment_filter
 ```
 
 ## online-status

@@ -38,7 +38,7 @@ tailscale up
 ## status
 this returns the status and known nodes on the current tailnet
 ```sh
-tailscale status
+tailscale status | comment_filter
 ```
 
 ## online-status
