@@ -8,6 +8,7 @@ STATEDIR=$(dotini tailscale --get "tailproxy.statedir")
 
 STATEDIR="${STATEDIR/#\~/$HOME}"
 SESSION="tailproxy"
+alias tailproxy="tailscale -socket $STATEDIR/userspace.sock"
 ```
 
 ## run
@@ -33,21 +34,14 @@ fi
 tmux kill-session -t $SESSION
 ```
 
-## status
-```sh
-tailscale -socket $STATEDIR/userspace.sock \
-  status
-```
-
 ## up
 ```sh
-tailscale -socket $STATEDIR/userspace.sock \
-  status
+tailproxy status > /dev/null 2>&1
 RESULT=$?
 
 if [ $RESULT -eq 1 ]; then
     upcmd="
-        tailscale -socket $STATEDIR/userspace.sock \
+        tailproxy \
           up \
             --hostname=$(cat /proc/sys/kernel/hostname)-proxy \
             --ssh"
@@ -58,25 +52,47 @@ if [ $RESULT -eq 1 ]; then
 fi
 ```
 
-## exitmull
+## status
 ```sh
-tailscale -socket $STATEDIR/userspace.sock \
-  set --exit-node $(tp exit-node list | grep mull | fzf | awk '{print $2}')
+tailproxy status
 ```
 
-## exitnode
+## online-status
+This will return the online nodes on the current tailnet
+
 ```sh
-tailscale -socket $STATEDIR/userspace.sock \
-  set --exit-node $(tpfexit | awk '{print $2}' | fzf)
+tailproxy status | offline_filter
+```
+
+## direct-status
+This will return the direct connections with the current host
+
+```sh
+tailproxy status | direct_filter
+```
+
+## exitnode-status
+This will return the exit nodes on the current tailnet
+
+```sh
+tailproxy status | exitnode_filter
+```
+
+## select-exitmull
+```sh
+tailproxy set --exit-node $(tailproxy exit-node list | grep mull | fzf | awk '{print $2}')
+```
+
+## select-exitnode
+```sh
+tailproxy set --exit-node $(apps tailproxy status exitnode | awk '{print $2}' | fzf)
 ```
 
 ## ping
 ```sh
-  NODE=$1
-  if [ -z "${NODE}" ]; then
-    NODE=$(tpfon | awk '{print $1, $2}' | fzf | awk '{print  $1}')
-  fi
-  tailscale -socket $STATEDIR/userspace.sock \
-    ping ${NODE}
+NODE=$(apps tailproxy status online | awk '{print $1, $2}' | fzf | awk '{print  $1}')
+tailproxy ping ${NODE}
 ```
+
+
 

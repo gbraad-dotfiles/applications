@@ -56,10 +56,10 @@ tailscale status | direct_filter
 ```
 
 ## exitnode-status
-T hsi wqill return the exit nodes on the current tailnet
+This will return the exit nodes on the current tailnet
 
 ```sh
-tailscale status | direct_filter
+tailscale status | exitnode_filter
 ```
 
 ## select-exitnode
