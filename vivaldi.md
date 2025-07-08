@@ -106,6 +106,8 @@ ${APPSHOME}/${APPNAME}.AppImage
 apps vivaldi install appimage
 ${APPSHOME}/${APPNAME}.AppImage --appimage-extract
 mv squashfs-root ${APPSHOME}/${APPNAME}
+sudo chown root ${APPSHOME}/${APPNAME}/vivaldi-sandbox
+sudo chmod 4755 ${APPSHOME}/${APPNAME}/vivaldi-sandbox
 apps vivaldi remove appimage
 ```
 
