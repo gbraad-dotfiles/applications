@@ -8,7 +8,10 @@ STATEDIR=$(dotini tailscale --get "tailproxy.statedir")
 
 STATEDIR="${STATEDIR/#\~/$HOME}"
 SESSION="tailproxy"
-alias tailproxy="tailscale -socket $STATEDIR/userspace.sock"
+
+tailproxy() {
+  tailscale -socket "$STATEDIR/userspace.sock" "$@"
+}
 ```
 
 ## run
