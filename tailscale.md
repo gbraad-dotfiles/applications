@@ -16,9 +16,14 @@
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-## user-operator
+## operator-config
 ```sh
 tailscale set --operator ${USER}
+```
+
+## ssh-config
+```sh
+tailscale set --ssh
 ```
 
 ## dnf-update
