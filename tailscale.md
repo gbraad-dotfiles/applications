@@ -18,7 +18,7 @@ curl -fsSL https://tailscale.com/install.sh | sh
 
 ## operator-config
 ```sh
-tailscale set --operator ${USER}
+sudo tailscale set --operator ${USER}
 ```
 
 ## ssh-config
