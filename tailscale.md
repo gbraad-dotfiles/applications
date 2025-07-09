@@ -18,7 +18,11 @@ curl -fsSL https://tailscale.com/install.sh | sh
 
 ## operator-config
 ```sh
-sudo tailscale set --operator ${USER}
+if ! is_root; then
+  sudo tailscale set --operator ${USER}
+else
+  echo "Can't set root as operator"
+fi
 ```
 
 ## ssh-config
