@@ -66,6 +66,7 @@ if [[ -z "$download_url" ]]; then
 fi
 
 curl -L -o /tmp/vscodium-latest.deb "$download_url"
+sudo apt update
 sudo apt install -y /tmp/vscodium-latest.deb
 ```
 
