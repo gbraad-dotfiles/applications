@@ -16,6 +16,11 @@
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
+## user-operator
+```sh
+tailscale set --operator ${USER}
+```
+
 ## dnf-update
 ```sh
 sudo dnf update -y tailscale
@@ -32,7 +37,7 @@ systemctl enable --now tailscaled
 Starts the onboarding process
 
 ```sh
-tailscale up
+tailscale up ${TAILSCALE_AUTHKEY:+--authkey "$TAILSCALE_AUTHKEY"}
 ```
 
 ## status
