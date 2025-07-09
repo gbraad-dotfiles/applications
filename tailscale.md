@@ -80,6 +80,21 @@ This will return the direct connections with the current host
 tailscale status | direct_filter
 ```
 
+## tagged-status
+This will return the tagged nodes
+
+```sh
+tailscale status | tagged_filter
+```
+
+## tsnet-status
+This will return the other ts.net nodes
+
+```sh
+tailscale status | tsnet_filter
+```
+
+
 ## exitnode-status
 This will return the exit nodes on the current tailnet
 
