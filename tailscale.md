@@ -63,6 +63,13 @@ tailscale status | comment_filter
 This will return the online nodes on the current tailnet
 
 ```sh
+tailscale status | online_filter
+```
+
+## offline-status
+This will return the offline nodes on the current tailnet
+
+```sh
 tailscale status | offline_filter
 ```
 
