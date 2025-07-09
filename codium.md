@@ -39,7 +39,8 @@ ${APPSHOME}/${APPNAME}.AppImage
 
 ## dnf-install
 ```sh
-download_url=$(echo "$response" | grep -oP '(?<="browser_download_url": ")[^"]*\.rpm(?!.*sha)')
+arch=$(uname -m)
+download_url=$(echo "$response" | grep -oP '(?<="browser_download_url": ")[^"]*\.rpm' | grep "${arch}" | head -n1)
 if [[ -z "$download_url" ]]; then
     echo "RPM download URL not found"
     return 1
