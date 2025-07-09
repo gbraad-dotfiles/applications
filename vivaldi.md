@@ -48,6 +48,19 @@ sudo dnf install -y vivaldi-stable
 sudo dnf remove -y vivaldi-stable
 ```
 
+## apt-install
+```sh
+wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/vivaldi-browser.gpg
+echo "deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=amd64] https://repo.vivaldi.com/archive/deb/ stable main" | sudo tee /etc/apt/sources.list.d/vivaldi.list
+sudo apt update
+sudo apt install -y vivaldi-stable
+```
+
+## apt-remove
+```sh
+sudo apt remove -y vivaldi-stable
+```
+
 ## flatpak-install
 ```sh
 flatpak install --user --assumeyes flathub com.vivaldi.Vivaldi
