@@ -4,7 +4,7 @@
 
 ## dnf-install
 ```sh
-sudo dnf install -y ranger
+sudo dnf install -y ranger file
 ```
 
 ## apt-install
