@@ -2,6 +2,11 @@
 
 ## info
 
+## check
+```
+[ -x `which distrobox` ]
+```
+
 ## dnf-install fedora-install
 ```sh
 sudo dnf install -y distrobox
