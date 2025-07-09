@@ -63,11 +63,20 @@ git remote remove origin
 git remote add origin git@github.com:gbraad-dotfiles/applications
 git fetch
 git branch --set-upstream-to=origin/main main
-cd -
+cd - > /dev/null
 ```
 
 ## show
 ```sh
 echo "App defintions in ${apps_dir}"
 show_apps_tree ${apps_dir} "  "
+```
+
+## reset
+```sh
+cd ${_appsdefpath}
+git stash
+git fetch origin
+git reset --hard origin/main
+cd - > /dev/null
 ```
