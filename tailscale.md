@@ -23,7 +23,7 @@ sudo tailscale set --operator ${USER}
 
 ## ssh-config
 ```sh
-tailscale set --ssh
+tailscale set --ssh=true
 ```
 
 ## dnf-update
