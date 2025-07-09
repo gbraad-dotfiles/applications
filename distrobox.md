@@ -4,7 +4,7 @@
 
 ## check
 ```
-[ -x `which distrobox` ]
+command -v distrobox >/dev/null 2>&1
 ```
 
 ## dnf-install fedora-install
