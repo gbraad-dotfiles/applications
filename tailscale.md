@@ -42,7 +42,11 @@ systemctl enable --now tailscaled
 Starts the onboarding process
 
 ```sh
-tailscale up ${TAILSCALE_AUTHKEY:+--auth-key "$TAILSCALE_AUTHKEY"}
+if [ -n "${TAILSCALE_AUTHKEY}" ]; then
+  tailscale up --auth-key "${TAILSCALE_AUTHKEY}"
+else
+  tailscale up --qr
+fi
 ```
 
 ## status
