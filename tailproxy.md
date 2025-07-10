@@ -67,7 +67,7 @@ tailscaled --tun=userspace-networking \
 ```
 
 ## up
-```sh
+```sh interactive
 tailproxy status > /dev/null 2>&1
 RESULT=$?
 

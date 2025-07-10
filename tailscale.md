@@ -80,7 +80,7 @@ systemctl enable --now tailscaled
 ## up
 Starts the onboarding process
 
-```sh
+```sh interactive
 if [ -n "${TAILSCALE_AUTHKEY}" ]; then
   tailscale up --auth-key "${TAILSCALE_AUTHKEY}"
 else
