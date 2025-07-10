@@ -66,6 +66,16 @@ tailscaled --tun=userspace-networking \
     --port $(dotini tailscale --get tailproxy.port)
 ```
 
+## ssh-config
+```sh
+tailproxy set --ssh=true
+```
+
+## exitnode-config
+```sh
+tailproxy set --advertise-exit-node=true
+```
+
 ## up
 ```sh interactive
 tailproxy status > /dev/null 2>&1

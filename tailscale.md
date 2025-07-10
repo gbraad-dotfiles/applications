@@ -62,7 +62,12 @@ fi
 
 ## ssh-config
 ```sh
-tailscale set --ssh=true
+sudo tailscale set --ssh=true
+```
+
+## exitnode-config
+```sh
+sudo tailscale set --advertise-exit-node=true
 ```
 
 ## dnf-update
