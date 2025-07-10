@@ -102,6 +102,14 @@ secrets var tailscale_authkey
 apps tailproxy up
 ```
 
+## expose
+This exposes the tailproxy SOCKS5 port on the host tailnet
+
+```sh
+port=$(dotini tailscale --get tailproxy.socks5-server)
+tailscale serve --bg ${port} ${port}
+```
+
 ## status
 ```sh
 if ! apps tailproxy service active > /dev/null 2>&1; then
