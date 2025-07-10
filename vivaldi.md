@@ -29,7 +29,7 @@ APPNAME=Vivaldi
 ```
 
 ## run
-```sh
+```sh background
 if apps vivaldi check; then
     $cmd
 elif apps vivaldi check flatpak; then

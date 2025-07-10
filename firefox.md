@@ -13,7 +13,7 @@ sudo apt install -y firefox
 ```
 
 ## run
-```sh
+```sh background
 firefox
 ```
 

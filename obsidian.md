@@ -82,7 +82,7 @@ echo "Open Obsidian at https://${ip}:8444"
 ```
 
 ## run
-```sh
+```sh background
 if apps obsidian check user; then
     apps obsidian run user
 elif apps obsidian check appimage; then
