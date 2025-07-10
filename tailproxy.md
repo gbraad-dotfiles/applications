@@ -59,8 +59,8 @@ systemctl --user is-active dotfiles-apps-tailproxy
 ```sh
 mkdir -p $STATEDIR
 tailscaled --tun=userspace-networking \
-    --socks5-server=$(dotini tailscale --get tailproxy.socks5-server) \
-    --outbound-http-proxy-listen=$(dotini tailscale --get tailproxy.outbound-http-proxy-listen) \
+    --socks5-server=$(dotini tailscale --get tailproxy.socks5-server-host):$(dotini tailscale --get tailproxy.socks5-server-port) \
+    --outbound-http-proxy-listen=$(dotini tailscale --get tailproxy.outbound-http-proxy-listen-host):$(dotini tailscale --get tailproxy.outbound-http-proxy-listen-port) \
     --state=$STATEDIR/userspace.state \
     --socket=$STATEDIR/userspace.sock \
     --port $(dotini tailscale --get tailproxy.port)
@@ -106,8 +106,8 @@ apps tailproxy up
 This exposes the tailproxy SOCKS5 port on the host tailnet
 
 ```sh
-port=$(dotini tailscale --get tailproxy.socks5-server)
-tailscale serve --bg ${port} ${port}
+port=$(dotini tailscale --get tailproxy.socks5-server-port)
+tailscale serve --bg --tcp ${port} ${port}
 ```
 
 ## status
