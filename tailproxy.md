@@ -50,7 +50,7 @@ systemctl --user stop dotfiles-apps-tailproxy
 systemctl --user is-active dotfiles-apps-tailproxy
 ```
 
-## run
+## run-service run
 ```sh
 mkdir -p $STATEDIR
 tailscaled --tun=userspace-networking \
