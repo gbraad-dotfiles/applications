@@ -55,6 +55,12 @@ if [ $RESULT -eq 1 ]; then
 fi
 ```
 
+## connect
+```sh
+secrets var tailscale_authkey
+apps tailproxy up
+```
+
 ## status
 ```sh
 tailproxy status | comment_filter
@@ -96,6 +102,4 @@ tailproxy set --exit-node $(apps tailproxy status exitnode | awk '{print $2}' | 
 NODE=$(apps tailproxy status online | awk '{print $1, $2}' | fzf | awk '{print  $1}')
 tailproxy ping ${NODE}
 ```
-
-
 

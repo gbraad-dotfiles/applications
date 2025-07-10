@@ -137,6 +137,11 @@ tailscale set --exit-node ""
 echo "Exit node cleared"
 ```
 
+## select-exitmull
+```sh
+tailscale set --exit-node $(tailscale exit-node list | grep mull | fzf | awk '{print $2}')
+```
+
 ## file
 ```sh
 apps taildrop run
