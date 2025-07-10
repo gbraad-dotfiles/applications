@@ -5,36 +5,37 @@
 ## vars
 ```sh
 STATEDIR=$(dotini tailscale --get "tailproxy.statedir")
-
 STATEDIR="${STATEDIR/#\~/$HOME}"
-SESSION="tailproxy"
 
 tailproxy() {
   tailscale -socket "$STATEDIR/userspace.sock" "$@"
 }
 ```
 
-## run
+## install
 ```sh
-tmux has-session -t $SESSION 2>/dev/null
-
-if [ $? != 0 ]; then
-    mkdir -p $STATEDIR
-    startcmd="
-        tailscaled --tun=userspace-networking \
-            --socks5-server=$(dotini tailscale --get tailproxy.socks5-server) \
-            --outbound-http-proxy-listen=$(dotini tailscale --get tailproxy.outbound-http-proxy-listen) \
-            --state=$STATEDIR/userspace.state \
-            --socket=$STATEDIR/userspace.sock \
-            --port $(dotini tailscale --get tailproxy.port)"
-    tmux new-session -s $SESSION -d
-    tmux send -t $SESSION "$startcmd" ENTER
-fi
+apps-export-service tailproxy "Tailscale user-space"
 ```
 
-## kill
+## start
 ```sh
-tmux kill-session -t $SESSION
+systemctl --user start dotfiles-apps-tailproxy
+```
+
+## stop
+```sh
+systemctl --user stop dotfiles-apps-tailproxy
+```
+
+## run
+```sh
+mkdir -p $STATEDIR
+tailscaled --tun=userspace-networking \
+    --socks5-server=$(dotini tailscale --get tailproxy.socks5-server) \
+    --outbound-http-proxy-listen=$(dotini tailscale --get tailproxy.outbound-http-proxy-listen) \
+    --state=$STATEDIR/userspace.state \
+    --socket=$STATEDIR/userspace.sock \
+    --port $(dotini tailscale --get tailproxy.port)
 ```
 
 ## up
