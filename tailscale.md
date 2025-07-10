@@ -16,6 +16,11 @@
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
+## check
+```sh
+command -v tailscaled > /dev/null 2>&1
+```
+
 ## operator-config
 ```sh
 if ! is_root; then

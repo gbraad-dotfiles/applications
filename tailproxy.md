@@ -14,6 +14,9 @@ tailproxy() {
 
 ## install
 ```sh
+if ! apps tailscale check; then
+  apps tailscale install
+fi
 apps-export-service tailproxy "Tailscale user-space"
 ```
 
