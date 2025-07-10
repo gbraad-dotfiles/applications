@@ -53,6 +53,12 @@ else
 fi
 ```
 
+## connect
+```sh
+secrets var tailscale_authkey
+apps tailscale up
+```
+
 ## status
 this returns the status and known nodes on the current tailnet
 ```sh
@@ -93,7 +99,6 @@ This will return the other ts.net nodes
 ```sh
 tailscale status | tsnet_filter
 ```
-
 
 ## exitnode-status
 This will return the exit nodes on the current tailnet
