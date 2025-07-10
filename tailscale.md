@@ -153,7 +153,7 @@ apps taildrive run
 ```
 
 ## ping
-```sh
+```sh interactive
 onlinenodes=$(tailscale status --json | jq -r '
   .Peer[] | select(.Online == true) | "\(.DNSName)\t\(.HostName)\t\(.TailscaleIPs[0])"
 ')
