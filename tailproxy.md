@@ -115,6 +115,13 @@ fi
 This will return the online nodes on the current tailnet
 
 ```sh
+tailproxy status | online_filter
+```
+
+## offline-status
+This will return the online nodes on the current tailnet
+
+```sh
 tailproxy status | offline_filter
 ```
 
@@ -123,6 +130,16 @@ This will return the direct connections with the current host
 
 ```sh
 tailproxy status | direct_filter
+```
+
+## tagged-status
+```sh
+tailproxy status | tagged_filter
+```
+
+## tsnet-status
+```sh
+tailproxy status | tsnet_filter
 ```
 
 ## exitnode-status
