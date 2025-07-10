@@ -21,6 +21,36 @@ curl -fsSL https://tailscale.com/install.sh | sh
 command -v tailscaled > /dev/null 2>&1
 ```
 
+## enable-service
+```sh
+sudo systemctl enable --now tailscaled
+```
+
+## disable-service
+```sh
+sudo systemctl disable --now tailscaled
+```
+
+## start-service
+```sh
+sudo systemctl start tailscaled
+```
+
+## stop-service
+```sh
+sudo systemctl stop tailscaled
+```
+
+## status-service
+```sh
+sudo systemctl status tailscaled
+```
+
+## active-service
+```sh
+sudo systemctl is-active tailscaled
+```
+
 ## operator-config
 ```sh
 if ! is_root; then
@@ -65,9 +95,14 @@ apps tailscale up
 ```
 
 ## status
-this returns the status and known nodes on the current tailnet
+This returns the status and known nodes on the current tailnet
+
 ```sh
-tailscale status | comment_filter
+if ! apps tailscale service active > /dev/null 2>&1; then
+  echo "Not running."
+else
+  tailscale status | comment_filter
+fi
 ```
 
 ## online-status

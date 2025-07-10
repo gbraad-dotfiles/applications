@@ -17,32 +17,37 @@ tailproxy() {
 if ! apps tailscale check; then
   apps tailscale install
 fi
+apps tailproxy service install
+```
+
+## install-service
+```sh
 apps-export-service tailproxy "Tailscale user-space"
 ```
 
-## enable
+## enable-service
 ```sh
 systemctl --user enable --now dotfiles-apps-tailproxy
 ```
 
-## disable
+## disable-service
 ```sh
 systemctl --user disable --now dotfiles-apps-tailproxy
 ```
 
-## active
-```sh
-systemctl --user is-active dotfiles-apps-tailproxy
-```
-
-## start
+## start-service
 ```sh
 systemctl --user start dotfiles-apps-tailproxy
 ```
 
-## stop
+## stop-service
 ```sh
 systemctl --user stop dotfiles-apps-tailproxy
+```
+
+## active-service
+```sh
+systemctl --user is-active dotfiles-apps-tailproxy
 ```
 
 ## run
@@ -82,8 +87,8 @@ apps tailproxy up
 
 ## status
 ```sh
-if ! apps tailproxy active > /dev/null 2>&1; then
-  echo "Not running"
+if ! apps tailproxy service active > /dev/null 2>&1; then
+  echo "Not running."
 else 
   tailproxy status | comment_filter
 fi
