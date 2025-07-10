@@ -45,6 +45,11 @@ systemctl --user start dotfiles-apps-tailproxy
 systemctl --user stop dotfiles-apps-tailproxy
 ```
 
+## status-service
+```sh
+systemctl --user status dotfiles-apps-tailproxy
+```
+
 ## active-service
 ```sh
 systemctl --user is-active dotfiles-apps-tailproxy
@@ -71,9 +76,11 @@ if [ $RESULT -eq 1 ]; then
         tailproxy \
           up \
             --hostname=$(cat /proc/sys/kernel/hostname)-proxy \
-            --ssh"
+            --ssh --accept-risk=lose-ssh"
     if [ -n "$TAILSCALE_AUTHKEY" ]; then
       upcmd+=" --auth-key $TAILSCALE_AUTHKEY"
+    else
+      upcmd+=" --qr"
     fi
     eval $upcmd
 fi
