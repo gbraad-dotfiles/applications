@@ -22,7 +22,7 @@ brew install ranger
 pkg install ranger
 ```
 
-## run
+## default run
 ```sh
 screen ranger
 ```

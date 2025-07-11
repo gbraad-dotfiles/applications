@@ -12,7 +12,7 @@ sudo dnf install -y firefox
 sudo apt install -y firefox
 ```
 
-## run
+## default run
 ```sh background
 firefox
 ```

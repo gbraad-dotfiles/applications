@@ -81,7 +81,7 @@ ip=`podman exec obsidian tailscale ip -4`
 echo "Open Obsidian at https://${ip}:8444"
 ```
 
-## run
+## default run
 ```sh background
 if apps obsidian check user; then
     apps obsidian run user

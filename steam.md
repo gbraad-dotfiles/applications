@@ -17,7 +17,7 @@ dnf install -y steam
 [ -x ${cmd} ]
 ```
 
-## run
+## default run
 ```sh
 if apps steam check; then
     ${cmd}

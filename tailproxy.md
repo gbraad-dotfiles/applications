@@ -12,7 +12,7 @@ tailproxy() {
 }
 ```
 
-## install
+## default install
 ```sh
 if ! apps tailscale check; then
   apps tailscale install

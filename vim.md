@@ -7,7 +7,7 @@
 sudo dnf install -y vim
 ```
 
-## run
+## default run
 ```sh
 screen vim
 ```

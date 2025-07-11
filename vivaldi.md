@@ -28,7 +28,7 @@ APPNAME=Vivaldi
 [ -x $cmd ]
 ```
 
-## run
+## default run
 ```sh background
 if apps vivaldi check; then
     $cmd

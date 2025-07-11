@@ -4,7 +4,7 @@
 Installs Codium server
 
 
-## install
+## default install
 ```sh
 if is_root; then
   apps codium-server install system
