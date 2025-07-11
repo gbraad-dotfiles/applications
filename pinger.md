@@ -38,6 +38,11 @@ systemctl --user status dotfiles-apps-pinger
 systemctl --user is-active dotfiles-apps-pinger
 ```
 
+## journal-service
+```sh interactive
+journalctl --user -u dotfiles-apps-pinger -f
+```
+
 ## default run run-service run-desktop
 ```sh interactive
 ping $(dotini pinger pinger.host)

@@ -55,6 +55,11 @@ systemctl --user status dotfiles-apps-tailproxy
 systemctl --user is-active dotfiles-apps-tailproxy
 ```
 
+## journal-service
+```sh interactive
+journalctl --user -u dotfiles-apps-tailproxy -f
+```
+
 ## run-service run
 ```sh
 mkdir -p $STATEDIR

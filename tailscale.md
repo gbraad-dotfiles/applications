@@ -51,6 +51,11 @@ sudo systemctl status tailscaled
 sudo systemctl is-active tailscaled
 ```
 
+## journal-service
+```sh interactive
+journalctl -u tailscaled -f
+```
+
 ## operator-config
 ```sh
 if ! is_root; then
