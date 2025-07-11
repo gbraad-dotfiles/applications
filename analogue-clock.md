@@ -24,7 +24,7 @@ rm -f /tmp/clock.zip
 [ -x ${APPSHOME}/${APPNAME}/clock ]
 ```
 
-## run
+## default run
 ```sh
 if apps analogue-clock check; then 
     ${APPSHOME}/${APPNAME}/clock

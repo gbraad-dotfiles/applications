@@ -9,7 +9,7 @@ sudo podman container runlabel INSTALL quay.io/cockpit/ws
 sudo systemctl enable --now cockpit.service
 ```
 
-## install
+## default install
 ```sh
 apps cockpit install podman
 ```

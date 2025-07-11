@@ -21,7 +21,7 @@ tar -xjvf /tmp/forge-install.tar.bz2 -C ${APPSHOME}/cardforge/
 rm -f /tmp/forge-install.tar.bz2
 ```
 
-## run
+## default run
 ```sh
 ${APPSHOME}/cardforge/forge.sh
 ```

@@ -22,7 +22,7 @@ flatpak info org.mamedev.MAME > /dev/null
 sudo dnf install -y mame
 ```
 
-## run
+## default run
 ```sh
 if apps mame check flatpak; then
   apps mame run flatpak

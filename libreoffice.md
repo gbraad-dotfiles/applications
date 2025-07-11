@@ -9,7 +9,6 @@ cmd=/usr/bin/libreoffice
 APPNAME=libreoffice
 ```
 
-
 ## dnf-install
 ```
 sudo dnf install -y libreoffice
@@ -79,7 +78,7 @@ ${APPSHOME}/${APPNAME}/AppRun
 [ -x $cmd ]
 ```
 
-## run
+## default run
 ```sh
 if apps libreoffice check; then
     $cmd
