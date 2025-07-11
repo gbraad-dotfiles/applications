@@ -100,7 +100,7 @@ rm -f ${HOME}/.local/bin/codium
 ${HOME}/.local/bin/codium
 ```
 
-## default run
+## default run run-desktop
 ```sh
 if apps codium check user; then
    apps codium run user

@@ -12,7 +12,7 @@ sudo dnf install -y firefox
 sudo apt install -y firefox
 ```
 
-## default run
+## default run run-desktop
 ```sh background
 if ! apps firefox check; then
   apps firefox install

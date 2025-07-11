@@ -20,7 +20,7 @@ rm -f /tmp/sunvox.zip
 [ -x ${APPSHOME}/${APPNAME}/sunvox/linux_x86_64/sunvox ]
 ```
 
-## run
+## default run run-desktop
 ```sh
 ${APPSHOME}/${APPNAME}/sunvox/linux_x86_64/sunvox
 ```

@@ -11,7 +11,7 @@ flatpak install --user --assumeyes flathub com.valvesoftware.SteamLink
 flatpak run com.valvesoftware.SteamLink
 ```
 
-## default run
+## default run run-desktop
 ```sh
 apps steamlink run flatpak
 ```

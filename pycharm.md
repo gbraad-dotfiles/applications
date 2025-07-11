@@ -17,7 +17,7 @@ tar --strip-components=1 -xzf /tmp/pycharm.tar.gz -C "$INSTALL_DIR"
 rm /tmp/pycharm.tar.gz
 ```
 
-## run
+## default run run-desktop
 ```sh
 ${APPSHOME}/pycharm/bin/pycharm.sh"
 ```

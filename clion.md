@@ -17,7 +17,7 @@ tar --strip-components=1 -xzf /tmp/clion.tar.gz -C "$INSTALL_DIR"
 rm /tmp/clion.tar.gz
 ```
 
-## run
+## default run run-desktop
 ```sh
 ${APPSHOME}/clion/bin/clion.sh
 ```

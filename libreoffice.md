@@ -78,7 +78,7 @@ ${APPSHOME}/${APPNAME}/AppRun
 [ -x $cmd ]
 ```
 
-## default run
+## default run run-desktop
 ```sh
 if apps libreoffice check; then
     $cmd

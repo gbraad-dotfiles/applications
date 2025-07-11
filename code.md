@@ -136,7 +136,7 @@ ${APPSHOME}/code/code
 [ -x ${APPSHOME}/code/code ]
 ```
 
-## default run
+## default run run-desktop
 ```sh
 if apps code check user; then
    apps code run user
