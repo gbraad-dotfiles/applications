@@ -99,7 +99,7 @@ secrets var tailscale_authkey
 apps tailscale up
 ```
 
-## status
+## default status
 This returns the status and known nodes on the current tailnet
 
 ```sh

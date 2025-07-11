@@ -12,7 +12,7 @@ tailproxy() {
 }
 ```
 
-## default install
+## install
 ```sh
 if ! apps tailscale check; then
   apps tailscale install
@@ -110,13 +110,14 @@ port=$(dotini tailscale --get tailproxy.socks5-server-port)
 tailscale serve --bg --tcp ${port} ${port}
 ```
 
-## status
+## default status
 ```sh
-if ! apps tailproxy service active > /dev/null 2>&1; then
-  echo "Not running."
-else 
-  tailproxy status | comment_filter
-fi
+# Might be running in a screen when no systemd is available
+#if ! apps tailproxy service active > /dev/null 2>&1; then
+#  echo "Not running."
+#else 
+tailproxy status | comment_filter
+#fi
 ```
 
 ## online-status
