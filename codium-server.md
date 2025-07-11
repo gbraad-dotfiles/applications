@@ -4,6 +4,9 @@
 Installs Codium server
 
 
+  - https://github.com/gbraad-actions/codium-server-action
+  - https://github.com/gbraad-vscode/code-systemd/
+
 ## vars
 ```sh
 APPNAME=codium-server
