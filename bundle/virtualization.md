@@ -14,3 +14,5 @@ sudo apt-get update
 sudo apt install -y qemu-kvm libvirt-daemon libvirt-daemon-system virtiofsd virt-manager
 sudo usermod -a -G libvirt $USER
 ```
+
+## default install

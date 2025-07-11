@@ -3,7 +3,7 @@
 ## info
 The most important applications
 
-## install
+## default install
 ```sh
 apps obsidian install user
 apps code install user

@@ -16,3 +16,5 @@ sudo dnf install -y podman skopeo buildah
 sudo apt-get update
 sudo apt install -y podman skopeo buildah
 ```
+
+## default install
