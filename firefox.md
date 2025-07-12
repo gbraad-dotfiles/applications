@@ -15,7 +15,8 @@ sudo apt install -y firefox
 ## default run run-desktop
 ```sh background
 if ! apps firefox check; then
-  apps firefox install
+  echo "Not installed. Try to install with: apps firefox install"
+  exit 1
 fi
 firefox
 ```
