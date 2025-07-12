@@ -62,11 +62,23 @@ systemctl --user is-active ${SVCNAME}
 ## shared
 ```sh
 _installcodiumserverdownload() {
-    local install_location="$1"
-  
+    local install_location="$1" install_dir
+    local download_url response version temp_file 
+    local ARCH SUFFIX API_URL
+
+    ARCH=$(uname -m)
+    if [[ "$ARCH" == "aarch64" ]]; then
+        SUFFIX="arm64"
+    elif [[ "$ARCH" == "x86_64" ]]; then
+        SUFFIX="x64"
+    else
+        echo "Unsupported architecture: $ARCH"
+        exit 1
+    fi
+ 
     API_URL="https://api.github.com/repos/VSCodium/vscodium/releases/latest"
     response=$(curl -s "$API_URL")
-    download_url=$(echo "$response" | grep -oP '(?<="browser_download_url": ")[^"]*vscodium-reh-web-linux-x64[^"]*.tar.gz(?!.*sha)')
+    download_url=$(echo "$response" | grep -oP "(?<=\"browser_download_url\": \")[^\"]*vscodium-reh-web-linux-${SUFFIX}[^\"]*\.tar\.gz(?!.*sha)")
     version=$(echo "$download_url" | grep -oP '(?<=/download/)[^/]+')
 
     if [[ -z "$download_url" ]]; then
