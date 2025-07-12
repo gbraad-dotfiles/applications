@@ -3,47 +3,61 @@
 ## info
 
 
+## vars
+```sh
+APPNAME=pinger
+APPTITLE="Pinger"
+SVCNAME=dotfiles-apps-${APPNAME}
+PINGERHOST=$(dotini pinger pinger.host)
+```
+
 ## install-service
 ```sh
-apps-export-service pinger "Pinger"
+apps-export-service ${APPNAME} ${APPTITLE}
 ```
 
 ## enable-service
 ```sh
-systemctl --user enable --now dotfiles-apps-pinger
+systemctl --user enable --now ${SVCNAME|
 ```
 
 ## disable-service
 ```sh
-systemctl --user disable --now dotfiles-apps-pinger
+systemctl --user disable --now ${SVCNAME}
+```
+
+## restart-service
+```sh
+apps ${APPNAME} service stop
+apps ${APPNAME} service start
 ```
 
 ## start-service
 ```sh
-systemctl --user start dotfiles-apps-pinger
+systemctl --user start ${SVCNAME}
 ```
 
 ## stop-service
 ```sh
-systemctl --user stop dotfiles-apps-pinger
+systemctl --user stop ${SVCNAME}
 ```
 
 ## status-service
 ```sh
-systemctl --user status dotfiles-apps-pinger
+systemctl --user status ${SVCNAME}
 ```
 
 ## active-service
 ```sh
-systemctl --user is-active dotfiles-apps-pinger
+systemctl --user is-active ${SVCNAME}
 ```
 
 ## journal-service
 ```sh interactive
-journalctl --user -u dotfiles-apps-pinger -f
+journalctl --user -u ${SVCNAME} -f
 ```
 
 ## default run run-service run-desktop
 ```sh interactive
-ping $(dotini pinger pinger.host)
+ping ${PINGERHOST}
 ```

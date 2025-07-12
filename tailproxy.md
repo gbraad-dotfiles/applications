@@ -35,6 +35,12 @@ systemctl --user enable --now dotfiles-apps-tailproxy
 systemctl --user disable --now dotfiles-apps-tailproxy
 ```
 
+## restart-service
+```sh
+apps ${APPNAME} service stop
+apps ${APPNAME} service start
+```
+
 ## start-service
 ```sh
 systemctl --user start dotfiles-apps-tailproxy

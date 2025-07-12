@@ -37,6 +37,12 @@ systemctl --user enable --now ${SVCNAME}
 systemctl --user disable --now ${SVCNAME}
 ```
 
+## restart-service
+```sh
+apps ${APPNAME} service stop
+apps ${APPNAME} service start
+```
+
 ## start-service
 ```sh
 systemctl --user start ${SVCNAME}
@@ -55,6 +61,11 @@ systemctl --user status ${SVCNAME}
 ## active-service
 ```sh
 systemctl --user is-active ${SVCNAME}
+```
+
+## journal-service
+```sh interactive
+journalctl --user -u ${SVCNAME} -f
 ```
 
 ---
