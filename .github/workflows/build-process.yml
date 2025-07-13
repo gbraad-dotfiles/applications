@@ -36,6 +36,24 @@ jobs:
       arch: amd64
     secrets: inherit
 
+  run-on-almalinux:
+    name: Run on AlmaLinux
+    uses: ./.github/workflows/reusable-test-devenv.yml
+    with:
+      prefix-name: "dotalma"
+      runs-on: "ubuntu-latest"
+      arch: amd64
+    secrets: inherit
+
+  run-on-ubi9:
+    name: Run on Ubi9
+    uses: ./.github/workflows/reusable-test-devenv.yml
+    with:
+      prefix-name: "dotubi9"
+      runs-on: "ubuntu-latest"
+      arch: amd64
+    secrets: inherit
+
   run-on-ubuntu:
     name: Run on Ubuntu
     uses: ./.github/workflows/reusable-test-devenv.yml

@@ -1,4 +1,5 @@
-name: Test apps install with apps-action
+name: test-apps-actions
+run-name: Test apps install with apps-action
 
 on:
   workflow_dispatch:
@@ -27,7 +28,7 @@ on:
         default: "amd64"
 
 jobs:
-  test-apps:
+  test-apps-actions:
     runs-on: ${{ inputs.runs-on }}${{ inputs.arch == 'arm64' && '-arm' || '' }}
 
     steps:

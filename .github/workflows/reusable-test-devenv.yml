@@ -1,4 +1,5 @@
-name: Test apps install with devenv-action
+name: test-apps-devenv
+run-name: Test apps install with devenv-action
 
 on:
   workflow_dispatch:
@@ -37,7 +38,7 @@ on:
         default: "amd64"
 
 jobs:
-  test-apps:
+  test-apps-devenv:
     runs-on: ${{ inputs.runs-on }}${{ inputs.arch == 'arm64' && '-arm' || '' }}
 
     steps:
