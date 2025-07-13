@@ -1,4 +1,4 @@
-name: Test apps install
+name: Test apps install with devenv-action
 
 on:
   workflow_dispatch:
@@ -92,8 +92,16 @@ jobs:
       - name: Wait a little
         run: |
           sleep 10
+
       - name: Run devenv command - status codium-server service
         uses: gbraad-dotfiles/devenv-action@main
         with:
           prefix: ${{ inputs.prefix-name }}
           command: apps codium-server service status
+
+      - name: Run devenv command - stop codium-server service
+        uses: gbraad-dotfiles/devenv-action@main
+        with:
+          prefix: ${{ inputs.prefix-name }}
+          command: apps codium-server service stop
+

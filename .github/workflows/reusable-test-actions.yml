@@ -1,4 +1,4 @@
-name: Test apps install
+name: Test apps install with apps-action
 
 on:
   workflow_dispatch:
@@ -54,6 +54,12 @@ jobs:
           appname: codium
           action: install
 
+      - name: Run apps command - install codium-server
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: codium-server
+          action: install
+
       - name: Run apps command - install clion
         uses: gbraad-dotfiles/apps-action@main
         with: 
@@ -66,3 +72,9 @@ jobs:
           appname: obsidian
           action: install
           packager: user
+
+      - name: Run apps command - install vivaldi
+        uses: gbraad-dotfiles/apps-action@main
+        with: 
+          appname: vivaldi
+          action: install
