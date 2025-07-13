@@ -127,7 +127,7 @@ ${LOCALBIN}/codium-server --install-extension gbraad.extensionpack
 rm -rf ${CODIUMHOME}
 ```
 
-## run run-service
+## alias run run-service
 ```sh
 ${CODIUMHOME}/latest/bin/codium-server --without-connection-token --host ${CODIUMHOST}
 ```

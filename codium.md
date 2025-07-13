@@ -100,14 +100,14 @@ rm -f ${HOME}/.local/bin/codium
 ${HOME}/.local/bin/codium
 ```
 
-## default run run-desktop
+## alias default run run-desktop
 ```sh
 if apps codium check user; then
    apps codium run user
 elif apps codium check appimage; then
    apps codium run appimage
 else
-   codium
+   command -v codium
 fi
 ```
 

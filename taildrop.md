@@ -6,7 +6,7 @@ Uses Tailscale and `fzf` to send files to a target machine. Use `<TAB>` to selec
 `<ESC>` cancels the function.
 
 
-## run
+## alias default run
 ```sh
 if [ ! -n "$(find . -maxdepth 1 -type f)" ]; then
   echo "No files in the current folder."

@@ -82,7 +82,7 @@ fi
 code tunnel --accept-server-license-terms --name ${HOSTNAME}
 ```
 
-## screen
+## alias screen
 ```sh
 screen code tunnel
 ```

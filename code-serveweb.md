@@ -79,7 +79,7 @@ sudo systemctl daemon-reload
 code serve-web --without-connection-token --host ${host} --port ${port}
 ```
 
-## screen
+## alias screen
 ```sh
 screen code serveweb
 ```

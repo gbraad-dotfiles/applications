@@ -107,7 +107,7 @@ ip=`podman exec onlyoffice tailscale ip -4`
 echo "Open OnlyOffice at https://${ip}:8444"
 ```
 
-## default run run-desktop
+## alias default run run-desktop
 ```sh
 if apps onlyoffice check user; then
     apps onlyoffice run user

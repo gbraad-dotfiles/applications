@@ -6,7 +6,7 @@ Select directories you would like to share with other nodes on your tailnet. The
 You can select multiple directories with `<TAB>`, and confirm the selection with `<ENTER>`. `<ESC>` cancels the function.
 
 
-## run
+## alias deafult run
 ```sh
 if [ ! -n "$(find . -mindepth 1 -maxdepth 1 -type d)" ]; then
   echo "No directories in the current folder."
