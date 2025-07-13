@@ -1,0 +1,68 @@
+name: Test apps install
+
+on:
+  workflow_dispatch:
+    inputs:
+      runs-on:
+        description: "Target runner"
+        required: true
+        type: string
+        default: "ubuntu-latest"
+      arch:
+        description: "Target architecture (e.g., arm64, amd64)"
+        required: true
+        type: string
+        default: "amd64"
+  workflow_call:
+    inputs:
+      runs-on:
+        description: "Target runner"
+        required: true
+        type: string
+        default: "ubuntu-latest"
+      arch:
+        description: "Target architecture (e.g., arm64, amd64)"
+        required: true
+        type: string
+        default: "amd64"
+
+jobs:
+  test-apps:
+    runs-on: ${{ inputs.runs-on }}${{ inputs.arch == 'arm64' && '-arm' || '' }}
+
+    steps:
+      - name: Enable linger and create user session (workaround)
+        uses: gbraad-actions/blacksmith-user-session@main
+
+      - name: Allow unprivileged userns (workaround)
+        uses: gbraad-actions/warpbuild-unprivileged-userns@main
+
+      - name: Setup environment
+        uses: gbraad-dotfiles/install-action@main
+        with:
+          upstream: true
+
+      - name: Run apps command - install code
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: code
+          action: install
+
+      - name: Run apps command - install codium
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: codium
+          action: install
+
+      - name: Run apps command - install clion
+        uses: gbraad-dotfiles/apps-action@main
+        with: 
+          appname: clion
+          action: install
+
+      - name: Run apps command - install obsidian
+        uses: gbraad-dotfiles/apps-action@main
+        with: 
+          appname: obsidian
+          action: install
+          packager: user

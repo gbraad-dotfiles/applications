@@ -1,0 +1,55 @@
+name: build process
+run-name: Build process
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+  pull_request: {}
+
+jobs:
+
+  run-with-actions:
+    name: Run with Actions
+    uses: ./.github/workflows/reusable-test-actions.yml
+    with:
+      runs-on: "ubuntu-latest"
+      arch: amd64
+    secrets: inherit
+
+  run-on-fedora:
+    name: Run on Fedora
+    uses: ./.github/workflows/reusable-test-devenv.yml
+    with:
+      prefix-name: "dotfedora"
+      runs-on: "ubuntu-latest"
+      arch: amd64
+    secrets: inherit
+
+  run-on-centos:
+    name: Run on CentOS
+    uses: ./.github/workflows/reusable-test-devenv.yml
+    with:
+      prefix-name: "dotcentos"
+      runs-on: "ubuntu-latest"
+      arch: amd64
+    secrets: inherit
+
+  run-on-ubuntu:
+    name: Run on Ubuntu
+    uses: ./.github/workflows/reusable-test-devenv.yml
+    with:
+      prefix-name: "dotubuntu"
+      runs-on: "ubuntu-latest"
+      arch: amd64
+    secrets: inherit
+
+  run-on-debian:
+    name: Run on Debian
+    uses: ./.github/workflows/reusable-test-devenv.yml
+    with:
+      prefix-name: "dotdebian"
+      runs-on: "ubuntu-latest"
+      arch: amd64
+    secrets: inherit
