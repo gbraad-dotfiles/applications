@@ -2,26 +2,66 @@ name: Test apps install
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - "main"
-  pull_request: {}
+    inputs:
+      prefix_name:
+        description: "Name of the container to run with devenv (e.g., dotfedora, dotubi9)"
+        required: true
+        type: string
+        default: "dotfedora"
+      runs-on:
+        description: "Target runner"
+        required: true
+        type: string
+        default: "ubuntu-latest"
+      arch:
+        description: "Target architecture (e.g., arm64, amd64)"
+        required: true
+        type: string
+        default: "amd64"
+  workflow_call:
+    inputs:
+      prefix_name:
+        description: "Name of the container to run with devenv (e.g., dotfedora, dotubi9)"
+        required: true
+        type: string
+        default: "dotfedora"
+      runs-on:
+        description: "Target runner"
+        required: true
+        type: string
+        default: "ubuntu-latest"
+      arch:
+        description: "Target architecture (e.g., arm64, amd64)"
+        required: true
+        type: string
+        default: "amd64"
 
 jobs:
   test-apps:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on }}${{ inputs.arch == 'arm64' && '-arm' || '' }}
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Enable linger and create user session (workaround)
+        uses: gbraad-actions/blacksmith-user-session@main
+
+      - name: Allow unprivileged userns (workaround)
+        uses: gbraad-actions/warpbuild-unprivileged-userns@main
 
       - name: Setup environment
         uses: gbraad-dotfiles/install-action@main
-        
+        with:
+          upstream: true
+
       - name: Run apps command - install code
-        id: devenv
         uses: gbraad-dotfiles/apps-action@main
         with:
           appname: code
+          action: install
+
+      - name: Run apps command - install codium
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: codium
           action: install
 
       - name: Run apps command - install clion
@@ -36,4 +76,50 @@ jobs:
           appname: obsidian
           action: install
           packager: user
+
+      - name: Run devenv command - initialize system container
+        id: devenv
+        uses: gbraad-dotfiles/devenv-action@main
+        with:
+          prefix: ${{ inputs.prefix_name }}
+          command: system
+
+      - name: Run devenv command - dotfiles update
+        uses: gbraad-dotfiles/devenv-action@main
+        with:
+          prefix: ${{ inputs.prefix_name }}
+          command: dotfiles update
+
+      - name: Run devenv command - dotup
+        uses: gbraad-dotfiles/devenv-action@main
+        with:
+          prefix: ${{ inputs.prefix_name }}
+          command: dot dotup
+
+      - name: Run devenv command - install codium-server service
+        uses: gbraad-dotfiles/devenv-action@main
+        with:
+          prefix: ${{ inputs.prefix_name }}
+          command: apps codium-server service install
+
+      - name: Run devenv command - start codium-server service
+        uses: gbraad-dotfiles/devenv-action@main
+        with:
+          prefix: ${{ inputs.prefix_name }}
+          command: apps codium-server service start
+
+      - name: Run devenv command - status codium-server service
+        uses: gbraad-dotfiles/devenv-action@main
+        with:
+          prefix: ${{ inputs.prefix_name }}
+          command: apps codium-server service status
+
+      - name: Wait a little
+        run: |
+          sleep 10
+      - name: Run devenv command - status codium-server service
+        uses: gbraad-dotfiles/devenv-action@main
+        with:
+          prefix: ${{ inputs.prefix_name }}
+          command: apps codium-server service status
 

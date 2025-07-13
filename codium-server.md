@@ -117,6 +117,8 @@ _installcodiumserverdownload() {
 ```sh
 _installcodiumserverdownload ${CODIUMHOME}
 ln -sfn "${CODIUMHOME}/latest/bin/codium-server" "${LOCALBIN}/codium-server"
+
+codium-server --install-extension gbraad.extensionpack
 ```
 
 ## remove
