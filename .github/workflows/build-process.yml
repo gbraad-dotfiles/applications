@@ -1,5 +1,4 @@
-name: build process
-run-name: Build process
+name: Application installs
 
 on:
   workflow_dispatch:
