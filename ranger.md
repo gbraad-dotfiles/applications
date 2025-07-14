@@ -17,7 +17,7 @@ sudo apt install -y ranger
 brew install ranger
 ```
 
-## termux-install
+## pkg-install termux-install
 ```sh
 pkg install ranger
 ```
