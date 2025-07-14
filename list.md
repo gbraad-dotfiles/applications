@@ -58,12 +58,6 @@ cd -
 apps list aliases
 ```
 
-## aliases
-```sh
-echo "Generate aliases"
-_apps_generate_aliases
-```
-
 ## switch
 ```sh
 cd ${apps_dir}
@@ -89,7 +83,30 @@ git reset --hard origin/main
 cd - > /dev/null
 ```
 
+## aliases
+Generate aliases for application defintion that use an `alias` section
+
+> [!NOTE]
+> Needs to run in `interactive`-mode to allow the aliases to be exported
+
+```sh interactive
+if [[ $(dotini apps --get "apps.aliases") == true ]]; then
+    echo "Generate aliases"
+
+    for mdfile in "${_appsdefpath}"/*.md; do
+        appname="${mdfile:t:r}"
+
+        if grep -E -q '^##.*\balias\b' "$mdfile"; then
+            alias ${appname}="apps ${appname} alias"
+        fi
+    done
+
+fi
+```
+
 ## services
+Lists all application names that have a `run-service` section
+
 ```sh
 for mdfile in "${_appsdefpath}"/*.md; do
     appname="${mdfile:t:r}"
@@ -100,6 +117,8 @@ done
 ```
 
 ## desktop
+Lists all application names that have a `run-desktop` section`
+
 ```sh
 for mdfile in "${_appsdefpath}"/*.md; do
     appname="${mdfile:t:r}"
