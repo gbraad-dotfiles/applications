@@ -67,7 +67,7 @@ journalctl --user -u dotfiles-apps-tailproxy -f
 ```
 
 ## run-service run
-```sh
+```sh interactive
 mkdir -p $STATEDIR
 tailscaled --tun=userspace-networking \
     --socks5-server=$(dotini tailscale --get tailproxy.socks5-server-host):$(dotini tailscale --get tailproxy.socks5-server-port) \
@@ -75,6 +75,11 @@ tailscaled --tun=userspace-networking \
     --state=$STATEDIR/userspace.state \
     --socket=$STATEDIR/userspace.sock \
     --port $(dotini tailscale --get tailproxy.port)
+```
+
+## screen
+```
+screen apps tailproxy run
 ```
 
 ## ssh-config

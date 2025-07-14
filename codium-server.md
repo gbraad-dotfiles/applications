@@ -128,8 +128,13 @@ rm -rf ${CODIUMHOME}
 ```
 
 ## alias run run-service
-```sh
+```sh interactive
 ${CODIUMHOME}/latest/bin/codium-server --without-connection-token --host ${CODIUMHOST}
+```
+
+## screen
+```
+screen apps codium-server run
 ```
 
 ---
