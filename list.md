@@ -55,6 +55,7 @@ cd ${_appsdefpath}
 git pull
 cd -
 
+echo "Generate aliases"
 apps list aliases
 ```
 
@@ -91,8 +92,6 @@ Generate aliases for application defintion that use an `alias` section
 
 ```sh interactive
 if [[ $(dotini apps --get "apps.aliases") == true ]]; then
-    echo "Generate aliases"
-
     for mdfile in "${APPSDIR}"/*.md; do
         appname="${mdfile:t:r}"
 
@@ -100,7 +99,6 @@ if [[ $(dotini apps --get "apps.aliases") == true ]]; then
             alias ${appname}="apps ${appname} alias"
         fi
     done
-
 fi
 ```
 
