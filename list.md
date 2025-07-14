@@ -2,7 +2,7 @@
 
 ## shared
 ```sh
-apps_dir="${_appsdefpath:-$HOME/.dotapps}"
+APPSDIR="${_appsdefpath:-$HOME/.dotapps}"
 
 show_apps_tree() {
   local dir="$1"
@@ -70,13 +70,13 @@ cd - > /dev/null
 
 ## show
 ```sh
-echo "App defintions in ${apps_dir}"
-show_apps_tree ${apps_dir} "  "
+echo "App defintions in ${APPSDIR}"
+show_apps_tree ${APPSDIR} "  "
 ```
 
 ## reset
 ```sh
-cd ${_appsdefpath}
+cd ${APPSDIR}
 git stash
 git fetch origin
 git reset --hard origin/main
@@ -93,7 +93,7 @@ Generate aliases for application defintion that use an `alias` section
 if [[ $(dotini apps --get "apps.aliases") == true ]]; then
     echo "Generate aliases"
 
-    for mdfile in "${_appsdefpath}"/*.md; do
+    for mdfile in "${APPSDIR}"/*.md; do
         appname="${mdfile:t:r}"
 
         if grep -E -q '^##.*\balias\b' "$mdfile"; then
@@ -108,7 +108,7 @@ fi
 Lists all application names that have a `run-service` section
 
 ```sh
-for mdfile in "${_appsdefpath}"/*.md; do
+for mdfile in "${APPSDIR}"/*.md; do
     appname="${mdfile:t:r}"
     if grep -E -q '^##.*\brun-service\b' "$mdfile"; then
         echo ${appname}
@@ -120,7 +120,7 @@ done
 Lists all application names that have a `run-desktop` section`
 
 ```sh
-for mdfile in "${_appsdefpath}"/*.md; do
+for mdfile in "${APPSDIR}"/*.md; do
     appname="${mdfile:t:r}"
     if grep -E -q '^##.*\brun-desktop\b' "$mdfile"; then
         echo ${appname}
