@@ -22,7 +22,7 @@ brew install ranger
 pkg install ranger
 ```
 
-## default run alias screen 
+## default run screen 
 ```sh interactive
 if ! apps ranger check; then
   #apps ranger install

@@ -10,7 +10,7 @@ sudo dnf install -y links
 brew installl links
 ```
 
-## default alias screen run
+## default screen run
 ```sh
 screen links
 ```

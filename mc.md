@@ -17,7 +17,7 @@ sudo apt install -y mc
 brew install mc
 ```
 
-## alias default run
+## default run
 ```sh
 screen mc
 ```
