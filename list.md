@@ -88,3 +88,24 @@ git fetch origin
 git reset --hard origin/main
 cd - > /dev/null
 ```
+
+## services
+```sh
+for mdfile in "${_appsdefpath}"/*.md; do
+    appname="${mdfile:t:r}"
+    if grep -E -q '^##.*\brun-service\b' "$mdfile"; then
+        echo ${appname}
+    fi
+done
+```
+
+## desktop
+```sh
+for mdfile in "${_appsdefpath}"/*.md; do
+    appname="${mdfile:t:r}"
+    if grep -E -q '^##.*\brun-desktop\b' "$mdfile"; then
+        echo ${appname}
+    fi
+done
+```
+
