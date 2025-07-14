@@ -54,6 +54,14 @@ show_apps_tree() {
 cd ${_appsdefpath}
 git pull
 cd -
+
+apps list aliases
+```
+
+## aliases
+```sh
+echo "Generate aliases"
+_apps_generate_aliases
 ```
 
 ## switch
