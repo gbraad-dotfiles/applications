@@ -57,7 +57,12 @@ systemctl --user is-active ${SVCNAME}
 journalctl --user -u ${SVCNAME} -f
 ```
 
-## alias default run run-service
+## default alias run run-service
 ```sh interactive
 ping ${PINGERHOST}
+```
+
+## screen
+```sh interactive
+screen apps pinger
 ```

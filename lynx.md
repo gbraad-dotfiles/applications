@@ -10,7 +10,7 @@ sudo dnf install -y lynx
 brew install lynx
 ```
 
-## alias screen default run
+## default alias screen run
 ```sh
 screen lynx
 ```
