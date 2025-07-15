@@ -4,6 +4,7 @@
 
 ## vars
 ```sh
+APPNAME=tailproxy
 STATEDIR=$(dotini tailscale --get "tailproxy.statedir")
 STATEDIR="${STATEDIR/#\~/$HOME}"
 
