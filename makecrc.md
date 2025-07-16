@@ -2,14 +2,15 @@
 
 ## info
 
+Alias to compile [CRC][crc project] for `make cross` from `~/Projects/crc-org/crc`.
+
+
 ## vars
 ```sh
 PROJHOME="${HOME}/Projects/"
 CRCBUILD="${PROJHOME}/crc-org/crc"
 CRCRUNNER="gofedora"
 ```
-
-Alias to compile CRC for `make cross` from `~/Projects/crc-org/crc`.
 
 ## user-install
 ```sh
@@ -33,3 +34,6 @@ devenv ${CRCRUNNER} usercmd "cd ${CRCBUILD} && make clean && make cross"
 ```sh
 [ -d ${CRCBUILD} ]
 ```
+
+
+[crc project]: https://github.com/crc-org/crc "CRC project"
