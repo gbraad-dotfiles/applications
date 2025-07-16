@@ -18,7 +18,7 @@ git clone https://github.com/crc-org/crc ${CRCBUILD}
 ```
 
 ## default alias run
-```sh
+```sh interactive
 devenv ${CRCRUNNER} noinit
 devenv ${CRCRUNNER} usercmd "cd ${CRCBUILD} && make clean && make cross"
 ```
