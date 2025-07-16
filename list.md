@@ -92,11 +92,24 @@ Generate aliases for application defintion that use an `alias` section
 
 ```sh interactive
 if [[ $(dotini apps --get "apps.aliases") == true ]]; then
-    for mdfile in "${APPSDIR}"/*.md; do
-        appname="${mdfile:t:r}"
+    # Find all .md files in APPSDIR and subfolders
+    find "${APPSDIR}" -type f -name '*.md' | while read -r mdfile; do
+        appname="${mdfile##*/}"
+        appname="${appname%.md}"
+
+        folder="$(dirname "${mdfile}")"
+        folder="${folder##*/}"
+
+        if [[ "${folder}" == "$(basename "${APPSDIR}")" ]]; then
+            alias_name="${appname}"
+            alias_cmd="apps ${appname} alias"
+        else
+            alias_name="${folder}-${appname}"
+            alias_cmd="apps ${folder}/${appname} alias"
+        fi
 
         if grep -E -q '^##.*\balias\b' "$mdfile"; then
-            alias ${appname}="apps ${appname} alias"
+            alias "${alias_name}"="${alias_cmd}"
         fi
     done
 fi
