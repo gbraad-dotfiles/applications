@@ -1,11 +1,14 @@
 # Compile CRC
 
+
 ## info
 
-Alias to compile [CRC](https://github.com/crc-org/crc) for `make cross` from `~/Projects/crc-org/crc`.
+Definition to compile the [CRC](https://github.com/crc-org/crc) project.
 
 
 ## vars
+This action defines variables that will be used in all the actions
+
 ```sh
 APPNAME="projects/crc"
 PROJHOME="~/Projects"
@@ -16,7 +19,7 @@ CRCDEVENV="gofedora"
 
 ---
 
-Local source interaction
+Local source interaction.
 
 ## exists-source
 ```sh
@@ -43,6 +46,8 @@ git clone https://github.com/crc-org/crc ${CRCLOCAL}
 
 ---
 
+These are actions to manage the `devenv` container that is used.
+
 ## remove-devenv
 ```sh
 devenv ${CRCDEVENV} remove
@@ -65,6 +70,8 @@ devenv ${CRCDEVENV} exists
 
 ---
 
+The compilation actions will be performed inside a `devenv`-container.
+
 ## make
 ```sh interactive
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make"
@@ -76,11 +83,18 @@ devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make cross"
 ```
 
 ## clean-make
-```sh
+```sh interactive
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make clean"
 ```
 
 ---
+
+Default action is to compile. Performs the following:
+
+  - checkout source if not exists
+  - start `devenv` if not exists
+  - `make clean`
+  - `make cross`
 
 ## default alias compile
 ```sh interactive
@@ -94,3 +108,9 @@ apps ${APPNAME} make clean
 apps ${APPNAME} make cross
 ```
 
+## cd
+This action changes to the local source directory.
+
+```sh interactive
+cd ${CRCLOCAL}
+```
