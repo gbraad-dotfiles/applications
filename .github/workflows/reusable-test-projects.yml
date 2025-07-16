@@ -28,7 +28,7 @@ on:
         default: "amd64"
 
 jobs:
-  test-apps-actions:
+  test-project-builds:
     runs-on: ${{ inputs.runs-on }}${{ inputs.arch == 'arm64' && '-arm' || '' }}
 
     steps:
@@ -37,6 +37,13 @@ jobs:
 
       - name: Allow unprivileged userns (workaround)
         uses: gbraad-actions/warpbuild-unprivileged-userns@main
+
+      # This folder will be used with the container
+      - name: Create userdirs
+        run: |
+          cd ${{ github.workspace }}
+          mkdir -p Projects
+          ln -s ${{ github.workspace }}/Projects  ${HOME}/Projects
 
       - name: Setup environment
         uses: gbraad-dotfiles/install-action@main
@@ -48,3 +55,4 @@ jobs:
         with:
           appname: projects/crc
           action: run
+
