@@ -19,7 +19,10 @@ git clone https://github.com/crc-org/crc ${CRCBUILD}
 
 ## default alias run
 ```sh interactive
-devenv ${CRCRUNNER} noinit
+if ! devenv ${CRCRUNNER} exists; then
+  echo "Starting ${CRCRUNNER} with 'noinit'"
+  devenv ${CRCRUNNER} noinit
+fi
 devenv ${CRCRUNNER} usercmd "cd ${CRCBUILD} && make clean && make cross"
 ```
 
