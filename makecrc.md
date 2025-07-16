@@ -7,32 +7,78 @@ Alias to compile [CRC][crc project] for `make cross` from `~/Projects/crc-org/cr
 
 ## vars
 ```sh
+APPNAME="makecrc"
 PROJHOME="${HOME}/Projects/"
-CRCBUILD="${PROJHOME}/crc-org/crc"
-CRCRUNNER="gofedora"
+CRCSOURCE="${PROJHOME}/crc-org/crc"
+CRCDEVENV="gofedora"
 ```
 
-## user-install
+---
+
+## exists-source
 ```sh
-mkdir -p ${CRCBUILD}
+[ -d ${CRCSOURCE} ]
+```
+
+## reset-source
+```sh
+cd ${CRCSOURCE}
+git reset --hard
+cd -
+```
+
+## checkout-source
+```sh
+mkdir -p ${CRCSOURCE}
 git clone https://github.com/crc-org/crc ${CRCBUILD}
 ```
 
-## default alias run
-```sh interactive
-if ! apps makecrc check user; then
-  apps makecrc install user
-fi
-if ! devenv ${CRCRUNNER} exists; then
-  echo "Starting ${CRCRUNNER} with 'noinit'"
-  devenv ${CRCRUNNER} noinit
-fi
-devenv ${CRCRUNNER} usercmd "cd ${CRCBUILD} && make clean && make cross"
+---
+
+## remove-devenv
+```sh
+devenv ${CRCDEVENV} remove
 ```
 
-## user-check
+## start-devenv
 ```sh
-[ -d ${CRCBUILD} ]
+devenv ${CRCDEVENV} noinit
+```
+
+## stop-devenv
+```sh
+devenv ${CRCDEVENV} stop
+```
+
+## exists-devenv
+```sh
+devenv ${CRCDEVENV} exists
+```
+
+---
+
+## cross-make
+```sh interactive
+devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make clean && make cross"
+```
+
+## clean-make
+```sh
+devenv ${CRCRUNNER} usercmd "cd ${CRCSOURCE} && make clean"
+```
+
+---
+
+## default alias run
+```sh interactive
+if ! apps ${APPNAME} source exists; then
+  apps ${APPNAME} source checkout
+fi
+if ! apps ${APPNAME} devenv exists; then
+  apps ${APPNAME} devenv start
+fi
+apps ${APPNAME} make clean
+apps ${APPNAME} make cross
 ```
 
 
