@@ -30,7 +30,7 @@ cd -
 ## checkout-source
 ```sh
 mkdir -p ${CRCSOURCE}
-git clone https://github.com/crc-org/crc ${CRCBUILD}
+git clone https://github.com/crc-org/crc ${CRCSOURCE}
 ```
 
 ---
