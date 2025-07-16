@@ -64,7 +64,7 @@ devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make cross"
 
 ## clean-make
 ```sh
-devenv ${CRCRUNNER} usercmd "cd ${CRCSOURCE} && make clean"
+devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make clean"
 ```
 
 ---
