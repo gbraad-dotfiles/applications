@@ -2,7 +2,7 @@
 
 ## info
 
-Alias to compile [CRC][crc project] for `make cross` from `~/Projects/crc-org/crc`.
+Alias to compile [CRC](https://github.com/crc-org/crc) for `make cross` from `~/Projects/crc-org/crc`.
 
 
 ## vars
@@ -81,5 +81,3 @@ apps ${APPNAME} make clean
 apps ${APPNAME} make cross
 ```
 
-
-[crc project]: https://github.com/crc-org/crc "CRC project"
