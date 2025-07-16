@@ -7,7 +7,7 @@ Alias to compile [CRC][crc project] for `make cross` from `~/Projects/crc-org/cr
 
 ## vars
 ```sh
-APPNAME="makecrc"
+APPNAME="compile-crc"
 PROJHOME="${HOME}/Projects/"
 CRCSOURCE="${PROJHOME}/crc-org/crc"
 CRCDEVENV="gofedora"
