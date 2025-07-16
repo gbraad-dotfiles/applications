@@ -82,7 +82,7 @@ devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make clean"
 
 ---
 
-## default alias run
+## default alias compile
 ```sh interactive
 if ! apps ${APPNAME} source exists; then
   apps ${APPNAME} source checkout

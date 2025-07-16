@@ -51,9 +51,8 @@ jobs:
           upstream: true
 
       - name: Run apps command - projects/crc
-        continue-on-error: true
         uses: gbraad-dotfiles/apps-action@main
         with:
           appname: projects/crc
-          action: run
+          action: compile
 
