@@ -1,0 +1,50 @@
+name: test-apps-actions
+run-name: Test apps install with project builds
+
+on:
+  workflow_dispatch:
+    inputs:
+      runs-on:
+        description: "Target runner"
+        required: true
+        type: string
+        default: "ubuntu-latest"
+      arch:
+        description: "Target architecture (e.g., arm64, amd64)"
+        required: true
+        type: string
+        default: "amd64"
+  workflow_call:
+    inputs:
+      runs-on:
+        description: "Target runner"
+        required: true
+        type: string
+        default: "ubuntu-latest"
+      arch:
+        description: "Target architecture (e.g., arm64, amd64)"
+        required: true
+        type: string
+        default: "amd64"
+
+jobs:
+  test-apps-actions:
+    runs-on: ${{ inputs.runs-on }}${{ inputs.arch == 'arm64' && '-arm' || '' }}
+
+    steps:
+      - name: Enable linger and create user session (workaround)
+        uses: gbraad-actions/blacksmith-user-session@main
+
+      - name: Allow unprivileged userns (workaround)
+        uses: gbraad-actions/warpbuild-unprivileged-userns@main
+
+      - name: Setup environment
+        uses: gbraad-dotfiles/install-action@main
+        with:
+          upstream: true
+
+      - name: Run apps command - projects/crc
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: projects/crc
+          action: run
