@@ -51,6 +51,11 @@ systemctl --user status ${SVCNAME}
 systemctl --user is-active ${SVCNAME}
 ```
 
+## journal-service
+```sh interactive
+journalctl --user -u ${SVCNAME} -f
+```
+
 ## pip-install install
 ```sh
 pip install --user notebook

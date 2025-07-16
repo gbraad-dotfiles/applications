@@ -57,6 +57,11 @@ devenv ${CRCDEVENV} exists
 
 ---
 
+## make
+```sh interactive
+devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make"
+```
+
 ## cross-make
 ```sh interactive
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make cross"
