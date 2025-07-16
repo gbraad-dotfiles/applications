@@ -10,32 +10,35 @@ Alias to compile [CRC](https://github.com/crc-org/crc) for `make cross` from `~/
 APPNAME="projects/crc"
 PROJHOME="~/Projects"
 CRCSOURCE="${PROJHOME}/crc-org/crc"
+CRCLOCAL=$(eval echo "${CRCSOURCE}")
 CRCDEVENV="gofedora"
 ```
 
 ---
 
+Local source interaction
+
 ## exists-source
 ```sh
-[ -d ${CRCSOURCE} ]
+[ -d ${CRCLOCAL} ]
 ```
 
 ## remove-source
 ```sh
-rm -rf ${CRCSOURCE}
+rm -rf ${CRCLOCAL}
 ```
 
 ## reset-source
 ```sh
-cd ${CRCSOURCE}
+cd ${CRCLOCAL}
 git reset --hard
 cd -
 ```
 
 ## checkout-source
 ```sh
-mkdir -p ${CRCSOURCE}
-git clone https://github.com/crc-org/crc ${CRCSOURCE}
+mkdir -p ${CRCLOCAL}
+git clone https://github.com/crc-org/crc ${CRCLOCAL}
 ```
 
 ---
