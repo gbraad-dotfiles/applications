@@ -37,12 +37,6 @@ systemctl --user enable --now ${SVCNAME}
 systemctl --user disable --now ${SVCNAME}
 ```
 
-## restart-service
-```sh
-apps ${APPNAME} service stop
-apps ${APPNAME} service start
-```
-
 ## start-service
 ```sh
 systemctl --user start ${SVCNAME}
@@ -51,6 +45,11 @@ systemctl --user start ${SVCNAME}
 ## stop-service
 ```sh
 systemctl --user stop ${SVCNAME}
+```
+
+## restart-service
+```sh
+systemctl --user restart ${SVCNAME}
 ```
 
 ## status-service

@@ -41,6 +41,11 @@ sudo systemctl start tailscaled
 sudo systemctl stop tailscaled
 ```
 
+## restart-service
+```sh
+sudo systemctl restart tailscaled
+```
+
 ## status-service
 ```sh
 sudo systemctl status tailscaled

@@ -45,6 +45,11 @@ systemctl --user start ${SVCNAME}
 systemctl --user stop ${SVCNAME}
 ```
 
+## restart-service
+```sh
+systemctl --user restart ${SVCNAME}
+```
+
 ## status-service
 ```sh
 systemctl --user status ${SVCNAME}
