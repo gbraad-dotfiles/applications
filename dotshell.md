@@ -1,4 +1,4 @@
-# dotscreen Remote tailscale (rscreen)
+# dotshell Remote tailscale (rshell)
 
 
 ## info
@@ -19,6 +19,6 @@ selected=$(tailscale status --json | jq -r '
 ' | fzf | awk '{print $2}')
 
 if [ -n "$selected" ]; then
-  rscreen "$selected"
+  rshell "$selected"
 fi
 ```
