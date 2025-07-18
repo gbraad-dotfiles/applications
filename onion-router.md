@@ -2,8 +2,14 @@
 
 ## info
 
-## vars
 
+## vars
+```sh
+APPNAME="onion-router"
+ORPORT=9001
+ORSOCKSPORT=9050
+ORCONTROLPORT=9051
+```
 
 ---
 
@@ -36,3 +42,12 @@ cost=100' | sudo tee /etc/yum.repos.d/tor.repo
 sudo dnf install -y tor
 ```
 
+---
+
+## run run-service
+```sh interactive
+sudo mkdir -p /run/tor
+sudo chmod 700 /run/tor
+sudo chown ${USER} /run/tor
+tor ORPort ${ORPORT} SocksPort ${ORSOCKSPORT} ControlPort ${ORCONTROLPORT}
+```
