@@ -6,6 +6,8 @@
 ## vars
 ```sh
 APPNAME="onion-router"
+APPTITLE="Onion router"
+SVCNAME="dotfiles-apps-${APPNAME}"
 ORPORT=9001
 ORSOCKSPORT=9050
 ORCONTROLPORT=9051
@@ -13,6 +15,50 @@ ORCONTROLPORT=9051
 
 ---
 
+## install-service
+```sh interactive
+apps-export-service ${APPNAME} ${APPTITLE}
+```
+
+## enable-service
+```sh
+systemctl --user enable --now ${SVCNAME}
+```
+
+## disable-service
+```sh
+systemctl --user disable --now ${SVCNAME}
+```
+
+## start-service
+```sh
+systemctl --user start ${SVCNAME}
+```
+
+## stop-service
+```sh
+systemctl --user stop ${SVCNAME}
+```
+
+## restart-service
+```sh
+systemctl --user restart ${SVCNAME}
+```
+
+## status-service
+```sh
+systemctl --user status ${SVCNAME}
+```
+
+## active-service
+```sh
+systemctl --user is-active ${SVCNAME}
+```
+
+## journal-service
+```sh interactive
+journalctl --user -u ${SVCNAME} -f
+```
 
 
 
