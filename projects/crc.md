@@ -44,6 +44,17 @@ mkdir -p ${CRCLOCAL}
 git clone https://github.com/crc-org/crc ${CRCLOCAL}
 ```
 
+## cd
+This action changes to the local source directory.
+
+```sh interactive
+if ! apps ${APPNAME} source exists; then
+  echo "Run: 'apps ${APPNAME} source checkout' first."
+  return
+fi
+cd ${CRCLOCAL}
+```
+
 ---
 
 These are actions to manage the `devenv` container that is used.
@@ -108,9 +119,3 @@ apps ${APPNAME} make clean
 apps ${APPNAME} make cross
 ```
 
-## cd
-This action changes to the local source directory.
-
-```sh interactive
-cd ${CRCLOCAL}
-```
