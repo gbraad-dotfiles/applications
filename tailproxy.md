@@ -5,6 +5,8 @@
 ## vars
 ```sh
 APPNAME=tailproxy
+APPTITLE="Tailscale user-space"
+SVCNAME="dotfiles-apps-${APPNAME}"
 STATEDIR=$(dotini tailscale --get "tailproxy.statedir")
 STATEDIR="${STATEDIR/#\~/$HOME}"
 
@@ -14,56 +16,58 @@ tailproxy() {
 ```
 
 ## install
+Checks if Tailscale is installed
+
 ```sh
 if ! apps tailscale check; then
   apps tailscale install
 fi
-apps tailproxy service install
+apps ${APPNAME} service install
 ```
 
 ## install-service
 ```sh
-apps-export-service tailproxy "Tailscale user-space"
+apps-export-service ${APPNAME} ${APPTITLE}
 ```
 
 ## enable-service
 ```sh
-systemctl --user enable --now dotfiles-apps-tailproxy
+systemctl --user enable --now ${SVCNAME}
 ```
 
 ## disable-service
 ```sh
-systemctl --user disable --now dotfiles-apps-tailproxy
+systemctl --user disable --now ${SVCNAME}
 ```
 
 ## start-service
 ```sh
-systemctl --user start dotfiles-apps-tailproxy
+systemctl --user start ${SVCNAME}
 ```
 
 ## stop-service
 ```sh
-systemctl --user stop dotfiles-apps-tailproxy
+systemctl --user stop ${SVCNAME}
 ```
 
 ## restart-service
 ```sh
-systemctl --user restart dotfiles-apps-tailproxy
+systemctl --user restart ${SVCNAME}
 ```
 
 ## status-service
 ```sh
-systemctl --user status dotfiles-apps-tailproxy
+systemctl --user status ${SVCNAME}
 ```
 
 ## active-service
 ```sh
-systemctl --user is-active dotfiles-apps-tailproxy
+systemctl --user is-active ${SVCNAME}
 ```
 
 ## journal-service
 ```sh interactive
-journalctl --user -u dotfiles-apps-tailproxy -f
+journalctl --user -u ${SVCNAME} -f
 ```
 
 ## run-service run
