@@ -17,6 +17,8 @@ CRCLOCAL=$(eval echo "${CRCSOURCE}")
 CRCDEVENV="gofedora"
 ```
 
+## shared
+
 ---
 
 Local source interaction.
@@ -53,6 +55,15 @@ if ! apps ${APPNAME} source exists; then
   return
 fi
 cd ${CRCLOCAL}
+```
+
+## code
+```sh interactive
+if ! apps ${APPNAME} source exists; then
+  echo "Run: 'apps ${APPNAME} source checkout' first."
+  return
+fi
+code ${CRCLOCAL}
 ```
 
 ---
