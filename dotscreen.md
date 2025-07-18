@@ -1,4 +1,4 @@
-# dotscreen Remote tailscale (rscreen)
+# Remote tailscale (rscreen)
 
 
 ## info
@@ -6,6 +6,7 @@
 
 ## vars
 ```sh
+APPNAME=dotscreen
 DOTUSER=${USER}
 ```
 
@@ -14,6 +15,12 @@ DOTUSER=${USER}
 cd ~/.dotfiles
 gh workflow run tailscale-ssh-dotscreen-amd64
 ```
+
+## connect-runner
+```sh interactive
+apps ${APPNAME} run --arg DOTUSER=runner
+```
+
 
 ## default alias run
 ```sh interactive
@@ -27,3 +34,4 @@ if [ -n "$selected" ]; then
   rscreen ${DOTUSER}@${selected}
 fi
 ```
+

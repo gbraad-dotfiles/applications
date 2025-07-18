@@ -1,4 +1,4 @@
-# dotshell Remote tailscale (rshell)
+# Remote tailscale (rshell)
 
 
 ## info
@@ -6,6 +6,7 @@
 
 ## vars
 ```sh
+APPNAME=dotshell
 DOTUSER=${USER}
 ```
 
@@ -13,6 +14,11 @@ DOTUSER=${USER}
 ```
 cd ~/.dotfiles
 gh workflow run tailscale-ssh-dotscreen-amd64
+```
+
+## connect-runner
+```sh interactive
+apps ${APPNAME} run --arg DOTUSER=runner
 ```
 
 ## default alias run
