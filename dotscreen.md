@@ -1,6 +1,14 @@
 # dotscreen Remote tailscale
 
+
 ## info
+
+
+## start-runner
+```
+cd ~/.dotfiles
+gh workflow run tailscale-ssh-dotscreen-amd64
+```
 
 ## run
 ```sh
@@ -11,6 +19,6 @@ selected=$(tailscale status --json | jq -r '
 ' | fzf | awk '{print $2}')
 
 if [ -n "$selected" ]; then
-  dotscreen "$selected"
+  rscreen "$selected"
 fi
 ```
