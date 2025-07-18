@@ -4,6 +4,11 @@
 ## info
 
 
+## vars
+```sh
+DOTUSER=${USER}
+```
+
 ## start-runner
 ```
 cd ~/.dotfiles
@@ -19,6 +24,6 @@ selected=$(tailscale status --json | jq -r '
 ' | fzf | awk '{print $2}')
 
 if [ -n "$selected" ]; then
-  rscreen "$selected"
+  rscreen ${DOTUSER}@${selected}
 fi
 ```
