@@ -60,7 +60,12 @@ systemctl --user is-active ${SVCNAME}
 journalctl --user -u ${SVCNAME} -f
 ```
 
+## expose
+This exposes the SOCKS5 port on the host tailnet
 
+```sh
+tailscale serve --bg --tcp ${ORSOCKSPORT} ${ORSOCKSPORT}
+```
 
 ---
 
