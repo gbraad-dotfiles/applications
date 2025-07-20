@@ -18,7 +18,7 @@ apps weather query --arg CITY="Amsterdam"
 apps weather query --arg CITY="Apeldoorn"
 ```
 
-## default pek peking beijing run
+## pek peking beijing 
 ```sh
 apps weather query --arg CITY="Beijing"
 ```
