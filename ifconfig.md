@@ -11,6 +11,11 @@ apps ifconfig | jq -r '.ip'
 apps ifconfig | jq -r '.country'
 ```
 
+## europe
+```sh
+apps ifconfig | jq -r '.country_eu'
+```
+
 ## default run alias
 ```sh interactive
 curl -sL https://ifconfig.co/json
