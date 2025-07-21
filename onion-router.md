@@ -9,7 +9,8 @@ APPNAME="onion-router"
 APPTITLE="Onion router"
 SVCNAME="dotfiles-apps-${APPNAME}"
 ORHOST=127.0.0.1
-ORPORT=${ORHOST}:9001
+ORPORT=0
+ORDIRPORT=0
 ORSOCKSPORT=${ORHOST}:9050
 ORCONTROLPORT=${ORHOST}:9051
 ```
@@ -101,5 +102,5 @@ sudo dnf install -y tor
 sudo mkdir -p /run/tor
 sudo chmod 700 /run/tor
 sudo chown ${USER} /run/tor
-tor ORPort ${ORPORT} SocksPort ${ORSOCKSPORT} ControlPort ${ORCONTROLPORT}
+tor ORPort ${ORPORT} DirPort ${ORDIRPORT} SocksPort ${ORSOCKSPORT} ControlPort ${ORCONTROLPORT}
 ```
