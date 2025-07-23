@@ -18,7 +18,7 @@ apps-export-service ${APPNAME} ${APPTITLE}
 
 ## enable-service
 ```sh
-systemctl --user enable --now ${SVCNAME|
+systemctl --user enable --now ${SVCNAME}
 ```
 
 ## disable-service
