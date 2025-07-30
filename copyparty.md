@@ -11,7 +11,7 @@
 APPNAME=copyparty
 APPTITLE=copyparty
 SVCNAME=dotfiles-apps-${APPNAME}
-COPYPARTYIP=`tailscale ip -4`
+COPYPARTYHOST=localhost
 COPYPARTYPORT=3923
 COPYPARTYVOLUME=/media/${USER}
 ```
@@ -64,14 +64,21 @@ journalctl --user -u ${SVCNAME} -f
 
 ---
 
-## pip-install
+## install pip-install
 ```sh
 python3 -m pip install --user -U copyparty --break-system-packages
 ```
 
 ---
 
+## expose
+```sh
+tailscale serve --bg --tcp ${COPYPARTYPORT} ${COPYPARTYPORT}
+```
+
+---
+
 ## default alias run run-service
 ```sh interactive
-python -m copyparty -i ${COPYPARTYIP} -p ${COPYPARTYPORT} -v ${COPYPARTYVOLUME}::rw
+python -m copyparty -i ${COPYPARTYHOST} -p ${COPYPARTYPORT} -v ${COPYPARTYVOLUME}::rw
 ```
