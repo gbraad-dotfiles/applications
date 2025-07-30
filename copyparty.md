@@ -11,7 +11,7 @@
 APPNAME=copyparty
 APPTITLE=copyparty
 SVCNAME=dotfiles-apps-${APPNAME}
-COPYPARTYIP=::
+COPYPARTYIP=`tailscale ip -4`
 COPYPARTYPORT=3923
 COPYPARTYVOLUME=/media
 ```
