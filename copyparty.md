@@ -1,4 +1,4 @@
-# Copyparty
+# copyparty
 
 ## info
 
@@ -8,17 +8,70 @@
 
 ## vars
 ```sh
+APPNAME=copyparty
+APPTITLE=copyparty
+SVCNAME=dotfiles-apps-${APPNAME}
 COPYPARTYIP=::
 COPYPARTYPORT=3923
 COPYPARTYVOLUME=/media
 ```
+
+## install-service
+```sh
+apps-export-service ${APPNAME} ${APPTITLE}
+```
+
+## enable-service
+```sh
+systemctl --user enable --now ${SVCNAME}
+```
+
+## disable-service
+```sh
+systemctl --user disable --now ${SVCNAME}
+```
+
+## restart-service
+```sh
+apps ${APPNAME} service stop
+apps ${APPNAME} service start
+```
+
+## start-service
+```sh
+systemctl --user start ${SVCNAME}
+```
+
+## stop-service
+```sh
+systemctl --user stop ${SVCNAME}
+```
+
+## status-service
+```sh
+systemctl --user status ${SVCNAME}
+```
+
+## active-service
+```sh
+systemctl --user is-active ${SVCNAME}
+```
+
+## journal-service
+```sh interactive
+journalctl --user -u ${SVCNAME} -f
+```
+
+---
 
 ## pip-install
 ```sh
 python3 -m pip install --user -U copyparty --break-system-packages
 ```
 
-## default run run-service
+---
+
+## default alias run run-service
 ```sh interactive
 python -m copyparty -i ${COPYPARTYIP} -p ${COPYPARTYPORT} -v ${COPYPARTYVOLUME}::rw
 ```
