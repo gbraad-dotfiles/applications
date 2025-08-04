@@ -50,9 +50,29 @@ jobs:
         with:
           upstream: true
 
-      - name: Run apps command - projects/crc
+      - name: Run apps command - checkout projects/crc
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: projects/crc
+          action: source checkout
+
+      - name: Run apps command - checkout projects/macadam
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: projects/macadam
+          action: source checkout
+
+      # separate checkout and compile due to docker permissions
+      - name: Run apps command - compile projects/crc
         uses: gbraad-dotfiles/apps-action@main
         with:
           appname: projects/crc
           action: compile
+
+      - name: Run apps command - compile projects/macadam
+        uses: gbraad-dotfiles/apps-action@main
+        with:
+          appname: projects/macadam
+          action: compile
+
 
