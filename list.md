@@ -51,7 +51,7 @@ show_apps_tree() {
 
 ## update
 ```sh
-cd ${_appsdefpath}
+cd ${APPSDIR}
 git pull
 cd -
 
@@ -61,7 +61,7 @@ apps list aliases
 
 ## switch
 ```sh
-cd ${apps_dir}
+cd ${APPSDIR}
 git remote remove origin
 git remote add origin git@github.com:gbraad-dotfiles/applications
 git fetch
@@ -73,7 +73,7 @@ cd - > /dev/null
 ```sh
 echo "App defintions in ${APPSDIR}"
 show_apps_tree ${APPSDIR} "  "
-```
+````
 
 ## reset
 ```sh
