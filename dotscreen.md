@@ -16,11 +16,20 @@ cd ~/.dotfiles
 gh workflow run tailscale-ssh-dotscreen-amd64
 ```
 
-## connect-runner
+## runner-user
 ```sh interactive
 apps ${APPNAME} run --arg DOTUSER=runner
 ```
 
+## gbraad-user
+```sh interactive
+apps ${APPNAME} run --arg DOTUSER=gbraad
+```
+
+## root-user
+```sh interactive
+apps ${APPNAME} run --arg DOTUSER=root
+```
 
 ## default alias run
 ```sh interactive
