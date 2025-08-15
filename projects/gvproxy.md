@@ -128,6 +128,6 @@ if ! apps ${APPNAME} devenv exists; then
   apps ${APPNAME} devenv start
 fi
 apps ${APPNAME} make clean
-apps ${APPNAME} make cross
+apps ${APPNAME} make
 ```
 
