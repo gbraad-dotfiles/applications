@@ -47,6 +47,12 @@ mkdir -p ${MCDLOCAL}
 git clone ${MCDREPO} ${MCDLOCAL}
 ```
 
+## cp
+This action copies the macadam binary to the user's local bin folder.
+```sh
+cp ${MCDLOCAL}/bin/macadam-linux-amd64 ~/.local/bin/macadam
+```
+
 ## cd
 This action changes to the local source directory.
 
