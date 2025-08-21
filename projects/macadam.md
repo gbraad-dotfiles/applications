@@ -116,6 +116,13 @@ devenv ${MCDDEVENV} usercmd "cd ${MCDSOURCE} && make cross"
 devenv ${MCDDEVENV} usercmd "cd ${MCDSOURCE} && make clean"
 ```
 
+## local-make
+Temporary solution to run make locally on the host
+
+```sh interactive
+cd ${MCDLOCAL} && make
+```
+
 ---
 
 Default action is to compile. Performs the following:

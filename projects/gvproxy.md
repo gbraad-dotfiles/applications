@@ -117,6 +117,13 @@ devenv ${GVPDEVENV} usercmd "cd ${GVPSOURCE} && make cross"
 devenv ${GVPDEVENV} usercmd "cd ${GVPSOURCE} && make clean"
 ```
 
+## local-make
+Temporary solution to run make locally on the host
+
+```sh interactive
+cd ${GVPLOCAL} && make
+```
+
 ---
 
 Default action is to compile. Performs the following:
