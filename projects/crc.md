@@ -109,6 +109,13 @@ devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make cross"
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make clean"
 ```
 
+## local-make
+Temporary solution to run make locally on the host
+
+```sh interactive
+cd ${CRCLOCAL} && make
+```
+
 ---
 
 Default action is to compile. Performs the following:
