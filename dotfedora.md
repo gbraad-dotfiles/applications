@@ -25,6 +25,11 @@ devenv dotfedora root
 devenv dotfedora screen
 ```
 
+## rm remove
+```sh
+devenv dotfedora rm
+```
+
 ## alias
 ```sh interactive
 apps dotfedora

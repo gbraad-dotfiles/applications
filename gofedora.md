@@ -25,6 +25,11 @@ devenv gofedora root
 devenv gofedora screen
 ```
 
+## rm remove
+```sh
+devenv gofedora rm
+```
+
 ## alias
 ```sh interactive
 apps gofedora
