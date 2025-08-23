@@ -27,5 +27,5 @@ devenv test rm
 
 ## alias
 ```sh interactive
-apps fedora
+apps devenv/fedora
 ```
