@@ -99,3 +99,8 @@ machine gofedora rm
 ```sh
 apps machine/dotfedora
 ```
+
+## console ssh
+```sh interactive
+machine dotfedora ssh
+```
