@@ -51,7 +51,12 @@ git clone ${GVPREPO} ${GVPLOCAL}
 This action installs the gvproxy binary into the podman machine expected location
 
 ```sh
-sudo cp ${GVPLOCAL}/bin/gvproxy /usr/libexec/podman/gvproxy
+cp ${GVPLOCAL}/bin/gvproxy ${LOCALBIN}/gvproxy
+```
+
+## rm
+```sh
+rm -f ${LOCALBIN}/gvproxy
 ```
 
 ## cd
