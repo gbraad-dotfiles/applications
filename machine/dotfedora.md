@@ -1,10 +1,77 @@
-# Fedora dotfiles
+# Fedora dotfiles (virual machine)
+
+## 
 
 ## info
 
-## create
+## vars
+```sh
+APPNAME=dotfedora
+SVCNAME=dotfiles-machine-${APPNAME}
+```
+
+---
+
+## install-service
+```sh
+machine-export-service ${APPNAME} 
+```
+
+## enable-service
+```sh
+systemctl --user enable --now ${SVCNAME}
+```
+
+## disable-service
+```sh
+systemctl --user disable --now ${SVCNAME}
+```
+
+## restart-service
+```sh
+apps ${APPNAME} service stop
+apps ${APPNAME} service start
+```
+
+## start-service
+```sh
+systemctl --user start ${SVCNAME}
+```
+
+## stop-service
+```sh
+systemctl --user stop ${SVCNAME}
+```
+
+## status-service
+```sh
+systemctl --user status ${SVCNAME}
+```
+
+## active-service
+```sh
+systemctl --user is-active ${SVCNAME}
+```
+
+## journal-service
+```sh interactive
+journalctl --user -u ${SVCNAME} -f
+```
+
+## run-machine (not used)
+```sh
+machine gofedora service
+```
+
+---
+
+## download
 ```sh
 machine gofedora download
+```
+
+## create
+```sh
 machine gofedora create
 ```
 
@@ -28,8 +95,7 @@ machine gofedora stop
 machine gofedora rm
 ```
 
-## run-machine
+## alias
+```sh
+apps machine/dotfedora
 ```
-machine gofedora service
-```
-

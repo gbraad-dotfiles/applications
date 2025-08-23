@@ -1,4 +1,4 @@
-# dotfedora
+# Fedora dotfiles (container)
 
 ## env
 ```sh
@@ -32,5 +32,5 @@ devenv dotfedora rm
 
 ## alias
 ```sh interactive
-apps dotfedora
+apps devenv/dotfedora
 ```

@@ -1,4 +1,4 @@
-# gofedora
+# Fedora golang (container)
 
 ## env
 ```sh
@@ -32,5 +32,5 @@ devenv gofedora rm
 
 ## alias
 ```sh interactive
-apps gofedora
+apps devenv/gofedora
 ```
