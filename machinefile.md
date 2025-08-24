@@ -4,7 +4,7 @@
 
 ## vars
 ```sh
-VERSION="0.8.7"
+VERSION="0.9.0"
 DOWNLOAD_BASEURL="https://github.com/gbraad-redhat/Machinefile/releases/download/${VERSION}"
 ```
 
@@ -27,7 +27,7 @@ fi
 
 echo "Downloading Machinefile executor from $DOWNLOAD_URL"
 mkdir -p /tmp/machinefile-executor
-curl -sSL $DOWNLOAD_URL | tar -xz -C /tmp/machinefile-executor --strip-components=1
+curl -sSL $DOWNLOAD_URL | tar -xz -C /tmp/machinefile-executor
 chmod +x /tmp/machinefile-executor/machinefile
 echo "Downloaded and extracted Machinefile executor binary"
 
