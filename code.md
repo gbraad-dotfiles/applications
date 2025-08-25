@@ -85,8 +85,9 @@ fi
 download_target=$(get_download_arch)
 tempfile=$(mktemp)
 curl -fsSL "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-${download_target}" -o ${tempfile}
-tar -zxvf ${tempfile} -C ${_codepath} > /dev/null 2>&1
+tar -zxvf ${tempfile} -C /tmp > /dev/null 2>&1
 rm -f ${tempfile}
+mv /tmp/code ${LOCALBIN}/code
 echo "Installed code-cli for: ${download_target}"
 ```
 

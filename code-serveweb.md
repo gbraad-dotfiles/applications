@@ -81,7 +81,7 @@ sudo systemctl daemon-reload
 
 ## default run run-service
 ```sh interactive
-code serve-web --without-connection-token --host ${host} --port ${port}
+${LOCALBIN}/code serve-web --without-connection-token --host ${host} --port ${port}
 ```
 
 ## alias screen

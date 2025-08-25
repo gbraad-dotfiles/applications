@@ -84,7 +84,7 @@ if [ -z "${HOSTNAME}" ]; then
     return 1
 fi
 
-code tunnel --accept-server-license-terms --name ${HOSTNAME}
+${LOCALBIN}/code tunnel --accept-server-license-terms --name ${HOSTNAME}
 ```
 
 ## alias screen
