@@ -69,6 +69,12 @@ git branch --set-upstream-to=origin/main main
 cd - > /dev/null
 ```
 
+## log
+```sh
+cd ${APPSDIR}
+git log -n 2
+```
+
 ## show
 ```sh
 echo "App defintions in ${APPSDIR}"
