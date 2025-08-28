@@ -18,10 +18,6 @@ run_devenvs() {
   chosen_command=$(printf "%s\n" "${devenv_commands[@]}" | fzf --prompt="Devenv command> ")
   [[ -z "$chosen_command" ]] && return
 
-  if [[ "$chosen_command" == "status" ]]; then
-    devenv_targets
-    return
-  fi
 
   if [[ "$chosen_command" == "from" ]]; then
     freeform_name=$(echo | fzf --prompt="Enter environment name (or select)> " --print-query --phony | head -n1)
@@ -62,6 +58,12 @@ run_devenvs() {
   [[ -z "$chosen_target" ]] && return
 
   target_prefix=$(echo "$chosen_target" | awk '{print $1}')
+
+  # status shown; choose command
+  if [[ "$chosen_command" == "status" ]]; then
+    chosen_command=$(printf "%s\n" "${devenv_commands[@]}" | fzf --prompt="Devenv command> ")
+    [[ -z "$chosen_command" ]] && return                                                     
+  fi
 
   devenv "$target_prefix" "$chosen_command"
   return

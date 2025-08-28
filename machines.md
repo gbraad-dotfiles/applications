@@ -18,11 +18,6 @@ run_machines() {
   chosen_command=$(printf "%s\n" "${machine_commands[@]}" | fzf --prompt="Machine command> ")
   [[ -z "$chosen_command" ]] && return 1
 
-  if [[ "$chosen_command" == "status" ]]; then
-    machine_targets
-    return
-  fi
-
   if [[ "$chosen_command" == "from" ]]; then
     freeform_name=$(echo | fzf --prompt="Enter machine name (or select)> " --print-query --phony | head -n1)
     [[ -z "$freeform_name" ]] && return 1
@@ -64,12 +59,17 @@ run_machines() {
   [[ -z "$chosen_target" ]] && return
   target_prefix=$(echo "$chosen_target" | awk '{print $1}')
 
+  if [[ "$chosen_command" == "status" ]]; then
+    chosen_command=$(printf "%s\n" "${devenv_commands[@]}" | fzf --prompt="Devenv command> ")
+    [[ -z "$chosen_command" ]] && return                                                       
+  fi
+
   chosen_deployment=""
   if [[ "$chosen_command" == "switch" ]]; then
     chosen_deployment=$(machine_deployments | fzf --prompt="Select> ")
     [[ -z "$chosen_deployment" ]] && return
   fi
-
+  
   machine "$target_prefix" "$chosen_command" $chosen_deployment
   return
 }
