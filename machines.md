@@ -3,7 +3,11 @@
 ## shared
 ```sh
 machine_targets() {
-  machine | awk -F'[[:space:]]+' '{if (NF >= 2) print $1 "\t" $2}'
+  machine | awk '{print $1 "\t[" $2 "]"}'
+}
+
+machine_running_targets() {
+  machine | awk '$2 == "Running" {print $1 "\t[" $2 "]"}'
 }
 ```
 
@@ -30,8 +34,12 @@ run_machines() {
 
 
   if [[ "$chosen_command" == "shell" || "$chosen_command" == "stop" || "$chosen_command" == "switch" ]]; then
-    targets=$(machine | awk '$2 == "Running" {print $1 "\t[" $2 "]"}')
+    targets=$(machine_running_targets)
     [[ -z "$targets" ]] && echo "No running VMs found." && return
+    target_list=$(echo -e "$targets")
+  elif [[ "$chosen_command" == "remove" ]]; then
+    targets=$(machine_targets)
+    [[ -z "$targets" ]] && echo "No VMs found." && return
     target_list=$(echo -e "$targets")
   else
     targets=$(machine_targets)
