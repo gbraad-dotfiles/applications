@@ -29,7 +29,7 @@ run_machines() {
   fi
 
 
-  if [[ "$chosen_command" == "shell" || "$chosen_command" == "stop" ]]; then
+  if [[ "$chosen_command" == "shell" || "$chosen_command" == "stop" || "$chosen_command" == "switch" ]]; then
     targets=$(machine | awk '$2 == "Running" {print $1 "\t[" $2 "]"}')
     [[ -z "$targets" ]] && echo "No running VMs found." && return
     target_list=$(echo -e "$targets")
@@ -51,13 +51,18 @@ run_machines() {
     target_list=$(echo -e "$target_list" | sed '/^$/d')
   fi
 
-
   target_list=$(echo -e "$target_list" | sed '/^$/d')
   chosen_target=$(echo -e "$target_list" | column -t -s $'\t' | fzf --prompt="Choose target> ")
   [[ -z "$chosen_target" ]] && return
   target_prefix=$(echo "$chosen_target" | awk '{print $1}')
 
-  machine "$target_prefix" "$chosen_command"
+  chosen_deployment=""
+  if [[ "$chosen_command" == "switch" ]]; then
+    chosen_deployment=$(machine_deployments | fzf --prompt="Select> ")
+    [[ -z "$chosen_deployment" ]] && return
+  fi
+
+  machine "$target_prefix" "$chosen_command" $chosen_deployment
   return
 }
 
