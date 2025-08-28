@@ -1,0 +1,65 @@
+# Machines
+
+## shared
+```sh
+machine_targets() {
+  machine | awk -F'[[:space:]]+' '{if (NF >= 2) print $1 "\t" $2}'
+}
+```
+
+## default alias run
+```sh interactive
+run_machines() {
+
+  chosen_command=$(printf "%s\n" "${machine_commands[@]}" | fzf --prompt="Machine command> ")
+  [[ -z "$chosen_command" ]] && return 1
+
+  if [[ "$chosen_command" == "status" ]]; then
+    machine
+    return
+  fi
+
+  if [[ "$chosen_command" == "from" ]]; then
+    freeform_name=$(fzf --prompt="Enter machine name (or select)> " --print-query --phony | head -n1)
+    [[ -z "$freeform_name" ]] && return 1
+    chosen_prefix=$(machine_prefixes | fzf --prompt="Select prefix> ")
+    [[ -z "$chosen_prefix" ]] && return 1
+    machine "$freeform_name" from "$chosen_prefix"
+    return
+  fi
+
+
+  if [[ "$chosen_command" == "shell" || "$chosen_command" == "stop" ]]; then
+    targets=$(machine | awk '$2 == "Running" {print $1 "\t[" $2 "]"}')
+    [[ -z "$targets" ]] && echo "No running VMs found." && return
+    target_list=$(echo -e "$targets")
+  else
+    targets=$(machine_targets)
+    target_list=""
+    declare -A known_prefixes
+    if [[ -n "$targets" ]]; then
+      while IFS=$'\t' read -r prefix state; do
+        target_list+="$prefix\t[$state]\n"
+        known_prefixes["$prefix"]=1
+      done <<< "$targets"
+    fi
+    for prefix in $(machine_prefixes); do
+      if [[ -z "${known_prefixes[$prefix]}" ]]; then
+        target_list+="$prefix\t[Create]\n"
+      fi
+    done
+    target_list=$(echo -e "$target_list" | sed '/^$/d')
+  fi
+
+
+  target_list=$(echo -e "$target_list" | sed '/^$/d')
+  chosen_target=$(echo -e "$target_list" | column -t -s $'\t' | fzf --prompt="Choose target> ")
+  [[ -z "$chosen_target" ]] && return
+  target_prefix=$(echo "$chosen_target" | awk '{print $1}')
+
+  machine "$target_prefix" "$chosen_command"
+  return
+}
+
+run_machines
+```

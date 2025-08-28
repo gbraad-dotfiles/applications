@@ -19,26 +19,6 @@ RUNNERS_ARM=(
 
 ## shared
 ```sh 
-# Extract machine prefixes from dotini machine --list
-machine_prefixes() {
-  local key="disks"
-  local output prefixes
-  output=($(dotini machine --list | grep "^${key}\." || true))
-  prefixes=(${output//${key}./})
-  prefixes=(${prefixes//=*/})
-  printf "%s\n" "${prefixes[@]}"
-}
-
-# Extract devenv prefixes from dotini devenv --list
-devenv_prefixes() {
-  local key="images"
-  local output prefixes
-  output=($(dotini devenv --list | grep "^${key}\." || true))
-  prefixes=(${output//${key}./})
-  prefixes=(${prefixes//=*/})
-  printf "%s\n" "${prefixes[@]}"
-}
-
 # Select a runner from provided array
 select_runner() {
   local runners=("$@")
