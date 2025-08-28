@@ -33,7 +33,7 @@ run_machines() {
   fi
 
 
-  if [[ "$chosen_command" == "shell" || "$chosen_command" == "stop" || "$chosen_command" == "switch" ]]; then
+  if [[ "$chosen_command" == "stop" || "$chosen_command" == "switch" ]]; then
     targets=$(machine_running_targets)
     [[ -z "$targets" ]] && echo "No running VMs found." && return
     target_list=$(echo -e "$targets")

@@ -32,9 +32,13 @@ run_devenvs() {
     return
   fi
 
-  if [[ "$chosen_command" == "shell" || "$chosen_command" == "stop" ]]; then
+  if [[ "$chosen_command" == "stop" ]]; then
     targets=$(devenv_running_targets)
     [[ -z "$targets" ]] && echo "No running environments found." && return
+    target_list="$targets"
+  elif [[ "$chosen_command" == "remove" ]]; then
+    targets=$(devenv_targets)
+    [[ -z "$targets" ]] && echo "No environments found." && return
     target_list="$targets"
   else
     targets=$(devenv_targets)
