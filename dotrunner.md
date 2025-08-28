@@ -109,6 +109,18 @@ run_devenv_workflow() {
 run_devenv_workflow
 ```
 
+## rshell rscreen
+```sh interactive
+run_rshell_workflow() {
+  local runner prefix
+  runner=$(select_runner "${RUNNERS_X64[@]}" "${RUNNERS_ARM[@]}")
+  [[ -z "$runner" ]] && { echo "No runner selected."; return 1; }
+  dispatch_workflow "callable-rscreen.yml" "runs-on" "$runner"
+}
+
+run_rshell_workflow
+```
+
 ## machine
 ```sh interactive
 run_machine_workflow() {
@@ -126,12 +138,13 @@ run_machine_workflow
 ## default run alias
 ```sh interactive
 select_workflow_type() {
-  local options=("runner" "devenv" "machine")
+  local options=("runner" "devenv" "machine" "rshell")
   local selected
   selected=$(printf "%s\n" "${options[@]}" | fzf --prompt="Workflow type> ")
   case "$selected" in
     runner)  apps dotrunner runner ;;
     devenv)  apps dotrunner devenv ;;
+    rshell)  apps dotrunner rshell ;;
     machine) apps dotrunner machine ;;
     *) echo "No workflow type selected."; return 1 ;;
   esac
