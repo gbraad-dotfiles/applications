@@ -138,7 +138,7 @@ run_machine_workflow
 ## default run alias
 ```sh interactive
 select_workflow_type() {
-  local options=("runner" "devenv" "machine" "rshell")
+  local options=("runner" "devenv" "machine" "rshell" "connect")
   local selected
   selected=$(printf "%s\n" "${options[@]}" | fzf --prompt="Workflow type> ")
   case "$selected" in
@@ -146,6 +146,7 @@ select_workflow_type() {
     devenv)  apps dotrunner devenv ;;
     rshell)  apps dotrunner rshell ;;
     machine) apps dotrunner machine ;;
+    connect) apps dotshell runner connect ;;
     *) echo "No workflow type selected."; return 1 ;;
   esac
 }
