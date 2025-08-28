@@ -15,12 +15,12 @@ run_machines() {
   [[ -z "$chosen_command" ]] && return 1
 
   if [[ "$chosen_command" == "status" ]]; then
-    machine
+    machine_targets
     return
   fi
 
   if [[ "$chosen_command" == "from" ]]; then
-    freeform_name=$(fzf --prompt="Enter machine name (or select)> " --print-query --phony | head -n1)
+    freeform_name=$(echo | fzf --prompt="Enter machine name (or select)> " --print-query --phony | head -n1)
     [[ -z "$freeform_name" ]] && return 1
     chosen_prefix=$(machine_prefixes | fzf --prompt="Select prefix> ")
     [[ -z "$chosen_prefix" ]] && return 1
