@@ -18,14 +18,17 @@ run_machines() {
   chosen_command=$(printf "%s\n" "${machine_commands[@]}" | fzf --prompt="Machine command> ")
   [[ -z "$chosen_command" ]] && return 1
 
-  if [[ "$chosen_command" == "stop" || "$chosen_command" == "switch" ]]; then
+  # need a running machine
+  if [[ "$chosen_command" == "stop" || "$chosen_command" == "switch" || "$chosen_command" == "apps" || "$chosen_command" == "playbook" ]]; then
     targets=$(machine_running_targets)
     [[ -z "$targets" ]] && echo "No running VMs found." && return
     target_list=$(echo -e "$targets")
+  # need a known target
   elif [[ "$chosen_command" == "remove" ]]; then
     targets=$(machine_targets)
     [[ -z "$targets" ]] && echo "No VMs found." && return
     target_list=$(echo -e "$targets")
+  # any target
   else
     targets=$(machine_targets)
     target_list=""
@@ -66,6 +69,16 @@ run_machines() {
     [[ -z "$target_prefix" ]] && target_prefix=$(machine_prefixes | fzf --prompt="Select prefix> ")
     [[ -z "$target_prefix" ]] && return 1
     machine "$freeform_name" from "$target_prefix"
+    return
+  fi
+  
+  if [[ "$chosen_command" == "playbook" ]]; then
+    playbook_file=$(find . -type f ! -path './.*/*' -name '*.yml' -o -name '*.yaml' | sed 's|^\./||' | fzf --prompt="Select playbook: " --exit-0)
+    if [ -z "$playbook_file" ]; then
+      echo "No playbook selected."
+      return 1
+    fi
+    machine $target_prefix playbook "$playbook_file"
     return
   fi
 
