@@ -3,7 +3,7 @@
 ## shared
 ```sh
 machine_targets() {
-  machine | awk '{print $1 "\t[" $2 "]"}'
+  machine | awk '{print $1 "\t" $2 }'
 }
 
 machine_running_targets() {
