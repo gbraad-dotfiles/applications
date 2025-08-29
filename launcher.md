@@ -3,7 +3,7 @@
 ## shared
 ```sh
 launcher_commands=(
-   apps devenvs machines userctl
+   apps devenvs devboxes machines userctl
 )
 ```
 
@@ -15,6 +15,7 @@ select_launch_type() {
   case "$selected" in
     apps)     apps ;;
     devenvs)  apps devenvs ;;
+    devboxes) apps devboxes ;;
     machines) apps machines ;;
     userctl)  apps userctl ;; 
    *) echo "Nothing selected"; return 1 ;;
