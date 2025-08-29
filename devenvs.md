@@ -18,16 +18,6 @@ run_devenvs() {
   chosen_command=$(printf "%s\n" "${devenv_commands[@]}" | fzf --prompt="Devenv command> ")
   [[ -z "$chosen_command" ]] && return
 
-
-  if [[ "$chosen_command" == "from" ]]; then
-    freeform_name=$(echo | fzf --prompt="Enter environment name (or select)> " --print-query --phony | head -n1)
-    [[ -z "$freeform_name" ]] && return
-    chosen_prefix=$(devenv_prefixes | fzf --prompt="Select prefix> ")
-    [[ -z "$chosen_prefix" ]] && return
-    devenv "$freeform_name" from "$chosen_prefix"
-    return
-  fi
-
   if [[ "$chosen_command" == "stop" ]]; then
     targets=$(devenv_running_targets)
     [[ -z "$targets" ]] && echo "No running environments found." && return
@@ -63,6 +53,15 @@ run_devenvs() {
   if [[ "$chosen_command" == "status" ]]; then
     chosen_command=$(printf "%s\n" "${devenv_commands[@]}" | fzf --prompt="Devenv command> ")
     [[ -z "$chosen_command" ]] && return                                                     
+  fi
+
+  if [[ "$chosen_command" == "from" ]]; then
+    freeform_name=$(echo | fzf --prompt="Enter environment name (or select)> " --print-query --phony | head -n1)
+    [[ -z "$freeform_name" ]] && return
+    [[ -z "$target_prefix" ]] && target_prefix=$(devenv_prefixes | fzf --prompt="Select prefix> ")
+    [[ -z "$target_prefix" ]] && return
+    devenv "$freeform_name" from "$target_prefix"
+    return
   fi
 
   devenv "$target_prefix" "$chosen_command"

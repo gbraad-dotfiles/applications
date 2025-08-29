@@ -18,16 +18,6 @@ run_machines() {
   chosen_command=$(printf "%s\n" "${machine_commands[@]}" | fzf --prompt="Machine command> ")
   [[ -z "$chosen_command" ]] && return 1
 
-  if [[ "$chosen_command" == "from" ]]; then
-    freeform_name=$(echo | fzf --prompt="Enter machine name (or select)> " --print-query --phony | head -n1)
-    [[ -z "$freeform_name" ]] && return 1
-    chosen_prefix=$(machine_prefixes | fzf --prompt="Select prefix> ")
-    [[ -z "$chosen_prefix" ]] && return 1
-    machine "$freeform_name" from "$chosen_prefix"
-    return
-  fi
-
-
   if [[ "$chosen_command" == "stop" || "$chosen_command" == "switch" ]]; then
     targets=$(machine_running_targets)
     [[ -z "$targets" ]] && echo "No running VMs found." && return
@@ -70,6 +60,15 @@ run_machines() {
     [[ -z "$chosen_deployment" ]] && return
   fi
   
+  if [[ "$chosen_command" == "from" ]]; then
+    freeform_name=$(echo | fzf --prompt="Enter machine name (or select)> " --print-query --phony | head -n1)
+    [[ -z "$freeform_name" ]] && return 1
+    [[ -z "$target_prefix" ]] && target_prefix=$(machine_prefixes | fzf --prompt="Select prefix> ")
+    [[ -z "$target_prefix" ]] && return 1
+    machine "$freeform_name" from "$target_prefix"
+    return
+  fi
+
   machine "$target_prefix" "$chosen_command" $chosen_deployment
   return
 }
