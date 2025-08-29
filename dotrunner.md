@@ -33,34 +33,34 @@ select_prefix() {
 
 # Dispatch the workflow with optional inputs
 dispatch_workflow() {
-  if [[ -z "$GH_TOKEN" ]]; then
-    secrets var gh_token
-  fi
-
-  if [[ -z "$GH_TOKEN" ]]; then
-    echo "GH_TOKEN is not set and could not be retrieved from secrets. Exiting."
-  fi
-
   local workflow_file="$1"
   shift
-  local data="{\"ref\":\"$REF\",\"inputs\":{"
-  local first=1
+
+  # Use default branch if REF not set
+  local ref="${REF:-main}"
+
+  # Build --field argument list
+  local fields=()
   while [[ $# -gt 1 ]]; do
     local k="$1"
     local v="$2"
-    if [[ $first -eq 0 ]]; then data+=", "; fi
-    data+="\"$k\":\"$v\""
-    first=0
+    fields+=(--field "$k=$v")
     shift 2
   done
-  data+="}}"
-  curl -X POST \
-    -H "Accept: application/vnd.github+json" \
-    -H "Authorization: Bearer $GH_TOKEN" \
-    "https://api.github.com/repos/$REPO/actions/workflows/$workflow_file/dispatches" \
-    -d "$data"
-  echo "Dispatched"
+
+  # You can add --ref "$ref" if you want to specify the branch/ref
+  gh --repo gbraad-dotfiles/upstream workflow run "$workflow_file" --ref "$ref" "${fields[@]}"
+  echo "Dispatched via gh"
 }
+```
+
+## status
+```sh interactive
+status_dotrunner() {
+  gh --repo gbraad-dotfiles/upstream run list
+}
+
+status_dotrunner
 ```
 
 ## runner
@@ -118,7 +118,7 @@ run_machine_workflow
 ## default run alias
 ```sh interactive
 select_workflow_type() {
-  local options=("runner" "devenv" "machine" "rshell" "connect")
+  local options=("runner" "devenv" "machine" "rshell" "connect" "status")
   local selected
   selected=$(printf "%s\n" "${options[@]}" | fzf --prompt="Workflow type> ")
   case "$selected" in
@@ -127,6 +127,7 @@ select_workflow_type() {
     rshell)  apps dotrunner rshell ;;
     machine) apps dotrunner machine ;;
     connect) apps dotshell runner connect ;;
+    status)  apps dotrunner status ;;
     *) echo "No workflow type selected."; return 1 ;;
   esac
 }
