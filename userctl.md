@@ -4,7 +4,7 @@
 ## shared
 ```sh
 userctl_commands=(
-  start stop enable disable remove status
+  status start stop enable disable remove
 )
 
 userctl_units() {
