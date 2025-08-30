@@ -54,7 +54,7 @@ dispatch_workflow() {
 }
 ```
 
-## status
+## status status-alias
 ```sh interactive
 status_dotrunner() {
   gh --repo gbraad-dotfiles/upstream run list
@@ -63,7 +63,7 @@ status_dotrunner() {
 status_dotrunner
 ```
 
-## runner
+## runner runner-alias
 ```sh interactive
 run_runner_workflow() {
   local runner
@@ -75,7 +75,7 @@ run_runner_workflow() {
 run_runner_workflow
 ```
 
-## devenv
+## devenv devenv-alias
 ```sh interactive
 run_devenv_workflow() {
   local runner prefix
@@ -89,7 +89,7 @@ run_devenv_workflow() {
 run_devenv_workflow
 ```
 
-## rshell rscreen
+## rshell rscreen rshell-alias rscreen-alias
 ```sh interactive
 run_rshell_workflow() {
   local runner prefix
@@ -101,7 +101,7 @@ run_rshell_workflow() {
 run_rshell_workflow
 ```
 
-## machine
+## machine machine-aliaas
 ```sh interactive
 run_machine_workflow() {
   local runner prefix
@@ -115,6 +115,11 @@ run_machine_workflow() {
 run_machine_workflow
 ```
 
+## connect connect-alias
+```sh interactive
+apps dotshell runner connect
+```
+
 ## default run alias
 ```sh interactive
 select_workflow_type() {
@@ -126,7 +131,7 @@ select_workflow_type() {
     devenv)  apps dotrunner devenv ;;
     rshell)  apps dotrunner rshell ;;
     machine) apps dotrunner machine ;;
-    connect) apps dotshell runner connect ;;
+    connect) apps dotrunner connect ;;
     status)  apps dotrunner status ;;
     *) echo "No workflow type selected."; return 1 ;;
   esac
