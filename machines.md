@@ -8,7 +8,7 @@ run_machines() {
   [[ -z "$chosen_command" ]] && return 1
 
   # need a running machine
-  if [[ "$chosen_command" == "stop" || "$chosen_command" == "switch" || "$chosen_command" == "apps" || "$chosen_command" == "playbook" ]]; then
+  if [[ "$chosen_command" == "stop" || "$chosen_command" == "switch" || "$chosen_command" == "apps" || "$chosen_command" == "playbook" || "$chosen_command" == "copy-id" ]]; then
     targets=$(machine_running_targets)
     [[ -z "$targets" ]] && echo "No running VMs found." && return
     target_list=$(echo -e "$targets")
