@@ -1,16 +1,5 @@
 # Development Environments
 
-## shared
-```sh
-devenv_targets() {
-  devenv | awk -F' - ' '{sub(/sys$/, "", $1); print $1 "\t" $2}'
-}
-
-devenv_running_targets() {
-  devenv | awk -F' - ' '$2 ~ /^Up/ {sub(/sys$/, "", $1); print $1 "\t" $2}'
-}
-```
-
 ## default alias run
 ```sh interactive
 run_devenvs() {

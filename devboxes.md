@@ -1,16 +1,5 @@
 # Development Boxes
 
-## shared
-```sh
-devbox_targets() {
-  devbox | awk -F' - ' '{sub(/box$/, "", $1); print $1 "\t" $2}'
-}
-
-devenv_running_targets() {
-  devbox | awk -F' - ' '$2 ~ /^Up/ {sub(/box$/, "", $1); print $1 "\t" $2}'
-}
-```
-
 ## default alias run
 ```sh interactive
 run_devboxes() {
