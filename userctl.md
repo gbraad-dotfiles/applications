@@ -4,7 +4,7 @@
 ## shared
 ```sh
 userctl_commands=(
-  status start stop enable disable remove
+  status start stop enable disable remove journal
 )
 
 userctl_units() {
@@ -27,6 +27,8 @@ select_userctl_command() {
     rm -i ~/.config/systemd/user/"$unit.service"
     systemctl --user daemon-reload
     echo "$unit.service removed."
+  elif [[ "$chosen_command" == "journal" ]]; then
+    journalctl --user -u "$unit.service"
   else
     systemctl --user "$chosen_command" "$unit.service"
   fi
