@@ -103,6 +103,6 @@ sudo dnf install -y tor
 ```sh interactive
 sudo mkdir -p /run/tor
 sudo chmod 700 /run/tor
-sudo chown ${USER} /run/tor
+sudo chown ${USER}:${USER} /run/tor
 tor ORPort ${ORPORT} DirPort ${ORDIRPORT} SocksPort ${ORSOCKSADDRESS} ControlPort ${ORCONTROLADDRESS}
 ```
