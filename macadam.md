@@ -5,7 +5,7 @@
 ```sh
 GVPROXY_VERSION="v0.8.7"
 GVPROXY_DOWNLOAD_BASEURL="https://github.com/containers/gvisor-tap-vsock/releases/download/${GVPROXY_VERSION}"
-MACADAM_VERSION="v0.1.2"
+MACADAM_VERSION="v0.2.0"
 MACADAM_DOWNLOAD_BASEURL="https://github.com/crc-org/macadam/releases/download/${MACADAM_VERSION}"
 ```
 
