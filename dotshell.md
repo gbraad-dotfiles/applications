@@ -24,10 +24,10 @@ apps ${APPNAME} run --arg DOTUSER=runner
 ## default alias run
 ```sh interactive
 selected=$(tailscale status --json | jq -r '
-  .Peer[] 
+  .Peer[]
   | select(.Online == true and .sshHostKeys != null and (.sshHostKeys | length > 0))
   | "\(.HostName)\t\(.TailscaleIPs[0])"
-' | fzf | awk '{print $2}')
+' | column -t -s $'\t' | fzf | awk '{print $2}')
 
 if [ -n "$selected" ]; then
   rshell ${DOTUSER}@${selected}
