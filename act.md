@@ -26,3 +26,15 @@ tar -xzf "/tmp/$ACT_FILE" -C ${LOCALBIN}
 chmod +x ${LOCALBIN}/act
 rm -f "$ACT_FILE"
 ```
+
+## setup
+```sh
+mkdir -p /home/${USER}/.config/act/
+cat << EOF > /home/${USER}/.config/act/actrc
+-P ubuntu-latest=catthehacker/ubuntu:act-latest
+-P ubuntu-22.04=catthehacker/ubuntu:act-22.04
+-P ubuntu-20.04=catthehacker/ubuntu:act-20.04
+-P ubuntu-18.04=catthehacker/ubuntu:act-18.04
+EOF
+export DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')
+```
