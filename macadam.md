@@ -1,16 +1,39 @@
 # Macadam
 
-## default install
-Temporary solution until binaries are published
 
+## vars
 ```sh
-apps projects/gvproxy source checkout
-apps projects/macadam source checkout
-
-devenv gofedora start
-apps projects/gvproxy compile
-apps projects/macadam compile
-
-apps projects/gvproxy cp
-apps projects/macadam cp
+GVPROXY_VERSION="v0.8.7"
+GVPROXY_DOWNLOAD_BASEURL="https://github.com/containers/gvisor-tap-vsock/releases/download/${GVPROXY_VERSION}"
+MACADAM_VERSION="v0.1.2"
+MACADAM_DOWNLOAD_BASEURL="https://github.com/crc-org/macadam/releases/download/${MACADAM_VERSION}"
 ```
+
+## default install
+```sh
+arch=$(uname -m)
+if [[ "$arch" == "x86_64" ]]; then
+  GVPROXY_DOWNLOAD_URL="${GVPROXY_DOWNLOAD_BASEURL}/gvproxy-linux-amd64"
+  MACADAM_DOWNLOAD_URL="${MACADAM_DOWNLOAD_BASEURL}/macadam-linux-amd64"
+elif [[ "$arch" == "aarch64" ]]; then
+  GVPROXY_DOWNLOAD_URL="${GVPROXY_DOWNLOAD_BASEURL}/gvproxy-linux-arm64"
+  MACADAM_DOWNLOAD_URL="${MACADAM_DOWNLOAD_BASEURL}/macadam-linux-arm64"
+else
+  echo "::error::Unsupported architecture: $arch. Only x86_64 and aarch64 are supported."
+  return 1
+fi
+
+mkdir -p /tmp/macadam-install
+
+curl -sSL $GVPROXY_DOWNLOAD_URL -o /tmp/macadam-install/gvproxy
+curl -sSL $MACADAM_DOWNLOAD_URL -o /tmp/macadam-install/macadam
+
+chmod +x /tmp/macadam-install/gvproxy
+chmod +x /tmp/macadam-install/macadam
+
+mv /tmp/macadam-install/gvproxy ${LOCALBIN}
+mv /tmp/macadam-install/macadam ${LOCALBIN}
+
+rm -rf /tmp/macadam-install
+```
+
