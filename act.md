@@ -37,4 +37,5 @@ cat << EOF > /home/${USER}/.config/act/actrc
 -P ubuntu-18.04=catthehacker/ubuntu:act-18.04
 EOF
 export DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')
+systemctl --user start podman.socket
 ```
