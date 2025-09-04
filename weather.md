@@ -8,17 +8,17 @@ APPNAME="weather"
 CITIES=("Beijing" "Amsterdam" "Apeldoorn")
 ```
 
-## ams amsterdam
+## ams amsterdam ams-alias amsterdam-alias
 ```sh
 apps weather query --arg CITY="Amsterdam"
 ```
 
-## apd apeldoorn
+## apd apeldoorn apd-alias apeldoorn-alias
 ```sh
 apps weather query --arg CITY="Apeldoorn"
 ```
 
-## pek peking beijing 
+## pek peking beijing pek-alias peking-alias beijing-alias
 ```sh
 apps weather query --arg CITY="Beijing"
 ```
