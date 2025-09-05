@@ -20,6 +20,15 @@ userctl_units_status() {
     echo -e "${name}\t[${state} (${substate})]"
   done
 }
+
+userctl_units_status_desc() {
+  for name in $(userctl_units); do
+    state=$(systemctl --user is-active "${name}.service" 2>/dev/null)
+    substate=$(systemctl --user show -p SubState --value "${name}.service" 2>/dev/null)
+    description=$(systemctl --user show -p Description --value "${name}.service" 2>/dev/null)
+    echo -e "${name}\t${description}\t[${state} (${substate})]"
+  done
+}
 ```
 
 ## default alias run
@@ -35,7 +44,7 @@ run_userctl() {
   #  target_list=$(userctl_units | awk '{print $1 "\t[Installed]"}')
   #else
     # Show all units with status columns
-    target_list=$(userctl_units_status)
+    target_list=$(userctl_units_status_desc)
   #fi
 
   target_list=$(echo -e "$target_list" | column -t -s $'\t' | fzf --prompt="Choose unit> ")
