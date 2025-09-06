@@ -4,7 +4,7 @@
 ## shared
 ```sh
 userctl_commands=(
-  status start stop enable disable remove journal
+  status restart start stop enable disable remove journal
 )
 
 userctl_units() {
