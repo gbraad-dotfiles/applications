@@ -68,6 +68,11 @@ rm -rf ${APPSHOME}/${APPNAME}
 "${APPSHOME}/${APPNAME}/AppRun"
 ```
 
+## web-run
+```sh
+xdg-open https://www.noteshub.app/notebooks
+```
+
 ## alias default run run-desktop
 ```sh background
 if apps noteshub check user; then
