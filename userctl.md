@@ -29,6 +29,10 @@ userctl_units_status_desc() {
     echo -e "${name}\t${description}\t[${state} (${substate})]"
   done
 }
+
+create_user_session() {
+  sudo macinectl shell ${USER}@ /usr/bin/echo "User session created"
+}
 ```
 
 ## default alias run
