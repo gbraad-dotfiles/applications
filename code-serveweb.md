@@ -4,6 +4,14 @@
 
   - https://github.com/gbraad-vscode/code-systemd
 
+
+> [!NOTE]
+> Make sure to install the cli first, with:
+> ```
+> apps code install cli
+> ```
+
+
 ## vars
 ```sh
 APPNAME=code-serveweb
