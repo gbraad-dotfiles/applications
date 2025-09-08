@@ -10,8 +10,8 @@ APPNAME=code-serveweb
 APPTITLE="Code serveweb"
 SVCNAME=dotfiles-apps-${APPNAME}
 
-host=0.0.0.0
-port=8000
+CODEHOST=0.0.0.0
+CODEPORT=8001
 ```
 
 ---
@@ -81,7 +81,7 @@ sudo systemctl daemon-reload
 
 ## default run run-service
 ```sh interactive
-${LOCALBIN}/code serve-web --without-connection-token --host ${host} --port ${port}
+${LOCALBIN}/code serve-web --without-connection-token --host ${CODEHOST} --port ${CODEPORT}
 ```
 
 ## alias screen
