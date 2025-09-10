@@ -1,6 +1,6 @@
 # Dotfiles runners
 
-## vars
+### vars
 ```sh
 REPO="gbraad-dotfiles/upstream"
 REF="main"
@@ -17,7 +17,7 @@ RUNNERS_ARM=(
 )
 ```
 
-## shared
+### shared
 ```sh 
 # Select a runner from provided array
 select_runner() {
@@ -54,7 +54,7 @@ dispatch_workflow() {
 }
 ```
 
-## status status-alias
+### status status-alias
 ```sh interactive
 status_dotrunner() {
   gh --repo gbraad-dotfiles/upstream run list
@@ -63,7 +63,7 @@ status_dotrunner() {
 status_dotrunner
 ```
 
-## runner runner-alias
+### runner runner-alias
 ```sh interactive
 run_runner_workflow() {
   local runner
@@ -75,7 +75,7 @@ run_runner_workflow() {
 run_runner_workflow
 ```
 
-## devenv devenv-alias
+### devenv devenv-alias
 ```sh interactive
 run_devenv_workflow() {
   local runner prefix
@@ -89,7 +89,7 @@ run_devenv_workflow() {
 run_devenv_workflow
 ```
 
-## rshell rscreen rshell-alias rscreen-alias
+### rshell rscreen rshell-alias rscreen-alias
 ```sh interactive
 run_rshell_workflow() {
   local runner prefix
@@ -101,7 +101,7 @@ run_rshell_workflow() {
 run_rshell_workflow
 ```
 
-## machine machine-aliaas
+### machine machine-aliaas
 ```sh interactive
 run_machine_workflow() {
   local runner prefix
@@ -115,12 +115,12 @@ run_machine_workflow() {
 run_machine_workflow
 ```
 
-## connect connect-alias
+### connect connect-alias
 ```sh interactive
 apps dotshell runner connect
 ```
 
-## default run alias
+### default run alias
 ```sh interactive
 select_workflow_type() {
   local options=("runner" "devenv" "machine" "rshell" "connect" "status")

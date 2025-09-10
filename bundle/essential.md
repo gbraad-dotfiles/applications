@@ -1,16 +1,16 @@
 # Essential applications
 
-## info
+### info
 The most important applications
 
-## default install
+### default install
 ```sh
 apps obsidian install user
 apps code install user
 apps vivaldi install
 ```
 
-## remove
+### remove
 ```sh
 apps obsidian remove user
 apps code remove user

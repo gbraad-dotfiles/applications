@@ -1,20 +1,20 @@
 # Container tools
 
-## info
+### info
 
   - podman
   - skopeo
   - buildah
 
-## dnf-install
+### dnf-install
 ```sh
 sudo dnf install -y podman skopeo buildah
 ```
 
-## apt-install
+### apt-install
 ```sh
 sudo apt-get update
 sudo apt install -y podman skopeo buildah
 ```
 
-## default install
+### default install

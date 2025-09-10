@@ -1,6 +1,6 @@
 # Application list
 
-## shared
+### shared
 ```sh
 APPSDIR="${_appsdefpath:-$HOME/.dotapps}"
 
@@ -49,7 +49,7 @@ show_apps_tree() {
 }
 ```
 
-## update
+### update
 ```sh
 cd ${APPSDIR}
 git pull
@@ -59,7 +59,7 @@ echo "Generate aliases"
 apps list aliases
 ```
 
-## switch
+### switch
 ```sh
 cd ${APPSDIR}
 git remote remove origin
@@ -69,19 +69,19 @@ git branch --set-upstream-to=origin/main main
 cd - > /dev/null
 ```
 
-## log
+### log
 ```sh
 cd ${APPSDIR}
 git log -n 2
 ```
 
-## show
+### show
 ```sh
 echo "App defintions in ${APPSDIR}"
 show_apps_tree ${APPSDIR} "  "
 ````
 
-## reset
+### reset
 ```sh
 cd ${APPSDIR}
 git stash
@@ -90,7 +90,7 @@ git reset --hard origin/main
 cd - > /dev/null
 ```
 
-## aliases
+### aliases
 Generate aliases for application defintion that use an `alias` section
 
 > [!NOTE]
@@ -121,7 +121,7 @@ if [[ $(dotini apps --get "apps.aliases") == true ]]; then
 fi
 ```
 
-## services
+### services
 Lists all application names that have a `run-service` section
 
 ```sh
@@ -133,7 +133,7 @@ for mdfile in "${APPSDIR}"/*.md; do
 done
 ```
 
-## desktop
+### desktop
 Lists all application names that have a `run-desktop` section`
 
 ```sh

@@ -1,28 +1,28 @@
 # Steam Link
 
 
-## flatpak-install
+### flatpak-install
 ```sh
 flatpak install --user --assumeyes flathub com.valvesoftware.SteamLink
 ```
 
-## flatpak-run
+### flatpak-run
 ```sh
 flatpak run com.valvesoftware.SteamLink
 ```
 
-## default run run-desktop
+### default run run-desktop
 ```sh
 apps steamlink run flatpak
 ```
 
-## rpi-install
+### rpi-install
 ```sh
 curl -#Of https://media.steampowered.com/steamlink/rpi/latest/steamlink.deb
 sudo dpkg -i steamlink.deb
 ```
 
-## rpi-run
+### rpi-run
 ```sh
 steamlink
 ```

@@ -1,6 +1,6 @@
 # machinekey
 
-## default alias run
+### default alias run
 ```sh
 mkdir -p ~/.ssh
 secrets file ssh-machine-private ${HOME}/.ssh/id_machine

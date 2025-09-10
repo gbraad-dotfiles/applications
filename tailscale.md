@@ -1,6 +1,6 @@
 # Tailscale
 
-## info
+### info
 **Tailscale** is a zero-config, peer-to-peer VPN based on WireGuard that makes secure networking effortless. It allows you to create a private mesh network between your devices, regardless of their physical location or network. Tailscale is used for remote access, secure connectivity, and simplifying access control for developers and teams.
 
 - Homepage: [https://tailscale.com](https://tailscale.com)
@@ -11,57 +11,57 @@
 - CLI tool: `tailscale`
 
 
-## install
+### install
 ```sh
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
-## check
+### check
 ```sh
 command -v tailscaled > /dev/null 2>&1
 ```
 
-## enable-service
+### enable-service
 ```sh
 sudo systemctl enable --now tailscaled
 ```
 
-## disable-service
+### disable-service
 ```sh
 sudo systemctl disable --now tailscaled
 ```
 
-## start-service
+### start-service
 ```sh
 sudo systemctl start tailscaled
 ```
 
-## stop-service
+### stop-service
 ```sh
 sudo systemctl stop tailscaled
 ```
 
-## restart-service
+### restart-service
 ```sh
 sudo systemctl restart tailscaled
 ```
 
-## status-service
+### status-service
 ```sh
 sudo systemctl status tailscaled
 ```
 
-## active-service
+### active-service
 ```sh
 sudo systemctl is-active tailscaled
 ```
 
-## journal-service
+### journal-service
 ```sh interactive
 journalctl -u tailscaled -f
 ```
 
-## operator-config
+### operator-config
 ```sh
 if ! is_root; then
   sudo tailscale set --operator ${USER}
@@ -70,29 +70,29 @@ else
 fi
 ```
 
-## ssh-config
+### ssh-config
 ```sh
 sudo tailscale set --ssh=true
 ```
 
-## exitnode-config
+### exitnode-config
 ```sh
 sudo tailscale set --advertise-exit-node=true
 ```
 
-## dnf-update
+### dnf-update
 ```sh
 sudo dnf update -y tailscale
 ```
 
-## run
+### run
 This will enable the `tailscaled` daemon using systemd
 
 ```sh
 systemctl enable --now tailscaled
 ```
 
-## up
+### up
 Starts the onboarding process
 
 ```sh interactive
@@ -103,13 +103,13 @@ else
 fi
 ```
 
-## connect
+### connect
 ```sh
 secrets var tailscale_authkey
 apps tailscale up
 ```
 
-## default status
+### default status
 This returns the status and known nodes on the current tailnet
 
 ```sh
@@ -120,49 +120,49 @@ else
 fi
 ```
 
-## online-status
+### online-status
 This will return the online nodes on the current tailnet
 
 ```sh
 tailscale status | online_filter
 ```
 
-## offline-status
+### offline-status
 This will return the offline nodes on the current tailnet
 
 ```sh
 tailscale status | offline_filter
 ```
 
-## direct-status
+### direct-status
 This will return the direct connections with the current host
 
 ```sh
 tailscale status | direct_filter
 ```
 
-## tagged-status
+### tagged-status
 This will return the tagged nodes
 
 ```sh
 tailscale status | tagged_filter
 ```
 
-## tsnet-status
+### tsnet-status
 This will return the other ts.net nodes
 
 ```sh
 tailscale status | tsnet_filter
 ```
 
-## exitnode-status
+### exitnode-status
 This will return the exit nodes on the current tailnet
 
 ```sh
 tailscale status | exitnode_filter
 ```
 
-## select-exitnode
+### select-exitnode
 ```sh
 exitnodes=$(tailscale status --json | jq -r '
   .Peer[] 
@@ -186,28 +186,28 @@ tailscale set --exit-node="$selected"
 echo "Exit node set to $selected"
 ```
 
-## clear-exitnode
+### clear-exitnode
 ```sh
 tailscale set --exit-node ""
 echo "Exit node cleared"
 ```
 
-## select-exitmull
+### select-exitmull
 ```sh
 tailscale set --exit-node $(tailscale exit-node list | grep mull | fzf | awk '{print $2}')
 ```
 
-## file
+### file
 ```sh
 apps taildrop run
 ```
 
-## drive
+### drive
 ```sh
 apps taildrive run
 ```
 
-## ping
+### ping
 ```sh interactive
 onlinenodes=$(tailscale status --json | jq -r '
   .Peer[] | select(.Online == true) | "\(.DNSName)\t\(.HostName)\t\(.TailscaleIPs[0])"

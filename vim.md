@@ -1,13 +1,13 @@
 # Vi IMproved
 
-## info
+### info
 
-## dnf-install fedora-install
+### dnf-install fedora-install
 ```sh
 sudo dnf install -y vim
 ```
 
-## default run
+### default run
 ```sh
 screen vim
 ```

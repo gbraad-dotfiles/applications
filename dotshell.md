@@ -1,27 +1,27 @@
 # Remote tailscale (rshell)
 
 
-## info
+### info
 
 
-## vars
+### vars
 ```sh
 APPNAME=dotshell
 DOTUSER=${USER}
 ```
 
-## start-runner
+### start-runner
 ```
 cd ~/.dotfiles
 gh workflow run tailscale-ssh-dotscreen-amd64
 ```
 
-## connect-runner
+### connect-runner
 ```sh interactive
 apps ${APPNAME} run --arg DOTUSER=runner
 ```
 
-## default alias run
+### default alias run
 ```sh interactive
 selected=$(tailscale status --json | jq -r '
   .Peer[]

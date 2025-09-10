@@ -1,13 +1,13 @@
 # Codium server
 
-## info
+### info
 Installs Codium server
 
 
   - https://github.com/gbraad-actions/codium-server-action
   - https://github.com/gbraad-vscode/code-systemd/
 
-## vars
+### vars
 ```sh
 APPNAME=codium-server
 APPTITLE="Codium server"
@@ -18,7 +18,7 @@ CODIUMHOST=0.0.0.0
 
 ---
 
-## install-service
+### install-service
 ```sh interactive
 if ! apps ${APPNAME} check; then
   apps ${APPNAME} install
@@ -27,49 +27,49 @@ fi
 apps-export-service ${APPNAME} ${APPTITLE}
 ```
 
-## enable-service
+### enable-service
 ```sh
 systemctl --user enable --now ${SVCNAME}
 ```
 
-## disable-service
+### disable-service
 ```sh
 systemctl --user disable --now ${SVCNAME}
 ```
 
-## start-service
+### start-service
 ```sh
 systemctl --user start ${SVCNAME}
 ```
 
-## stop-service
+### stop-service
 ```sh
 systemctl --user stop ${SVCNAME}
 ```
 
-## restart-service
+### restart-service
 ```sh
 systemctl --user restart ${SVCNAME}
 ```
 
-## status-service
+### status-service
 ```sh
 systemctl --user status ${SVCNAME}
 ```
 
-## active-service
+### active-service
 ```sh
 systemctl --user is-active ${SVCNAME}
 ```
 
-## journal-service
+### journal-service
 ```sh interactive
 journalctl --user -u ${SVCNAME} -f
 ```
 
 ---
 
-## shared
+### shared
 ```sh
 _installcodiumserverdownload() {
     local install_location="$1" install_dir
@@ -107,12 +107,12 @@ _installcodiumserverdownload() {
 }
 ```
 
-## check
+### check
 ```sh
 [ -x "${CODIUMHOME}/latest/bin/codium-server" ]
 ```
 
-## install
+### install
 ```sh
 _installcodiumserverdownload ${CODIUMHOME}
 ln -sfn "${CODIUMHOME}/latest/bin/codium-server" "${LOCALBIN}/codium-server"
@@ -121,17 +121,17 @@ ln -sfn "${CODIUMHOME}/latest/bin/codium-server" "${LOCALBIN}/codium-server"
 ${LOCALBIN}/codium-server --install-extension gbraad.extensionpack
 ```
 
-## remove
+### remove
 ```sh
 rm -rf ${CODIUMHOME}
 ```
 
-## alias run run-service
+### alias run run-service
 ```sh interactive
 ${CODIUMHOME}/latest/bin/codium-server --without-connection-token --host ${CODIUMHOST}
 ```
 
-## screen
+### screen
 ```
 screen apps codium-server run
 ```
@@ -141,7 +141,7 @@ screen apps codium-server run
 > [!NOTE]
 > These are here for archival.
 
-### install
+#### install
 ```sh
 if is_root; then
   apps codium-server install system
@@ -150,14 +150,14 @@ else
 fi
 ```
 
-### system-install
+#### system-install
 ```sh
 install_location=/opt/codium
 _installcodiumserverdownload $install_location
 sudo ln -sfn "$install_location/latest/bin/codium-server" "/usr/bin/codium-server"
 ```
 
-### user-service-install
+#### user-service-install
 ```sh
 mkdir -p ~/.config/systemd/user/
 curl -fsSL https://raw.githubusercontent.com/gbraad-vscode/code-systemd/refs/heads/main/codium-user/codium-server.service \
@@ -166,7 +166,7 @@ systemctl --user daemon-reload
 systemctl --user enable --now codium-server
 ```
 
-### system-service-install
+#### system-service-install
 ```sh
 curl -fsSL https://raw.githubusercontent.com/gbraad-vscode/code-systemd/refs/heads/main/codium-system/codium-server%40.service \
   -o /etc/systemd/system/codium-server@.service

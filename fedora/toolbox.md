@@ -1,8 +1,8 @@
 # Toolbox/Distrobox packages
 
-## info
+### info
 
-## default fedora-install
+### default fedora-install
 ```sh
 sudo dnf install --allowerasing -y \
         bc \

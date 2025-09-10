@@ -1,9 +1,9 @@
 # Codium
 
-## info
+### info
 Installs the latest VSCodium via AppImage, RPM (dnf), DEB (apt), or user-local tarball.
 
-## shared
+### shared
 ```sh
 APPNAME=codium
 #APPSHOME="${APPSHOME:-$HOME/Applications}"
@@ -11,7 +11,7 @@ API_URL="https://api.github.com/repos/VSCodium/vscodium/releases/latest"
 response=$(curl -s "$API_URL")
 ```
 
-## appimage-install
+### appimage-install
 ```sh
 download_url=$(echo "$response" | grep -oP '(?<="browser_download_url": ")[^"]*AppImage(?!.*sha)' | head -n1)
 if [[ -z "$download_url" ]]; then
@@ -22,22 +22,22 @@ curl -L -o ${APPSHOME}/${APPNAME}.AppImage "$download_url"
 chmod +x ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## appimage-remove
+### appimage-remove
 ```sh
 rm -f ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## appimage-check
+### appimage-check
 ```sh
 [ -x ${APPSHOME}/${APPNAME}.AppImage ]
 ```
 
-## appimage-run
+### appimage-run
 ```sh
 ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## dnf-install
+### dnf-install
 ```sh
 arch=$(uname -m)
 download_url=$(echo "$response" | grep -oP '(?<="browser_download_url": ")[^"]*\.rpm' | grep "${arch}" | head -n1)
@@ -49,7 +49,7 @@ curl -L -o /tmp/vscodium-latest.rpm "$download_url"
 sudo dnf install -y /tmp/vscodium-latest.rpm
 ```
 
-## apt-install
+### apt-install
 ```sh
 arch=$(uname -m)
 case "$arch" in
@@ -70,7 +70,7 @@ sudo apt update
 sudo apt install -y /tmp/vscodium-latest.deb
 ```
 
-## user-install
+### user-install
 ```sh
 download_url=$(echo "$response" | grep -oP '(?<="browser_download_url": ")[^"]*VSCodium-linux-x64[^"]*\.tar\.gz' | head -n1)
 if [[ -z "$download_url" ]]; then
@@ -84,23 +84,23 @@ ln -sfn ${APPSHOME}/${APPNAME}/bin/codium ${HOME}/.local/bin/codium
 rm -f /tmp/vscodium-latest.tar.gz
 ```
 
-## user-remove
+### user-remove
 ```sh
 rm -rf ${APPSHOME}/${APPNAME}
 rm -f ${HOME}/.local/bin/codium
 ```
 
-## user-check
+### user-check
 ```sh
 [ -x ${HOME}/.local/bin/codium ]
 ```
 
-## user-run
+### user-run
 ```sh
 ${HOME}/.local/bin/codium
 ```
 
-## alias default run run-desktop
+### alias default run run-desktop
 ```sh
 if apps codium check user; then
    apps codium run user

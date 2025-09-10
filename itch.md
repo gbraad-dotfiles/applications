@@ -1,8 +1,8 @@
 # Itch
 
-## info
+### info
 
-## vars
+### vars
 ```
 APPNAME="itch"
 ITCHVERSION=1.27.0
@@ -11,14 +11,14 @@ ITCHHOME=${HOME}/.itch
 ITCHBIN=${ITCHHOME}/itch
 ```
 
-## user-install
+### user-install
 ```sh interactive
 curl -L -o /tmp/itch-setup.zip ${ITCHURL}
 unzip /tmp/itch-setup.zip -d /tmp
 /tmp/itch-setup
 ```
 
-## default alias run-desktop
+### default alias run-desktop
 ```sh
 if apps itch check user; then
     apps itch run user
@@ -29,27 +29,27 @@ else
 fi
 ```
 
-## user-run
+### user-run
 ```sh
 ${ITCHBIN}
 ```
 
-## user-check
+### user-check
 ```sh
 [ -x ${ITCHBIN} ]
 ```
 
-## flatpak-install
+### flatpak-install
 ```sh
 flatpak install -y flathub io.itch.itch
 ```
 
-## flatpak-run
+### flatpak-run
 ```sh
 flatpak run io.itch.itch
 ```
 
-## flatpak-check
+### flatpak-check
 ```sh
 flatpak info io.itch.itch > /dev/null
 ```

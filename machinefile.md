@@ -1,19 +1,19 @@
 # Machinefile
 
-## info
+### info
 
-## vars
+### vars
 ```sh
 VERSION="0.9.0"
 DOWNLOAD_BASEURL="https://github.com/gbraad-redhat/Machinefile/releases/download/${VERSION}"
 ```
 
-## run
+### run
 ```sh
 machinefile
 ```
 
-## install
+### install
 ```sh
 arch=$(uname -m)
  if [[ "$arch" == "x86_64" ]]; then

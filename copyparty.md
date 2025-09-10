@@ -1,12 +1,12 @@
 # copyparty
 
-## info
+### info
 
   - https://www.youtube.com/watch?v=15_-hgsX2V0
   - https://github.com//9001/copyparty
 
 
-## vars
+### vars
 ```sh
 APPNAME=copyparty
 APPTITLE=copyparty
@@ -16,69 +16,69 @@ COPYPARTYPORT=3923
 COPYPARTYVOLUME=/media/${USER}
 ```
 
-## install-service
+### install-service
 ```sh
 apps-export-service ${APPNAME} ${APPTITLE}
 ```
 
-## enable-service
+### enable-service
 ```sh
 systemctl --user enable --now ${SVCNAME}
 ```
 
-## disable-service
+### disable-service
 ```sh
 systemctl --user disable --now ${SVCNAME}
 ```
 
-## restart-service
+### restart-service
 ```sh
 apps ${APPNAME} service stop
 apps ${APPNAME} service start
 ```
 
-## start-service
+### start-service
 ```sh
 systemctl --user start ${SVCNAME}
 ```
 
-## stop-service
+### stop-service
 ```sh
 systemctl --user stop ${SVCNAME}
 ```
 
-## status-service
+### status-service
 ```sh
 systemctl --user status ${SVCNAME}
 ```
 
-## active-service
+### active-service
 ```sh
 systemctl --user is-active ${SVCNAME}
 ```
 
-## journal-service
+### journal-service
 ```sh interactive
 journalctl --user -u ${SVCNAME} -f
 ```
 
 ---
 
-## install pip-install
+### install pip-install
 ```sh
 python3 -m pip install --user -U copyparty --break-system-packages
 ```
 
 ---
 
-## expose
+### expose
 ```sh
 tailscale serve --bg --tcp ${COPYPARTYPORT} ${COPYPARTYPORT}
 ```
 
 ---
 
-## default alias run run-service
+### default alias run run-service
 ```sh interactive
 python -m copyparty -i ${COPYPARTYHOST} -p ${COPYPARTYPORT} -v ${COPYPARTYVOLUME}::rw
 ```

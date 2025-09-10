@@ -1,7 +1,7 @@
 # Systemctl manager for user
 
 
-## shared
+### shared
 ```sh
 userctl_commands=(
   status restart start stop enable disable remove journal
@@ -35,7 +35,7 @@ create_user_session() {
 }
 ```
 
-## default alias run
+### default alias run
 ```sh interactive
 run_userctl() {
   local chosen_command=$(printf "%s\n" "${userctl_commands[@]}" | fzf --prompt="userctl command> ")

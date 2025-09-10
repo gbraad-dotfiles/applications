@@ -1,19 +1,19 @@
 # fzf - Fuzzy Finder
 
-## info
+### info
 
-## check
+### check
 ```sh
 command -v fzf >/dev/null 2>&1
 ```
 
-## apt-install
+### apt-install
 ```sh
 sudo update
 sudo apt install -y fzf
 ```
 
-## dnf-install
+### dnf-install
 ```sh
 sudo dnf install -y fzf
 ```

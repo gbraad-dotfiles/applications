@@ -1,12 +1,12 @@
 # Compile CRC
 
 
-## info
+### info
 
 Definition to compile the [CRC](https://github.com/crc-org/crc) project.
 
 
-## vars
+### vars
 This action defines variables that will be used in all the actions
 
 ```sh
@@ -17,36 +17,36 @@ CRCLOCAL=$(eval echo "${CRCSOURCE}")
 CRCDEVENV="gofedora"
 ```
 
-## shared
+### shared
 
 ---
 
 Local source interaction.
 
-## exists-source
+### exists-source
 ```sh
 [ -d ${CRCLOCAL} ]
 ```
 
-## remove-source
+### remove-source
 ```sh
 rm -rf ${CRCLOCAL}
 ```
 
-## reset-source
+### reset-source
 ```sh
 cd ${CRCLOCAL}
 git reset --hard
 cd -
 ```
 
-## checkout-source
+### checkout-source
 ```sh
 mkdir -p ${CRCLOCAL}
 git clone https://github.com/crc-org/crc ${CRCLOCAL}
 ```
 
-## cd
+### cd
 This action changes to the local source directory.
 
 ```sh interactive
@@ -57,7 +57,7 @@ fi
 cd ${CRCLOCAL}
 ```
 
-## code
+### code
 ```sh interactive
 if ! apps ${APPNAME} source exists; then
   echo "Run: 'apps ${APPNAME} source checkout' first."
@@ -70,22 +70,22 @@ code ${CRCLOCAL}
 
 These are actions to manage the `devenv` container that is used.
 
-## remove-devenv
+### remove-devenv
 ```sh
 devenv ${CRCDEVENV} remove
 ```
 
-## start-devenv
+### start-devenv
 ```sh
 devenv ${CRCDEVENV} noinit
 ```
 
-## stop-devenv
+### stop-devenv
 ```sh
 devenv ${CRCDEVENV} stop
 ```
 
-## exists-devenv
+### exists-devenv
 ```sh
 devenv ${CRCDEVENV} exists
 ```
@@ -94,22 +94,22 @@ devenv ${CRCDEVENV} exists
 
 The compilation actions will be performed inside a `devenv`-container.
 
-## make
+### make
 ```sh interactive
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make"
 ```
 
-## cross-make
+### cross-make
 ```sh interactive
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make cross"
 ```
 
-## clean-make
+### clean-make
 ```sh interactive
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make clean"
 ```
 
-## local-make
+### local-make
 Temporary solution to run make locally on the host
 
 ```sh interactive
@@ -125,7 +125,7 @@ Default action is to compile. Performs the following:
   - `make clean`
   - `make cross`
 
-## default alias compile
+### default alias compile
 ```sh interactive
 if ! apps ${APPNAME} source exists; then
   apps ${APPNAME} source checkout

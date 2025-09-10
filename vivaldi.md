@@ -1,6 +1,6 @@
 # Vivaldi
 
-## info
+### info
 **Vivaldi** is a free, cross-platform web browser developed by Vivaldi Technologies. It is known for its rich customization options, advanced tab management, built-in productivity tools (such as notes, mail, and calendar), and a strong focus on user privacy. Vivaldi is built on Chromium, allowing compatibility with Chrome extensions, and is available for Linux, Windows, macOS, and Android.
 
 - Homepage: [https://vivaldi.com](https://vivaldi.com)
@@ -17,18 +17,18 @@
   - Support for Chrome extensions
 
 
-## vars
+### vars
 ```sh
 cmd=/usr/bin/vivaldi
 APPNAME=Vivaldi
 ```
 
-## check
+### check
 ```sh
 [ -x $cmd ]
 ```
 
-## default alias run run-desktop
+### default alias run run-desktop
 ```sh background
 if apps vivaldi check; then
     $cmd
@@ -37,18 +37,18 @@ elif apps vivaldi check flatpak; then
 fi
 ```
 
-## dnf-install
+### dnf-install
 ```sh
 sudo dnf config-manager addrepo --from-repofile=https://repo.vivaldi.com/archive/vivaldi-fedora.repo
 sudo dnf install -y vivaldi-stable
 ```
 
-## dnf-remove
+### dnf-remove
 ```sh
 sudo dnf remove -y vivaldi-stable
 ```
 
-## apt-install
+### apt-install
 ```sh
 wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/vivaldi-browser.gpg
 echo "deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=amd64] https://repo.vivaldi.com/archive/deb/ stable main" | sudo tee /etc/apt/sources.list.d/vivaldi.list
@@ -56,33 +56,33 @@ sudo apt update
 sudo apt install -y vivaldi-stable
 ```
 
-## apt-remove
+### apt-remove
 ```sh
 sudo apt remove -y vivaldi-stable
 ```
 
-## flatpak-install
+### flatpak-install
 ```sh
 flatpak install --user --assumeyes flathub com.vivaldi.Vivaldi
 ```
 
-## flatpak-run
+### flatpak-run
 ```sh
 flatpak run com.vivaldi.Vivaldi
 ```
 
-## flatpak-check
+### flatpak-check
 ```sh
 flatpak info com.vivaldi.Vivaldi > /dev/null
 ```
 
-## flatpak-remove
+### flatpak-remove
 ```sh
 flatpak uninstall com.Vivaldi.vivaldi
 rm -rf ~/.var/app/com.vivaldi.Vivaldi/config/vivaldi
 ```
 
-## appimage-install
+### appimage-install
 Unofficial releases
 
 ```sh
@@ -99,22 +99,22 @@ curl -L "$BASE_URL/$FILENAME" -o ${APPSHOME}/${APPNAME}.AppImage
 chmod +x ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## appimage-remove
+### appimage-remove
 ```sh
 rm -f ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## appimage-run
+### appimage-run
 ```sh
 ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## appimage-check
+### appimage-check
 ```sh
 [ -x ${APPSHOME}/${APPNAME}.AppImage ]
 ```
 
-## user-install
+### user-install
 ```sh
 apps vivaldi install appimage
 ${APPSHOME}/${APPNAME}.AppImage --appimage-extract
@@ -124,17 +124,17 @@ sudo chmod 4755 ${APPSHOME}/${APPNAME}/vivaldi-sandbox
 apps vivaldi remove appimage
 ```
 
-## user-remove
+### user-remove
 ```sh
 rm -rf ${APPSHOME}/${APPNAME}
 ```
 
-## user-check
+### user-check
 ```sh
 [ -x "${APPSHOME}/${APPNAME}/vivaldi" ]
 ```
 
-## user-run
+### user-run
 ```sh
 ${APPSHOME}/${APPNAME}/vivaldi
 ```

@@ -1,28 +1,28 @@
 # MAME
 
-## info
+### info
 
-## flatpak-install
+### flatpak-install
 ```sh
 flatpak install flathub org.mamedev.MAME
 ```
 
-## flatpak-run
+### flatpak-run
 ```sh
 flatpak run org.mamedev.MAME
 ```
 
-## flatpak-check
+### flatpak-check
 ```sh
 flatpak info org.mamedev.MAME > /dev/null
 ```
 
-## dnf-install
+### dnf-install
 ```sh
 sudo dnf install -y mame
 ```
 
-## default run
+### default run
 ```sh
 if apps mame check flatpak; then
   apps mame run flatpak

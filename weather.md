@@ -1,34 +1,34 @@
 # Weather
 
-## info
+### info
 
-## vars
+### vars
 ```sh
 APPNAME="weather"
 CITIES=("Beijing" "Amsterdam" "Apeldoorn")
 ```
 
-## ams amsterdam ams-alias amsterdam-alias
+### ams amsterdam ams-alias amsterdam-alias
 ```sh
 apps weather query --arg CITY="Amsterdam"
 ```
 
-## apd apeldoorn apd-alias apeldoorn-alias
+### apd apeldoorn apd-alias apeldoorn-alias
 ```sh
 apps weather query --arg CITY="Apeldoorn"
 ```
 
-## pek peking beijing pek-alias peking-alias beijing-alias
+### pek peking beijing pek-alias peking-alias beijing-alias
 ```sh
 apps weather query --arg CITY="Beijing"
 ```
 
-## query
+### query
 ```sh
 curl -sL https://wttr.in/${CITY}
 ```
 
-## default run alias
+### default run alias
 ```sh interactive
 CITY=$(printf "%s\n" "${CITIES[@]}" | fzf)
 if [[ -n ${CITY} ]]; then

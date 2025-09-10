@@ -1,19 +1,19 @@
 # Cardforge
 
-## info
+### info
 Forge is a dynamic and open-source Rules Engine tailored for Magic: The Gathering enthusiasts.
 
   - Website: https://card-forge.github.io/forge/
   - Source: https://github.com/Card-Forge/forge
 
 
-## fedora-install
+### fedora-install
 ```sh
 sudo dnf install -y java-21-openjdk
 apps cardforge install user
 ```
 
-## user-install
+### user-install
 ```sh
 mkdir -p ${APPSHOME}/cardforge
 curl -L https://github.com/Card-Forge/forge/releases/download/forge-2.0.00/forge-installer-2.0.00.tar.bz2 -o /tmp/forge-install.tar.bz2
@@ -21,17 +21,17 @@ tar -xjvf /tmp/forge-install.tar.bz2 -C ${APPSHOME}/cardforge/
 rm -f /tmp/forge-install.tar.bz2
 ```
 
-## default run
+### default run
 ```sh
 ${APPSHOME}/cardforge/forge.sh
 ```
 
-## devenv-install
+### devenv-install
 ```sh
 devenv cardforge system
 ```
 
-## podman-install
+### podman-install
 ```sh
 mkdir -p ~/.cache/forge
 podman run -d --name cardforge \

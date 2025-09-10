@@ -1,12 +1,12 @@
 # Compile Macadam
 
 
-## info
+### info
 
 Definition to compile the [Macadam](https://github.com/crc-org/macadam) library.
 
 
-## vars
+### vars
 This action defines variables that will be used in all the actions
 
 ```sh
@@ -18,47 +18,47 @@ MCDLOCAL=$(eval echo "${MCDSOURCE}")
 MCDDEVENV="gofedora"
 ```
 
-## shared
+### shared
 
 ---
 
 Local source interaction.
 
-## exists-source
+### exists-source
 ```sh
 [ -d ${MCDLOCAL} ]
 ```
 
-## remove-source
+### remove-source
 ```sh
 rm -rf ${MCDLOCAL}
 ```
 
-## reset-source
+### reset-source
 ```sh
 cd ${MCDLOCAL}
 git reset --hard
 cd -
 ```
 
-## checkout-source
+### checkout-source
 ```sh
 mkdir -p ${MCDLOCAL}
 git clone ${MCDREPO} ${MCDLOCAL}
 ```
 
-## cp
+### cp
 This action copies the macadam binary to the user's local bin folder.
 ```sh
 cp ${MCDLOCAL}/bin/macadam-linux-amd64 ${LOCALBIN}/macadam
 ```
 
-## rm
+### rm
 ```sh
 rm -f ${LOCALBIN}/macadam
 ```
 
-## cd
+### cd
 This action changes to the local source directory.
 
 ```sh interactive
@@ -69,7 +69,7 @@ fi
 cd ${MCDLOCAL}
 ```
 
-## code
+### code
 ```sh interactive
 if ! apps ${APPNAME} source exists; then
   echo "Run: 'apps ${APPNAME} source checkout' first."
@@ -82,22 +82,22 @@ code ${MCDLOCAL}
 
 These are actions to manage the `devenv` container that is used.
 
-## remove-devenv
+### remove-devenv
 ```sh
 devenv ${MCDDEVENV} remove
 ```
 
-## start-devenv
+### start-devenv
 ```sh
 devenv ${MCDDEVENV} noinit
 ```
 
-## stop-devenv
+### stop-devenv
 ```sh
 devenv ${MCDDEVENV} stop
 ```
 
-## exists-devenv
+### exists-devenv
 ```sh
 devenv ${MCDDEVENV} exists
 ```
@@ -106,22 +106,22 @@ devenv ${MCDDEVENV} exists
 
 The compilation actions will be performed inside a `devenv`-container.
 
-## make
+### make
 ```sh interactive
 devenv ${MCDDEVENV} usercmd "cd ${MCDSOURCE} && make"
 ```
 
-## cross-make
+### cross-make
 ```sh interactive
 devenv ${MCDDEVENV} usercmd "cd ${MCDSOURCE} && make cross"
 ```
 
-## clean-make
+### clean-make
 ```sh interactive
 devenv ${MCDDEVENV} usercmd "cd ${MCDSOURCE} && make clean"
 ```
 
-## local-make
+### local-make
 Temporary solution to run make locally on the host
 
 ```sh interactive
@@ -137,7 +137,7 @@ Default action is to compile. Performs the following:
   - `make clean`
   - `make cross`
 
-## default alias compile
+### default alias compile
 ```sh interactive
 if ! apps ${APPNAME} source exists; then
   apps ${APPNAME} source checkout

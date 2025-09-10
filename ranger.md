@@ -1,28 +1,28 @@
 # ranger
 
-## info
+### info
 
-## dnf-install
+### dnf-install
 ```sh
 sudo dnf install -y ranger file
 ```
 
-## apt-install
+### apt-install
 ```sh
 sudo apt install -y ranger
 ```
 
-## brew-install bluefin-install
+### brew-install bluefin-install
 ```sh
 brew install ranger
 ```
 
-## pkg-install termux-install
+### pkg-install termux-install
 ```sh
 pkg install ranger
 ```
 
-## default run screen 
+### default run screen 
 ```sh interactive
 if ! apps ranger check; then
   #apps ranger install
@@ -31,7 +31,7 @@ fi
 screen ranger
 ```
 
-## check
+### check
 ```sh
 command -v ranger > /dev/null 2>&1
 ```

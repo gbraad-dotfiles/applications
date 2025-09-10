@@ -1,8 +1,8 @@
 # OCI registry client
 
-## info
+### info
 
-## install
+### install
 ```sh
 VERSION="1.2.0"
 local TEMP_DIR=$(mktemp -d)

@@ -1,16 +1,16 @@
 # Analogue clock
 
-## info
+### info
 
   - Source: https://github.com/gbraad-apps/analogue-clock-sciter
   - Website: https://apps.gbraad.nl/analogue-clock/
 
-## vars
+### vars
 ```sh
 APPNAME="analogue-clock"
 ```
 
-## install
+### install
 ```sh
 mkdir -p ${APPSHOME}/${APPNAME}
 curl -sL https://github.com/gbraad-apps/analogue-clock-sciter/releases/download/v0.5/clock-linux.zip -o /tmp/clock.zip
@@ -19,12 +19,12 @@ chmod +x ${APPSHOME}/${APPNAME}/clock
 rm -f /tmp/clock.zip
 ```
 
-## check
+### check
 ```sh
 [ -x ${APPSHOME}/${APPNAME}/clock ]
 ```
 
-## alias default run run-desktop
+### alias default run run-desktop
 ```sh
 if apps analogue-clock check; then 
     ${APPSHOME}/${APPNAME}/clock

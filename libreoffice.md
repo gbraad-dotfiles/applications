@@ -1,56 +1,56 @@
 # LibreOffice
 
-## info
+### info
 
 
-## vars
+### vars
 ```sh
 cmd=/usr/bin/libreoffice
 APPNAME=libreoffice
 ```
 
-## dnf-install
+### dnf-install
 ```
 sudo dnf install -y libreoffice
 ```
 
-## flatpak-install
+### flatpak-install
 ```sh
 flatpak install --user --assumeyes flathub org.libreoffice.LibreOffice
 ```
 
-## flatpak-run
+### flatpak-run
 ```sh
 flatpak run org.libreoffice.LibreOffice
 ```
 
-## flatpak-check
+### flatpak-check
 ```sh
 flatpak info org.libreoffice.LibreOffice > /dev/null
 ```
 
-## appimage-install
+### appimage-install
 ```sh
 curl -sL https://appimages.libreitalia.org/LibreOffice-still.standard-x86_64.AppImage -o ${APPSHOME}/${APPNAME}.AppImage
 chmod +x ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## appimage-remove
+### appimage-remove
 ```sh
 rm -f ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## appimage-run
+### appimage-run
 ```sh
 ${APPSHOME}/${APPNAME}.AppImage
 ```
 
-## appimage-check
+### appimage-check
 ```sh
 [ -x ${APPSHOME}/${APPNAME}.AppImage ]
 ```
 
-## user-install
+### user-install
 ```sh
 apps libreoffice install appimage
 ${APPSHOME}/${APPNAME}.AppImage --appimage-extract
@@ -58,27 +58,27 @@ mv squashfs-root ${APPSHOME}/${APPNAME}
 apps libreoffice remove appimage
 ```
 
-## user-remove
+### user-remove
 ```sh
 rm -rf ${APPSHOME}/${APPNAME}
 ```
 
-## user-check
+### user-check
 ```sh
 [ -x ${APPSHOME}/${APPNAME}/AppRun ]
 ```
 
-## user-run
+### user-run
 ```sh
 ${APPSHOME}/${APPNAME}/AppRun
 ```
 
-## check
+### check
 ```sh
 [ -x $cmd ]
 ```
 
-## alias default run run-desktop
+### alias default run run-desktop
 ```sh
 if apps libreoffice check; then
     $cmd

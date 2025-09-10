@@ -1,8 +1,8 @@
 # System install
 
-## info
+### info
 
-## default fedora-install
+### default fedora-install
 ```sh
 sudo dnf install -y \
     mc vim tmux screen links lynx z

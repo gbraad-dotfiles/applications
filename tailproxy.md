@@ -1,8 +1,8 @@
 # Tailscale user-space
 
-## info
+### info
 
-## vars
+### vars
 ```sh
 APPNAME=tailproxy
 APPTITLE="Tailscale user-space"
@@ -15,7 +15,7 @@ tailproxy() {
 }
 ```
 
-## install
+### install
 Checks if Tailscale is installed
 
 ```sh
@@ -25,52 +25,52 @@ fi
 apps ${APPNAME} service install
 ```
 
-## install-service
+### install-service
 ```sh
 apps-export-service ${APPNAME} ${APPTITLE}
 ```
 
-## enable-service
+### enable-service
 ```sh
 systemctl --user enable --now ${SVCNAME}
 ```
 
-## disable-service
+### disable-service
 ```sh
 systemctl --user disable --now ${SVCNAME}
 ```
 
-## start-service
+### start-service
 ```sh
 systemctl --user start ${SVCNAME}
 ```
 
-## stop-service
+### stop-service
 ```sh
 systemctl --user stop ${SVCNAME}
 ```
 
-## restart-service
+### restart-service
 ```sh
 systemctl --user restart ${SVCNAME}
 ```
 
-## status-service
+### status-service
 ```sh
 systemctl --user status ${SVCNAME}
 ```
 
-## active-service
+### active-service
 ```sh
 systemctl --user is-active ${SVCNAME}
 ```
 
-## journal-service
+### journal-service
 ```sh interactive
 journalctl --user -u ${SVCNAME} -f
 ```
 
-## run-service run
+### run-service run
 ```sh interactive
 mkdir -p $STATEDIR
 tailscaled --tun=userspace-networking \
@@ -81,22 +81,22 @@ tailscaled --tun=userspace-networking \
     --port $(dotini tailscale --get tailproxy.port)
 ```
 
-## screen
+### screen
 ```
 screen apps tailproxy run
 ```
 
-## ssh-config
+### ssh-config
 ```sh
 tailproxy set --ssh=true
 ```
 
-## exitnode-config
+### exitnode-config
 ```sh
 tailproxy set --advertise-exit-node=true
 ```
 
-## up
+### up
 ```sh interactive
 tailproxy status > /dev/null 2>&1
 RESULT=$?
@@ -116,13 +116,13 @@ if [ $RESULT -eq 1 ]; then
 fi
 ```
 
-## connect
+### connect
 ```sh
 secrets var tailscale_authkey
 apps tailproxy up
 ```
 
-## expose
+### expose
 This exposes the tailproxy SOCKS5 port on the host tailnet
 
 ```sh
@@ -130,7 +130,7 @@ port=$(dotini tailscale --get tailproxy.socks5-server-port)
 tailscale serve --bg --tcp ${port} ${port}
 ```
 
-## default status
+### default status
 ```sh
 # Might be running in a screen when no systemd is available
 #if ! apps tailproxy service active > /dev/null 2>&1; then
@@ -140,55 +140,55 @@ tailproxy status | comment_filter
 #fi
 ```
 
-## online-status
+### online-status
 This will return the online nodes on the current tailnet
 
 ```sh
 tailproxy status | online_filter
 ```
 
-## offline-status
+### offline-status
 This will return the online nodes on the current tailnet
 
 ```sh
 tailproxy status | offline_filter
 ```
 
-## direct-status
+### direct-status
 This will return the direct connections with the current host
 
 ```sh
 tailproxy status | direct_filter
 ```
 
-## tagged-status
+### tagged-status
 ```sh
 tailproxy status | tagged_filter
 ```
 
-## tsnet-status
+### tsnet-status
 ```sh
 tailproxy status | tsnet_filter
 ```
 
-## exitnode-status
+### exitnode-status
 This will return the exit nodes on the current tailnet
 
 ```sh
 tailproxy status | exitnode_filter
 ```
 
-## select-exitmull
+### select-exitmull
 ```sh
 tailproxy set --exit-node $(tailproxy exit-node list | grep mull | fzf | awk '{print $2}')
 ```
 
-## select-exitnode
+### select-exitnode
 ```sh
 tailproxy set --exit-node $(apps tailproxy status exitnode | awk '{print $2}' | fzf)
 ```
 
-## ping
+### ping
 ```sh
 NODE=$(apps tailproxy status online | awk '{print $1, $2}' | fzf | awk '{print  $1}')
 tailproxy ping ${NODE}

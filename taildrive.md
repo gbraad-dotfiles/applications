@@ -1,19 +1,19 @@
 # Taildrive - share folder with Tailscale
 
-## info
+### info
 
 Select directories you would like to share with other nodes on your tailnet. They can be accessed by WebDAV via http://100.100.100.100:8080/...
 You can select multiple directories with `<TAB>`, and confirm the selection with `<ENTER>`. `<ESC>` cancels the function.
 
 
-## shares
+### shares
 ```sh
 tailscale drive share projects ${HOME}/Projects
 tailscale drive share documents ${HOME}/Documents
 tailscale drive share downloads ${HOME}/Downloads
 ```
 
-## default alias run
+### default alias run
 ```sh
 if [ ! -n "$(find . -mindepth 1 -maxdepth 1 -type d)" ]; then
   echo "No directories in the current folder."

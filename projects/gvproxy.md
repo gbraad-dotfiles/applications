@@ -1,12 +1,12 @@
 # Compile gvproxy
 
 
-## info
+### info
 
 Definition to compile the [gvproxy](https://github.com/containers/gvisor-tap-vsock) binary.
 
 
-## vars
+### vars
 This action defines variables that will be used in all the actions
 
 ```sh
@@ -18,48 +18,48 @@ GVPLOCAL=$(eval echo "${GVPSOURCE}")
 GVPDEVENV="gofedora"
 ```
 
-## shared
+### shared
 
 ---
 
 Local source interaction.
 
-## exists-source
+### exists-source
 ```sh
 [ -d ${GVPLOCAL} ]
 ```
 
-## remove-source
+### remove-source
 ```sh
 rm -rf ${GVPLOCAL}
 ```
 
-## reset-source
+### reset-source
 ```sh
 cd ${GVPLOCAL}
 git reset --hard
 cd -
 ```
 
-## checkout-source
+### checkout-source
 ```sh
 mkdir -p ${GVPLOCAL}
 git clone ${GVPREPO} ${GVPLOCAL}
 ```
 
-## cp
+### cp
 This action installs the gvproxy binary into the podman machine expected location
 
 ```sh
 cp ${GVPLOCAL}/bin/gvproxy ${LOCALBIN}/gvproxy
 ```
 
-## rm
+### rm
 ```sh
 rm -f ${LOCALBIN}/gvproxy
 ```
 
-## cd
+### cd
 This action changes to the local source directory.
 
 ```sh interactive
@@ -70,7 +70,7 @@ fi
 cd ${GVPLOCAL}
 ```
 
-## code
+### code
 ```sh interactive
 if ! apps ${APPNAME} source exists; then
   echo "Run: 'apps ${APPNAME} source checkout' first."
@@ -83,22 +83,22 @@ code ${GVPLOCAL}
 
 These are actions to manage the `devenv` container that is used.
 
-## remove-devenv
+### remove-devenv
 ```sh
 devenv ${GVPDEVENV} remove
 ```
 
-## start-devenv
+### start-devenv
 ```sh
 devenv ${GVPDEVENV} noinit
 ```
 
-## stop-devenv
+### stop-devenv
 ```sh
 devenv ${GVPDEVENV} stop
 ```
 
-## exists-devenv
+### exists-devenv
 ```sh
 devenv ${GVPDEVENV} exists
 ```
@@ -107,22 +107,22 @@ devenv ${GVPDEVENV} exists
 
 The compilation actions will be performed inside a `devenv`-container.
 
-## make
+### make
 ```sh interactive
 devenv ${GVPDEVENV} usercmd "cd ${GVPSOURCE} && make"
 ```
 
-## cross-make
+### cross-make
 ```sh interactive
 devenv ${GVPDEVENV} usercmd "cd ${GVPSOURCE} && make cross"
 ```
 
-## clean-make
+### clean-make
 ```sh interactive
 devenv ${GVPDEVENV} usercmd "cd ${GVPSOURCE} && make clean"
 ```
 
-## local-make
+### local-make
 Temporary solution to run make locally on the host
 
 ```sh interactive
@@ -138,7 +138,7 @@ Default action is to compile. Performs the following:
   - `make clean`
   - `make cross`
 
-## default alias compile
+### default alias compile
 ```sh interactive
 if ! apps ${APPNAME} source exists; then
   apps ${APPNAME} source checkout

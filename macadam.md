@@ -1,7 +1,7 @@
 # Macadam
 
 
-## vars
+### vars
 ```sh
 GVPROXY_VERSION="v0.8.7"
 GVPROXY_DOWNLOAD_BASEURL="https://github.com/containers/gvisor-tap-vsock/releases/download/${GVPROXY_VERSION}"
@@ -9,7 +9,7 @@ MACADAM_VERSION="v0.2.0"
 MACADAM_DOWNLOAD_BASEURL="https://github.com/crc-org/macadam/releases/download/${MACADAM_VERSION}"
 ```
 
-## default install
+### default install
 ```sh
 arch=$(uname -m)
 if [[ "$arch" == "x86_64" ]]; then

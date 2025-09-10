@@ -1,6 +1,6 @@
 # Code - serve web
 
-## info
+### info
 
   - https://github.com/gbraad-vscode/code-systemd
 
@@ -12,7 +12,7 @@
 > ```
 
 
-## vars
+### vars
 ```sh
 APPNAME=code-serveweb
 APPTITLE="Code serveweb"
@@ -24,7 +24,7 @@ CODEPORT=8001
 
 ---
 
-## install-service
+### install-service
 ```sh
 if ! apps code check cli; then
   apps code install cli
@@ -33,44 +33,44 @@ fi
 apps-export-service ${APPNAME} ${APPTITLE}
 ```
 
-## enable-service
+### enable-service
 ```sh
 systemctl --user enable --now ${SVCNAME}
 ```
 
-## disable-service
+### disable-service
 ```sh
 systemctl --user disable --now ${SVCNAME}
 ```
 
-## start-service
+### start-service
 ```sh
 systemctl --user start ${SVCNAME}
 ```
 
-## stop-service
+### stop-service
 ```sh
 systemctl --user stop ${SVCNAME}
 ```
 
-## restart-service
+### restart-service
 ```sh
 systemctl --user restart ${SVCNAME}
 ```
 
-## status-service
+### status-service
 ```sh
 systemctl --user status ${SVCNAME}
 ```
 
-## active-service
+### active-service
 ```sh
 systemctl --user is-active ${SVCNAME}
 ```
 
 ---
 
-## user-install
+### user-install
 ```sh
 mkdir -p ~/.config/systemd/user/
 curl -fsSL  https://raw.githubusercontent.com/gbraad-vscode/code-systemd/refs/heads/main/user/code-serveweb.service \
@@ -79,7 +79,7 @@ systemctl --user daemon-reload
 #systemctl --user enable --now code-serveweb
 ```
 
-## system-install
+### system-install
 ```sh
 sudo curl -fsSL https://raw.githubusercontent.com/gbraad-vscode/code-systemd/refs/heads/main/system/code-serveweb%40.service \
   -o /etc/systemd/system/code-serveweb@.service
@@ -87,12 +87,12 @@ sudo systemctl daemon-reload
 #sudo systemctl enable --now code-serveweb@${USER}
 ```
 
-## default run run-service
+### default run run-service
 ```sh interactive
 ${LOCALBIN}/code serve-web --without-connection-token --host ${CODEHOST} --port ${CODEPORT}
 ```
 
-## alias screen
+### alias screen
 ```sh
 screen code serveweb
 ```

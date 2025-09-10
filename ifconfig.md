@@ -1,22 +1,22 @@
 # ifconfig
 
 
-## ip
+### ip
 ```sh
 apps ifconfig | jq -r '.ip'
 ```
 
-## country
+### country
 ```sh
 apps ifconfig | jq -r '.country'
 ```
 
-## europe
+### europe
 ```sh
 apps ifconfig | jq -r '.country_eu'
 ```
 
-## default run alias
+### default run alias
 ```sh interactive
 curl -sL https://ifconfig.co/json
 ```

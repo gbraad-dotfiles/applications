@@ -1,11 +1,11 @@
 # Homebrew
 
-## info
+### info
 
 The Missing Package Manager for macOS (or Linux)
 
 
-## install
+### install
 ```sh
 NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```

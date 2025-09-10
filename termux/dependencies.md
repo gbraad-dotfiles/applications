@@ -1,8 +1,8 @@
 # Termux dependencies
 
-## info
+### info
 
-## default termux-install
+### default termux-install
 ```sh
 # for secrets to work
 pkg install openssl-tool

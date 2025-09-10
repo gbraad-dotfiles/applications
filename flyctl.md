@@ -1,13 +1,13 @@
 # flyctl
 
-## info
+### info
 
-## install
+### install
 ```sh
 curl -L https://fly.io/install.sh | sh
 ```
 
-## brew-install
+### brew-install
 ```sh
 brew install flyctl
 ```

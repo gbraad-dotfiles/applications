@@ -1,9 +1,9 @@
 # Onion
 
-## info
+### info
 
 
-## fedora-install
+### fedora-install
 ```sh
 echo '[tor]
 name=Tor for Fedora $releasever - $basearch
@@ -17,7 +17,7 @@ sudo dnf install -y torbrowser-launcher
 
 ---
 
-## default alias run run-desktop
+### default alias run run-desktop
 ```sh
 torbrowser-launcher
 ```

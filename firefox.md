@@ -1,18 +1,18 @@
 # Firefox
 
-## info
+### info
 
-## dnf-install fedora-install
+### dnf-install fedora-install
 ```sh
 sudo dnf install -y firefox
 ```
 
-## apt-install ubuntu-install
+### apt-install ubuntu-install
 ```sh
 sudo apt install -y firefox
 ```
 
-## alias default run run-desktop
+### alias default run run-desktop
 ```sh background
 if ! apps firefox check; then
   echo "Not installed. Try to install with: apps firefox install"
@@ -21,7 +21,7 @@ fi
 firefox
 ```
 
-## check
+### check
 ```sh
 command -v firefox > /dev/null 2>&1
 ```

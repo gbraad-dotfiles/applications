@@ -1,13 +1,13 @@
 # Act
 
-## shared
+### shared
 ```sh
 ACT_VERSION="v0.2.81"
 ACT_BASE_URL="https://github.com/nektos/act/releases/download/${ACT_VERSION}"
 ```
 
 
-## install
+### install
 ```sh interactive
 ARCH=$(uname -m)
 case "$ARCH" in
@@ -27,7 +27,7 @@ chmod +x ${LOCALBIN}/act
 rm -f "$ACT_FILE"
 ```
 
-## setup
+### setup
 ```sh
 mkdir -p /home/${USER}/.config/act/
 cat << EOF > /home/${USER}/.config/act/actrc

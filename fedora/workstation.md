@@ -1,8 +1,8 @@
 # Workstation
 
-## info
+### info
 
-## default fedora-install
+### default fedora-install
 ```sh
 sudo dnf install -y \
     https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \

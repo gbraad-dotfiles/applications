@@ -1,13 +1,13 @@
 # Launcher
 
-## shared
+### shared
 ```sh
 launcher_commands=(
    apps devenvs devboxes machines userctl
 )
 ```
 
-## default alias run
+### default alias run
 ```sh interactive
 select_launch_type() {
   local selected

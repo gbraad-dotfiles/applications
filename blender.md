@@ -1,11 +1,11 @@
 # Blender
 
-## install
+### install
 ```sh
 flatpak install flathub org.blender.Blender
 ```
 
-## default alias run desktop-run
+### default alias run desktop-run
 ```sh
 flatpak run org.blender.Blender
 ```

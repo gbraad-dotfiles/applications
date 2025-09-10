@@ -1,9 +1,9 @@
 # Onion
 
-## info
+### info
 
 
-## vars
+### vars
 ```sh
 APPNAME="onion-router"
 APPTITLE="Onion router"
@@ -19,52 +19,52 @@ ORCONTROLADDRESS=${ORHOST}:${ORCONTROLPORT}
 
 ---
 
-## install-service
+### install-service
 ```sh interactive
 apps-export-service ${APPNAME} ${APPTITLE}
 ```
 
-## enable-service
+### enable-service
 ```sh
 systemctl --user enable --now ${SVCNAME}
 ```
 
-## disable-service
+### disable-service
 ```sh
 systemctl --user disable --now ${SVCNAME}
 ```
 
-## start-service
+### start-service
 ```sh
 systemctl --user start ${SVCNAME}
 ```
 
-## stop-service
+### stop-service
 ```sh
 systemctl --user stop ${SVCNAME}
 ```
 
-## restart-service
+### restart-service
 ```sh
 systemctl --user restart ${SVCNAME}
 ```
 
-## status-service
+### status-service
 ```sh
 systemctl --user status ${SVCNAME}
 ```
 
-## active-service
+### active-service
 ```sh
 systemctl --user is-active ${SVCNAME}
 ```
 
-## journal-service
+### journal-service
 ```sh interactive
 journalctl --user -u ${SVCNAME} -f
 ```
 
-## expose
+### expose
 This exposes the SOCKS5 port on the host tailnet
 
 ```sh
@@ -73,7 +73,7 @@ tailscale serve --bg --tcp ${ORSOCKSPORT} ${ORSOCKSPORT}
 
 ---
 
-## centos-install almalinux-install
+### centos-install almalinux-install
 ```sh
 echo '[tor]
 name=Tor for Enterprise Linux $releasever - $basearch
@@ -85,7 +85,7 @@ cost=100' | sudo tee /etc/yum.repos.d/tor.repo
 sudo dnf install -y tor
 ```
 
-## fedora-install
+### fedora-install
 ```sh
 echo '[tor]
 name=Tor for Fedora $releasever - $basearch
@@ -99,7 +99,7 @@ sudo dnf install -y tor
 
 ---
 
-## run run-service
+### run run-service
 ```sh interactive
 sudo mkdir -p /run/tor
 sudo chmod 700 /run/tor

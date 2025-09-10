@@ -1,7 +1,7 @@
 # Glow
 
 
-## info
+### info
 
 **Glow** is a command-line tool for rendering Markdown files with syntax highlighting in the terminal. It is designed to provide a visually pleasing Markdown reading experience directly from your shell, supporting local files, GitHub repositories, and markdown piped from standard input.
 
@@ -15,12 +15,12 @@
   - Customizable styles and themes
 
 
-## brew-intsall
+### brew-intsall
 ```sh
 brew install glow
 ```
 
-## dnf-install
+### dnf-install
 ```sh
 echo '[charm]
 name=Charm
@@ -31,12 +31,12 @@ gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
 sudo dnf install -y glow
 ```
 
-## go-install
+### go-install
 ```sh
 go install github.com/charmbracelet/glow@latest
 ```
 
-## termux-install
+### termux-install
 ```sh
 pkg install glow
 ```

@@ -1,16 +1,16 @@
 # Links - text browser
 
-## dnf-install fedora-install
+### dnf-install fedora-install
 ```sh
 sudo dnf install -y links
 ```
 
-## brew-install bluefin-install
+### brew-install bluefin-install
 ```sh
 brew installl links
 ```
 
-## default screen run
+### default screen run
 ```sh
 screen links
 ```

@@ -1,22 +1,22 @@
 # GitHub CLI
 
-## info
+### info
 
-## fedora-install
+### fedora-install
 ```sh
 sudo dnf install dnf5-plugins
 sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf install -y gh --repo gh-cli
 ```
 
-## centos-install
+### centos-install
 ```sh
 sudo dnf install 'dnf-command(config-manager)'
 sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
 sudo dnf install -y gh --repo gh-cli
 ```
 
-## apt-install
+### apt-install
 ```sh
 sudo mkdir -p -m 755 /etc/apt/keyrings \
 out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
@@ -27,12 +27,12 @@ sudo apt update \
 sudo apt install gh -y
 ```
 
-## bluefin-install brew-install
+### bluefin-install brew-install
 ```sh
 brew install gh
 ```
 
-## secret
+### secret
 ```sh
 mkdir -p ${HOME}/.config/gh
 secrets file ghcli ${HOME}/.config/gh/hosts.yml

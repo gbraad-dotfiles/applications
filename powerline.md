@@ -1,21 +1,21 @@
 # Powerline
 
-## check
+### check
 ```sh
 command -v powerline-config >/dev/null 2>&1
 ```
 
-## dnf-install
+### dnf-install
 ```sh
 sudo dnf install powerline tmux-powerline vim-powerline
 ```
 
-## pip-install
+### pip-install
 ```sh
 pip install --user powerline-status
 ```
 
-## apt-install
+### apt-install
 ```sh
 sudo apt update
 sudo apt install powerline

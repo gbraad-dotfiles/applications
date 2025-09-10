@@ -1,23 +1,23 @@
 # Midnight Commander
 
-## info
+### info
 
-## dnf-install
+### dnf-install
 ```sh
 sudo dnf install -y mc
 ```
 
-## apt-install
+### apt-install
 ```sh
 sudo apt install -y mc
 ```
 
-## brew-install bluefin-install
+### brew-install bluefin-install
 ```sh
 brew install mc
 ```
 
-## default run
+### default run
 ```sh
 screen mc
 ```

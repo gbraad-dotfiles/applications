@@ -2,9 +2,9 @@
 
 ## 
 
-## info
+### info
 
-## vars
+### vars
 ```sh
 APPNAME=dotfedora
 SVCNAME=dotfiles-machine-${APPNAME}
@@ -12,95 +12,95 @@ SVCNAME=dotfiles-machine-${APPNAME}
 
 ---
 
-## install-service
+### install-service
 ```sh
 machine-export-service ${APPNAME} 
 ```
 
-## enable-service
+### enable-service
 ```sh
 systemctl --user enable --now ${SVCNAME}
 ```
 
-## disable-service
+### disable-service
 ```sh
 systemctl --user disable --now ${SVCNAME}
 ```
 
-## restart-service
+### restart-service
 ```sh
 apps ${APPNAME} service stop
 apps ${APPNAME} service start
 ```
 
-## start-service
+### start-service
 ```sh
 systemctl --user start ${SVCNAME}
 ```
 
-## stop-service
+### stop-service
 ```sh
 systemctl --user stop ${SVCNAME}
 ```
 
-## status-service
+### status-service
 ```sh
 systemctl --user status ${SVCNAME}
 ```
 
-## active-service
+### active-service
 ```sh
 systemctl --user is-active ${SVCNAME}
 ```
 
-## journal-service
+### journal-service
 ```sh interactive
 journalctl --user -u ${SVCNAME} -f
 ```
 
-## run-machine (not used)
+### run-machine (not used)
 ```sh
 machine gofedora service
 ```
 
 ---
 
-## download
+### download
 ```sh
 machine gofedora download
 ```
 
-## create
+### create
 ```sh
 machine gofedora create
 ```
 
-## exists
+### exists
 ```sh
 machine gofedora exists
 ```
 
-## start
+### start
 ```sh
 machine gofedora start
 ```
 
-## stop
+### stop
 ```sh
 machine gofedora stop
 ```
 
-## rm remove
+### rm remove
 ```sh
 machine gofedora rm
 ```
 
-## alias
+### alias
 ```sh
 apps machine/dotfedora
 ```
 
-## console ssh
+### console ssh
 ```sh interactive
 machine dotfedora ssh
 ```

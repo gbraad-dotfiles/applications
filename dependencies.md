@@ -1,8 +1,8 @@
 # Dependencies for dotfiles
 
-## info
+### info
 
-## vars
+### vars
 ```sh
 apps powerline check
 powerline_available=$?
@@ -10,12 +10,12 @@ apps fzf check
 fzf_available=$?
 ```
 
-## check
+### check
 ```sh
 [ $powerline_available -ne 0 ] || [ $fzf_available -ne 0 ]
 ```
 
-## install
+### install
 ```
 if [ $powerline_available -ne 0 ]; then
     apps powerline install pip
