@@ -34,6 +34,8 @@ chmod +x /tmp/macadam-install/macadam
 mv /tmp/macadam-install/gvproxy ${LOCALBIN}
 mv /tmp/macadam-install/macadam ${LOCALBIN}
 
+echo "Downloaded and installed macadam + gvproxy binary"
+
 rm -rf /tmp/macadam-install
 ```
 
