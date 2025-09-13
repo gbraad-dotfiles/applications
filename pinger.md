@@ -8,7 +8,12 @@
 APPNAME=pinger
 APPTITLE="Pinger"
 SVCNAME=dotfiles-apps-${APPNAME}
-PINGERHOST=$(dotini pinger pinger.host)
+```
+
+### config
+```ini
+[pinger]
+   HOST="google.com"
 ```
 
 ### install-service
@@ -58,7 +63,7 @@ journalctl --user -u ${SVCNAME} -f
 
 ### default alias run run-service
 ```sh interactive
-ping ${PINGERHOST}
+ping ${PINGER_HOST}
 ```
 
 ### screen
