@@ -87,5 +87,12 @@ if ! apps copyparty check; then
   apps copyparty install
 fi
 
-python -m copyparty -i ${COPYPARTYHOST} -p ${COPYPARTYPORT} -v ${COPYPARTYVOLUME}::rw
+if [ ! -d "${COPYPARTYVOLUME}" ]; then
+  sudo mkdir -p "${COPYPARTYVOLUME}"
+  sudo chown "${USER}:${USER}" "$COPYPARTYVOLUME"
+fi
+
+python -m copyparty -i ${COPYPARTYHOST} -p ${COPYPARTYPORT} \
+  -v ${COPYPARTYVOLUME}::rw \
+  -v ${HOME}/Documents/:/Documents:rw -v ${HOME}/Downloads:/Downloads:rw -v ${HOME}/Projects:/Projects:rw
 ```
