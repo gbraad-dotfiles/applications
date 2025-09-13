@@ -21,7 +21,7 @@ ORCONTROLADDRESS=${ORHOST}:${ORCONTROLPORT}
 
 ### install-service
 ```sh interactive
-apps-export-service ${APPNAME} ${APPTITLE}
+apps-service-install ${APPNAME} ${APPTITLE}
 ```
 
 ### enable-service

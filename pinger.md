@@ -13,7 +13,7 @@ PINGERHOST=$(dotini pinger pinger.host)
 
 ### install-service
 ```sh
-apps-export-service ${APPNAME} ${APPTITLE}
+apps-service-install ${APPNAME} ${APPTITLE}
 ```
 
 ### enable-service

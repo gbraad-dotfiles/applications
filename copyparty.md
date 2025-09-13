@@ -18,7 +18,7 @@ COPYPARTYVOLUME=/media/${USER}
 
 ### install-service
 ```sh
-apps-export-service ${APPNAME} ${APPTITLE}
+apps-service-install ${APPNAME} ${APPTITLE}
 ```
 
 ### enable-service

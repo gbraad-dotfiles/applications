@@ -14,7 +14,7 @@ if ! apps ${APPNAME} check; then
   apps ${APPNAME} install
 fi
 
-apps-export-service ${APPNAME} ${APPTITLE}
+apps-service-install ${APPNAME} ${APPTITLE}
 ```
 
 ### enable-service
