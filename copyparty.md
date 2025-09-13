@@ -14,7 +14,6 @@ SVCNAME=dotfiles-apps-${APPNAME}
 COPYPARTYHOST=localhost
 COPYPARTYPORT=3923
 COPYPARTYVOLUME=/media/${USER}
-SHAREFOLDERS=("Documents" "Downloads" "Music" "Videos" "Pictures" "Projects" "Applications" "Books")
 ```
 
 ### install-service
@@ -92,7 +91,9 @@ COPYPARTYARGS=( "-i" "${COPYPARTYHOST}" "-p" "${COPYPARTYPORT}" )
 if [ -d "${COPYPARTYVOLUME}" ]; then
   COPYPARTYARGS+=( "-v" "${COPYPARTYVOLUME}::rw" )
 fi
-for folder in "${SHAREFOLDERS[@]}"; do
+
+SHAREFOLDERS=$(dotini folders --get folders.shares)
+echo "${SHAREFOLDERS}" | tr ',' '\n' | while IFS= read -r folder; do
   if [ -d "${HOME}/${folder}" ]; then
     COPYPARTYARGS+=( "-v" "${HOME}/${folder}:/${folder}:rw" )
   fi
