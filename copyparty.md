@@ -69,7 +69,10 @@ journalctl --user -u ${SVCNAME} -f
 python3 -m pip install --user -U copyparty --break-system-packages
 ```
 
----
+### check
+```sh
+python -c "import copyparty" 2>/dev/null
+```
 
 ### expose
 ```sh
@@ -80,5 +83,9 @@ tailscale serve --bg --tcp ${COPYPARTYPORT} ${COPYPARTYPORT}
 
 ### default alias run run-service
 ```sh interactive
+if ! apps copyparty check; then
+  apps copyparty install
+fi
+
 python -m copyparty -i ${COPYPARTYHOST} -p ${COPYPARTYPORT} -v ${COPYPARTYVOLUME}::rw
 ```
