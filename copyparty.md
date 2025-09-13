@@ -11,9 +11,15 @@
 APPNAME=copyparty
 APPTITLE=copyparty
 SVCNAME=dotfiles-apps-${APPNAME}
-COPYPARTYHOST=localhost
-COPYPARTYPORT=3923
-COPYPARTYVOLUME=/media/${USER}
+```
+
+### config
+
+```ini
+[copyparty]
+    HOST="localhost"
+    PORT=3923
+    VOLUME="/media/${USER}"
 ```
 
 ### install-service
@@ -87,9 +93,9 @@ if ! apps copyparty check; then
   apps copyparty install
 fi
 
-COPYPARTYARGS=( "-i" "${COPYPARTYHOST}" "-p" "${COPYPARTYPORT}" )
-if [ -d "${COPYPARTYVOLUME}" ]; then
-  COPYPARTYARGS+=( "-v" "${COPYPARTYVOLUME}::rw" )
+COPYPARTYARGS=( "-i" "${COPYPARTY_HOST}" "-p" "${COPYPARTY_PORT}" )
+if [ -d "${COPYPARTY_VOLUME}" ]; then
+  COPYPARTYARGS+=( "-v" "${COPYPARTY_VOLUME}::rw" )
 fi
 
 SHAREFOLDERS=$(dotini folders --get folders.shares)
