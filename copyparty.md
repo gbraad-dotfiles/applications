@@ -14,7 +14,7 @@ SVCNAME=dotfiles-apps-${APPNAME}
 COPYPARTYHOST=localhost
 COPYPARTYPORT=3923
 COPYPARTYVOLUME=/media/${USER}
-SHAREFOLDERS=("Documents" "Downloads" "Music" "Videos" "Pictures" "Projects" "Applications")
+SHAREFOLDERS=("Documents" "Downloads" "Music" "Videos" "Pictures" "Projects" "Applications" "Books")
 ```
 
 ### install-service
