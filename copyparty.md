@@ -14,6 +14,7 @@ SVCNAME=dotfiles-apps-${APPNAME}
 COPYPARTYHOST=localhost
 COPYPARTYPORT=3923
 COPYPARTYVOLUME=/media/${USER}
+SHAREFOLDERS=("Documents" "Downloads" "Music" "Videos" "Pictures" "Projects" "Applications")
 ```
 
 ### install-service
@@ -87,12 +88,15 @@ if ! apps copyparty check; then
   apps copyparty install
 fi
 
-if [ ! -d "${COPYPARTYVOLUME}" ]; then
-  sudo mkdir -p "${COPYPARTYVOLUME}"
-  sudo chown "${USER}:${USER}" "$COPYPARTYVOLUME"
+COPYPARTYARGS=( "-i" "${COPYPARTYHOST}" "-p" "${COPYPARTYPORT}" )
+if [ -d "${COPYPARTYVOLUME}" ]; then
+  COPYPARTYARGS+=( "-v" "${COPYPARTYVOLUME}::rw" )
 fi
+for folder in "${SHAREFOLDERS[@]}"; do
+  if [ -d "${HOME}/${folder}" ]; then
+    COPYPARTYARGS+=( "-v" "${HOME}/${folder}:/${folder}:rw" )
+  fi
+done
 
-python -m copyparty -i ${COPYPARTYHOST} -p ${COPYPARTYPORT} \
-  -v ${COPYPARTYVOLUME}::rw \
-  -v ${HOME}/Documents/:/Documents:rw -v ${HOME}/Downloads:/Downloads:rw -v ${HOME}/Projects:/Projects:rw
+python -m copyparty ${COPYPARTYARGS[@]}
 ```
