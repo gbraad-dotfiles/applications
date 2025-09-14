@@ -82,7 +82,7 @@ python -c "import copyparty" 2>/dev/null
 
 ### expose
 ```sh
-tailscale serve --bg --tcp ${COPYPARTYPORT} ${COPYPARTYPORT}
+tailscale serve --bg --tcp ${COPYPARTY_PORT} ${COPYPARTY_PORT}
 ```
 
 ---
