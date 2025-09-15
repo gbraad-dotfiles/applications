@@ -117,7 +117,7 @@ run_machine_workflow
 
 ### connect connect-alias
 ```sh interactive
-apps dotshell runner connect
+apps tailshell runner connect
 ```
 
 ### default run alias
