@@ -36,7 +36,7 @@ create_user_session() {
 ```
 
 ### default alias run
-```sh interactive
+```sh 
 run_userctl() {
   local chosen_command=$(printf "%s\n" "${userctl_commands[@]}" | fzf --prompt="userctl command> ")
   [[ -z "$chosen_command" ]] && return 1
