@@ -3,7 +3,7 @@
 ### info
 
 ### check
-```
+```sh
 command -v distrobox >/dev/null 2>&1
 ```
 
