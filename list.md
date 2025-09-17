@@ -1,9 +1,12 @@
 # Application list
 
+### vars
+```sh
+APPSDIR="${_app_defpath:-$HOME/.dotapps}"
+```
+
 ### shared
 ```sh
-APPSDIR="${_appsdefpath:-$HOME/.dotapps}"
-
 show_apps_tree() {
   local dir="$1"
   local prefix="$2"
