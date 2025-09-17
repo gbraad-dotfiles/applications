@@ -1,7 +1,7 @@
 # Machines
 
 ### default alias run
-```sh interactive
+```sh
 run_machines() {
 
   chosen_command=$(printf "%s\n" "${machine_commands[@]}" | fzf --prompt="Machine command> ")

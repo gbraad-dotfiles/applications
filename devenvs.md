@@ -1,7 +1,7 @@
 # Development Environments
 
 ### default alias run
-```sh interactive
+```sh
 run_devenvs() {
 
   chosen_command=$(printf "%s\n" "${devenv_commands[@]}" | fzf --prompt="Devenv command> ")
