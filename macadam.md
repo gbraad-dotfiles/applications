@@ -9,7 +9,12 @@ MACADAM_VERSION="v0.2.0"
 MACADAM_DOWNLOAD_BASEURL="https://github.com/crc-org/macadam/releases/download/${MACADAM_VERSION}"
 ```
 
-### default install
+### check
+```sh
+command -v macadam >/dev/null 2>&1
+```
+
+### install
 ```sh
 arch=$(uname -m)
 if [[ "$arch" == "x86_64" ]]; then

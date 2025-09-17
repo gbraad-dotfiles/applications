@@ -8,6 +8,11 @@ VERSION="0.9.0"
 DOWNLOAD_BASEURL="https://github.com/gbraad-redhat/Machinefile/releases/download/${VERSION}"
 ```
 
+### check
+```sh
+command -v machinefile >/dev/null 2>&1
+```
+
 ### run
 ```sh
 machinefile
