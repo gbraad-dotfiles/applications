@@ -1,6 +1,7 @@
 # Weather
 
 ### info
+This displays a weather forecast
 
 ### vars
 ```sh
