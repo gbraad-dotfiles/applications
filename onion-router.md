@@ -5,8 +5,6 @@
 
 ### vars
 ```sh
-APPNAME="onion-router"
-APPTITLE="Onion router"
 SVCNAME="dotfiles-apps-${APPNAME}"
 ORHOST=127.0.0.1
 ORPORT=0

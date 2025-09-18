@@ -6,7 +6,6 @@
 ### vars
 ```sh
 cmd=/usr/bin/libreoffice
-APPNAME=libreoffice
 ```
 
 ### dnf-install

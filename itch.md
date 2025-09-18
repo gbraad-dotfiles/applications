@@ -4,7 +4,6 @@
 
 ### vars
 ```
-APPNAME="itch"
 ITCHVERSION=1.27.0
 ITCHURL="https://broth.itch.zone/itch-setup/linux-amd64/${ITCHVERSION}/archive/default"
 ITCHHOME=${HOME}/.itch

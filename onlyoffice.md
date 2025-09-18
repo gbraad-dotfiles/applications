@@ -2,10 +2,6 @@
 
 ### info
 
-### vars
-```sh
-APPNAME="OnlyOffice"
-```
 
 ### centos-install fedora-install
 ```sh

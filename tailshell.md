@@ -6,7 +6,6 @@
 
 ### vars
 ```sh
-APPNAME=tailshell
 DOTUSER=${USER}
 ```
 

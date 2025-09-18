@@ -10,7 +10,6 @@ Definition to compile the [Macadam](https://github.com/crc-org/macadam) library.
 This action defines variables that will be used in all the actions
 
 ```sh
-APPNAME="projects/macadam"
 PROJHOME="~/Projects"
 MCDREPO="https://github.com/crc-org/macadam"
 MCDSOURCE="${PROJHOME}/crc-org/macadam"

@@ -4,8 +4,6 @@
 
 ### vars
 ```sh
-APPNAME="jupyter-notebook"
-APPTITLE="Jupyter notebook"
 JUPYTERHOST=0.0.0.0
 SVCNAME=dotfiles-apps-${APPNAME}
 ```

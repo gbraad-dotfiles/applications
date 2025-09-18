@@ -10,7 +10,6 @@ Definition to compile the [CRC](https://github.com/crc-org/crc) project.
 This action defines variables that will be used in all the actions
 
 ```sh
-APPNAME="projects/crc"
 PROJHOME="~/Projects"
 CRCSOURCE="${PROJHOME}/crc-org/crc"
 CRCLOCAL=$(eval echo "${CRCSOURCE}")

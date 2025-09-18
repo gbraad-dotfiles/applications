@@ -5,10 +5,6 @@
   - Source: https://github.com/gbraad-apps/analogue-clock-sciter
   - Website: https://apps.gbraad.nl/analogue-clock/
 
-### vars
-```sh
-APPNAME="analogue-clock"
-```
 
 ### install
 ```sh

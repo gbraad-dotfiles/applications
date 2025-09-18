@@ -10,7 +10,6 @@ Definition to compile the [gvproxy](https://github.com/containers/gvisor-tap-vso
 This action defines variables that will be used in all the actions
 
 ```sh
-APPNAME="projects/gvproxy"
 PROJHOME="~/Projects"
 GVPREPO="https://github.com/containers/gvisor-tap-vsock"
 GVPSOURCE="${PROJHOME}/containers/gvisor-tap-vsock"
