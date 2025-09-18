@@ -116,7 +116,7 @@ run_machine_workflow
 ```
 
 ### connect
-```sh
+```sh evaluate
 app tailshell runner connect
 ```
 
