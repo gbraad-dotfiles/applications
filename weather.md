@@ -7,17 +7,17 @@
 CITIES=("Beijing" "Amsterdam" "Apeldoorn")
 ```
 
-### ams amsterdam ams-alias amsterdam-alias
+### ams amsterdam
 ```sh
 app ${APPNAME} query --arg CITY="Amsterdam"
 ```
 
-### apd apeldoorn apd-alias apeldoorn-alias
+### apd apeldoorn
 ```sh
 app ${APPNAME} query --arg CITY="Apeldoorn"
 ```
 
-### pek peking beijing pek-alias peking-alias beijing-alias
+### pek peking beijing
 ```sh
 app ${APPNAME} query --arg CITY="Beijing"
 ```

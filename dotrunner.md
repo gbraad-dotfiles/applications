@@ -54,7 +54,7 @@ dispatch_workflow() {
 }
 ```
 
-### status status-alias
+### status
 ```sh
 status_dotrunner() {
   gh --repo gbraad-dotfiles/upstream run list
@@ -63,7 +63,7 @@ status_dotrunner() {
 status_dotrunner
 ```
 
-### runner runner-alias
+### runner
 ```sh
 run_runner_workflow() {
   local runner
@@ -75,7 +75,7 @@ run_runner_workflow() {
 run_runner_workflow
 ```
 
-### devenv devenv-alias
+### devenv
 ```sh
 run_devenv_workflow() {
   local runner prefix
@@ -89,7 +89,7 @@ run_devenv_workflow() {
 run_devenv_workflow
 ```
 
-### rshell rscreen rshell-alias rscreen-alias
+### rshell rscreen
 ```sh
 run_rshell_workflow() {
   local runner prefix
@@ -101,7 +101,7 @@ run_rshell_workflow() {
 run_rshell_workflow
 ```
 
-### machine machine-aliaas
+### machine
 ```sh
 run_machine_workflow() {
   local runner prefix
@@ -115,7 +115,7 @@ run_machine_workflow() {
 run_machine_workflow
 ```
 
-### connect connect-alias
+### connect
 ```sh
 app tailshell runner connect
 ```
