@@ -38,4 +38,6 @@ run_tailshell() {
 }
 
 run_tailshell ${DOTUSER}
+unset FILENAME
+unset DOTUSER
 ```
