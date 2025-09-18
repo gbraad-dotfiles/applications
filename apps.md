@@ -2,9 +2,8 @@
 
 ### info
 
-
-### default alias run
-```sh
+### shared
+```sh evaluate
 apps_fuzzy_pick() {
   local applist
   apps_list=$(app --list-apps)
@@ -26,13 +25,13 @@ apps_fuzzy_pick() {
   apptitle="${fields[2, -1]}"
 
   case "$key" in
-    ctrl-r) app $appname run --evaluate ;;
-    ctrl-b) app $appname run --background ;;
-    ctrl-i) app $appname install ;;
-    ctrl-n) app $appname info ;;
+    ctrl-r) app $appname run; return ;;
+    ctrl-b) app $appname run --background; return ;;
+    ctrl-i) app $appname install; return ;;
+    ctrl-n) app $appname info; return ;;
     # return 130 to match Ctrl-C behaviour
-    f5)     apps-desktop-install "$appname" "$apptitle"; return 130 ;;
-    f6)     apps-service-install "$appname" "$apptitle"; return 130 ;;
+    f5)     apps_desktop_install "$appname" "$apptitle"; return 130 ;;
+    f6)     apps_service_install "$appname" "$apptitle"; return 130 ;;
     *)      ;;
   esac
 
@@ -45,9 +44,14 @@ apps_fuzzy_pick() {
 
   echo $appname $action
 }
+```
 
+### default alias run
+```sh
 run_apps() {
   action=($(apps_fuzzy_pick))
+  [[ -z $action ]] && return 3
+
   app $action
 }
 
