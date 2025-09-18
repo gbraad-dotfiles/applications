@@ -2,8 +2,8 @@
 
 ### info
 
-### shared
-```sh evaluate
+### pick
+```sh
 apps_fuzzy_pick() {
   local applist
   apps_list=$(app --list-apps)
@@ -44,12 +44,13 @@ apps_fuzzy_pick() {
 
   echo $appname $action
 }
+apps_fuzzy_pick
 ```
 
 ### default alias run
 ```sh
 run_apps() {
-  action=($(apps_fuzzy_pick))
+  action=($(apps pick))
   [[ -z $action ]] && return 3
 
   app $action
