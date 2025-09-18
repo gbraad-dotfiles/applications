@@ -172,7 +172,7 @@ tailscale status | exitnode_filter
 exitnodes=$(tailscale status --json | jq -r '
   .Peer[] 
   | select(.ExitNodeOption == true) | select(.Online == true)
-  | "\(.DNSName)\t\(.HostName)\t\(.Online)\t\(.OS)"')
+  | "\(.DNSName)\t\(.HostName)"')
 
 if [[ -z "$exitnodes" ]]; then
   echo "No exit nodes found."
