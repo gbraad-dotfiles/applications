@@ -85,6 +85,11 @@ sudo tailscale set --advertise-exit-node=true
 sudo dnf update -y tailscale
 ```
 
+### update
+```sh evaluate
+sudo tailscale update
+```
+
 ### run
 This will enable the `tailscaled` daemon using systemd
 
@@ -166,7 +171,7 @@ tailscale status | exitnode_filter
 ```sh
 exitnodes=$(tailscale status --json | jq -r '
   .Peer[] 
-  | select(.ExitNodeOption == true) 
+  | select(.ExitNodeOption == true) | select(.Online == true)
   | "\(.DNSName)\t\(.HostName)\t\(.Online)\t\(.OS)"')
 
 if [[ -z "$exitnodes" ]]; then
@@ -174,7 +179,7 @@ if [[ -z "$exitnodes" ]]; then
   return 1
 fi
 
-selected=$(echo "$exitnodes" | fzf --header="Select an exit node" --with-nth=1,2 --delimiter=$'\t' | cut -f1)
+selected=$(echo "$exitnodes" | column -t -s $'\t' | fzf --header="Select an exit node" --with-nth=1,2 --delimiter=$'\t' | cut -f1)
 
 if [[ -z "$selected" ]]; then
   #echo "No exit node selected."
