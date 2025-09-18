@@ -38,7 +38,7 @@ apps_fuzzy_pick() {
   [[ -z $appname ]] && return 1
 
   local action
-  action=$(app $appname --list-actions | fzf --prompt="Select action: ")
+  action=$(app $appname --list-actions | tac | fzf --prompt="Select action: ")
   
   [[ -z $action ]] && return 2
 
