@@ -1,10 +1,5 @@
 # Application list
 
-### vars
-```sh
-APPSDIR="${_app_defpath:-$HOME/.dotapps}"
-```
-
 ### shared
 ```sh
 show_apps_tree() {

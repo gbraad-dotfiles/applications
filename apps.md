@@ -33,8 +33,17 @@ run_apps() {
     # return 130 to match Ctrl-C behaviour
     f5)     apps-desktop-install "$appname" "$apptitle"; return 130 ;;
     f6)     apps-service-install "$appname" "$apptitle"; return 130 ;;
-    *)      app $appname ;;
+    *)      ;;
   esac
+
+  [[ -z $appname ]] && return 1
+
+  local action
+  action=$(app $appname --list-actions | fzf --prompt="Select action: ")
+  
+  [[ -z $action ]] && return 2
+
+  app $appname $action 
 }
 
 run_apps

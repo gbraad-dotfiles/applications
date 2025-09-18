@@ -62,7 +62,7 @@ journalctl --user -u ${SVCNAME} -f
 ```
 
 ### default alias run run-service
-```sh
+```sh evaluate
 ping ${PINGER_HOST}
 ```
 
