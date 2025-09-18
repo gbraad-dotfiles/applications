@@ -57,7 +57,7 @@ sudo systemctl is-active tailscaled
 ```
 
 ### journal-service
-```sh interactive
+```sh
 journalctl -u tailscaled -f
 ```
 
@@ -95,7 +95,7 @@ systemctl enable --now tailscaled
 ### up
 Starts the onboarding process
 
-```sh interactive
+```sh
 if [ -n "${TAILSCALE_AUTHKEY}" ]; then
   tailscale up --auth-key "${TAILSCALE_AUTHKEY}"
 else
@@ -208,7 +208,7 @@ apps taildrive run
 ```
 
 ### ping
-```sh interactive
+```sh
 onlinenodes=$(tailscale status --json | jq -r '
   .Peer[] | select(.Online == true) | "\(.DNSName)\t\(.HostName)\t\(.TailscaleIPs[0])"
 ')

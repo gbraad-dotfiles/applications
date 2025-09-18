@@ -6,17 +6,17 @@ devenv test from dotfedora
 ```
 
 ### user
-```sh interactive
+```sh
 devenv test user
 ```
 
 ### root
-```sh interactive
+```sh
 devenv test root
 ```
 
 ### screen
-```sh interactive
+```sh
 devenv test screen
 ```
 
@@ -26,6 +26,6 @@ devenv test rm
 ```
 
 ### alias
-```sh interactive
+```sh
 apps devenv/fedora
 ```

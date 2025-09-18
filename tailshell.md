@@ -17,12 +17,12 @@ gh workflow run tailscale-ssh-dotscreen-amd64
 ```
 
 ### connect-runner
-```sh interactive
+```sh
 apps ${APPNAME} run --arg DOTUSER=runner
 ```
 
 ### default alias run
-```sh interactive
+```sh
 selected=$(tailscale status --json | jq -r '
   .Peer[]
   | select(.Online == true and .sshHostKeys != null and (.sshHostKeys | length > 0))

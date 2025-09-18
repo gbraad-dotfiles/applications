@@ -12,7 +12,7 @@ ITCHBIN=${ITCHHOME}/itch
 ```
 
 ### user-install
-```sh interactive
+```sh
 curl -L -o /tmp/itch-setup.zip ${ITCHURL}
 unzip /tmp/itch-setup.zip -d /tmp
 /tmp/itch-setup

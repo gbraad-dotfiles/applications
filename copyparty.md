@@ -64,7 +64,7 @@ systemctl --user is-active ${SVCNAME}
 ```
 
 ### journal-service
-```sh interactive
+```sh
 journalctl --user -u ${SVCNAME} -f
 ```
 
@@ -88,7 +88,7 @@ tailscale serve --bg --tcp ${COPYPARTY_PORT} ${COPYPARTY_PORT}
 ---
 
 ### default alias run run-service
-```sh interactive
+```sh
 if ! apps copyparty check; then
   apps copyparty install
 fi

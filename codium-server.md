@@ -19,7 +19,7 @@ CODIUMHOST=0.0.0.0
 ---
 
 ### install-service
-```sh interactive
+```sh
 if ! apps ${APPNAME} check; then
   apps ${APPNAME} install
 fi
@@ -63,7 +63,7 @@ systemctl --user is-active ${SVCNAME}
 ```
 
 ### journal-service
-```sh interactive
+```sh
 journalctl --user -u ${SVCNAME} -f
 ```
 
@@ -127,7 +127,7 @@ rm -rf ${CODIUMHOME}
 ```
 
 ### alias run run-service
-```sh interactive
+```sh
 ${CODIUMHOME}/latest/bin/codium-server --without-connection-token --host ${CODIUMHOST}
 ```
 

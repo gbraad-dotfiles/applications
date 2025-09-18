@@ -11,17 +11,17 @@ devenv dotfedora start
 ```
 
 ### user
-```sh interactive
+```sh
 devenv dotfedora user
 ```
 
 ### root
-```sh interactive
+```sh
 devenv dotfedora root
 ```
 
 ### screen
-```sh interactive
+```sh
 devenv dotfedora screen
 ```
 
@@ -31,6 +31,6 @@ devenv dotfedora rm
 ```
 
 ### alias
-```sh interactive
+```sh
 apps devenv/dotfedora
 ```

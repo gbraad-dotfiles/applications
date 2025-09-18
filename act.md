@@ -8,7 +8,7 @@ ACT_BASE_URL="https://github.com/nektos/act/releases/download/${ACT_VERSION}"
 
 
 ### install
-```sh interactive
+```sh
 ARCH=$(uname -m)
 case "$ARCH" in
     x86_64)  ACT_FILE="act_Linux_x86_64.tar.gz";;

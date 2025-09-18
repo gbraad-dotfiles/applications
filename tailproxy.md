@@ -66,12 +66,12 @@ systemctl --user is-active ${SVCNAME}
 ```
 
 ### journal-service
-```sh interactive
+```sh
 journalctl --user -u ${SVCNAME} -f
 ```
 
 ### run-service run
-```sh interactive
+```sh
 mkdir -p $STATEDIR
 tailscaled --tun=userspace-networking \
     --socks5-server=$(dotini tailscale --get tailproxy.socks5-server-host):$(dotini tailscale --get tailproxy.socks5-server-port) \
@@ -97,7 +97,7 @@ tailproxy set --advertise-exit-node=true
 ```
 
 ### up
-```sh interactive
+```sh
 tailproxy status > /dev/null 2>&1
 RESULT=$?
 

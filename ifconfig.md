@@ -17,6 +17,6 @@ apps ifconfig | jq -r '.country_eu'
 ```
 
 ### default run alias
-```sh interactive
+```sh
 curl -sL https://ifconfig.co/json
 ```

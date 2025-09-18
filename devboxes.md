@@ -1,7 +1,7 @@
 # Development Boxes
 
 ### default alias run
-```sh interactive
+```sh
 run_devboxes() {
 
   chosen_command=$(printf "%s\n" "${devbox_commands[@]}" | fzf --prompt="Devbox command> ")

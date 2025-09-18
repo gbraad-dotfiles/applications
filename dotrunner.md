@@ -55,7 +55,7 @@ dispatch_workflow() {
 ```
 
 ### status status-alias
-```sh interactive
+```sh
 status_dotrunner() {
   gh --repo gbraad-dotfiles/upstream run list
 }
@@ -64,7 +64,7 @@ status_dotrunner
 ```
 
 ### runner runner-alias
-```sh interactive
+```sh
 run_runner_workflow() {
   local runner
   runner=$(select_runner "${RUNNERS_X64[@]}" "${RUNNERS_ARM[@]}")
@@ -76,7 +76,7 @@ run_runner_workflow
 ```
 
 ### devenv devenv-alias
-```sh interactive
+```sh
 run_devenv_workflow() {
   local runner prefix
   runner=$(select_runner "${RUNNERS_X64[@]}" "${RUNNERS_ARM[@]}")
@@ -90,7 +90,7 @@ run_devenv_workflow
 ```
 
 ### rshell rscreen rshell-alias rscreen-alias
-```sh interactive
+```sh
 run_rshell_workflow() {
   local runner prefix
   runner=$(select_runner "${RUNNERS_X64[@]}" "${RUNNERS_ARM[@]}")
@@ -102,7 +102,7 @@ run_rshell_workflow
 ```
 
 ### machine machine-aliaas
-```sh interactive
+```sh
 run_machine_workflow() {
   local runner prefix
   runner=$(select_runner "${RUNNERS_X64[@]}")
@@ -116,12 +116,12 @@ run_machine_workflow
 ```
 
 ### connect connect-alias
-```sh interactive
+```sh
 apps tailshell runner connect
 ```
 
 ### default run alias
-```sh interactive
+```sh
 select_workflow_type() {
   local options=("runner" "devenv" "machine" "rshell" "connect" "status")
   local selected

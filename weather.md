@@ -29,7 +29,7 @@ curl -sL https://wttr.in/${CITY}
 ```
 
 ### default run alias
-```sh interactive
+```sh
 CITY=$(printf "%s\n" "${CITIES[@]}" | fzf)
 if [[ -n ${CITY} ]]; then
   apps weather query --arg CITY=${CITY}

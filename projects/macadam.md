@@ -61,7 +61,7 @@ rm -f ${LOCALBIN}/macadam
 ### cd
 This action changes to the local source directory.
 
-```sh interactive
+```sh
 if ! apps ${APPNAME} source exists; then
   echo "Run: 'apps ${APPNAME} source checkout' first."
   return
@@ -70,7 +70,7 @@ cd ${MCDLOCAL}
 ```
 
 ### code
-```sh interactive
+```sh
 if ! apps ${APPNAME} source exists; then
   echo "Run: 'apps ${APPNAME} source checkout' first."
   return
@@ -107,24 +107,24 @@ devenv ${MCDDEVENV} exists
 The compilation actions will be performed inside a `devenv`-container.
 
 ### make
-```sh interactive
+```sh
 devenv ${MCDDEVENV} usercmd "cd ${MCDSOURCE} && make"
 ```
 
 ### cross-make
-```sh interactive
+```sh
 devenv ${MCDDEVENV} usercmd "cd ${MCDSOURCE} && make cross"
 ```
 
 ### clean-make
-```sh interactive
+```sh
 devenv ${MCDDEVENV} usercmd "cd ${MCDSOURCE} && make clean"
 ```
 
 ### local-make
 Temporary solution to run make locally on the host
 
-```sh interactive
+```sh
 cd ${MCDLOCAL} && make
 ```
 
@@ -138,7 +138,7 @@ Default action is to compile. Performs the following:
   - `make cross`
 
 ### default alias compile
-```sh interactive
+```sh
 if ! apps ${APPNAME} source exists; then
   apps ${APPNAME} source checkout
 fi

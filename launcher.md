@@ -8,7 +8,7 @@ launcher_commands=(
 ```
 
 ### default alias run
-```sh interactive
+```sh
 select_launch_type() {
   local selected
   selected=$(printf "%s\n" "${launcher_commands[@]}" | fzf --prompt="Type> ")

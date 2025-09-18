@@ -99,7 +99,7 @@ Generate aliases for application defintion that use an `alias` section
 > [!NOTE]
 > Needs to run in `interactive`-mode to allow the aliases to be exported
 
-```sh interactive
+```sh
 if [[ $(dotini apps --get "apps.aliases") == true ]]; then
     # Find all .md files in APPSDIR and subfolders
     find "${APPSDIR}" -type f -name '*.md' | while read -r mdfile; do

@@ -54,7 +54,7 @@ systemctl --user is-active ${SVCNAME}
 ```
 
 ### journal-service
-```sh interactive
+```sh
 journalctl --user -u ${SVCNAME} -f
 ```
 
@@ -101,6 +101,6 @@ apps machine/dotfedora
 ```
 
 ### console ssh
-```sh interactive
+```sh
 machine dotfedora ssh
 ```

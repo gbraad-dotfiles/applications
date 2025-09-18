@@ -88,7 +88,7 @@ sudo systemctl daemon-reload
 ```
 
 ### default run run-service
-```sh interactive
+```sh
 ${LOCALBIN}/code serve-web --without-connection-token --host ${CODEHOST} --port ${CODEPORT}
 ```
 

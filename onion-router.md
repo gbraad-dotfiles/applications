@@ -20,7 +20,7 @@ ORCONTROLADDRESS=${ORHOST}:${ORCONTROLPORT}
 ---
 
 ### install-service
-```sh interactive
+```sh
 apps-service-install ${APPNAME} ${APPTITLE}
 ```
 
@@ -60,7 +60,7 @@ systemctl --user is-active ${SVCNAME}
 ```
 
 ### journal-service
-```sh interactive
+```sh
 journalctl --user -u ${SVCNAME} -f
 ```
 
@@ -100,7 +100,7 @@ sudo dnf install -y tor
 ---
 
 ### run run-service
-```sh interactive
+```sh
 sudo mkdir -p /run/tor
 sudo chmod 700 /run/tor
 sudo chown ${USER}:${USER} /run/tor

@@ -11,17 +11,17 @@ devenv gofedora start
 ```
 
 ### user
-```sh interactive
+```sh
 devenv gofedora user
 ```
 
 ### root
-```sh interactive
+```sh
 devenv gofedora root
 ```
 
 ### screen
-```sh interactive
+```sh
 devenv gofedora screen
 ```
 
@@ -31,6 +31,6 @@ devenv gofedora rm
 ```
 
 ### alias
-```sh interactive
+```sh
 apps devenv/gofedora
 ```

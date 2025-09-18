@@ -78,7 +78,7 @@ sudo systemctl daemon-reload
 ```
 
 ### default run run-service
-```sh interactive
+```sh
 if [ -z "${HOSTNAME}" ]; then
     echo "HOSTNAME not set"
     return 1

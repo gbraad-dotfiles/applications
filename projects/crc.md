@@ -49,7 +49,7 @@ git clone https://github.com/crc-org/crc ${CRCLOCAL}
 ### cd
 This action changes to the local source directory.
 
-```sh interactive
+```sh
 if ! apps ${APPNAME} source exists; then
   echo "Run: 'apps ${APPNAME} source checkout' first."
   return
@@ -58,7 +58,7 @@ cd ${CRCLOCAL}
 ```
 
 ### code
-```sh interactive
+```sh
 if ! apps ${APPNAME} source exists; then
   echo "Run: 'apps ${APPNAME} source checkout' first."
   return
@@ -95,24 +95,24 @@ devenv ${CRCDEVENV} exists
 The compilation actions will be performed inside a `devenv`-container.
 
 ### make
-```sh interactive
+```sh
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make"
 ```
 
 ### cross-make
-```sh interactive
+```sh
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make cross"
 ```
 
 ### clean-make
-```sh interactive
+```sh
 devenv ${CRCDEVENV} usercmd "cd ${CRCSOURCE} && make clean"
 ```
 
 ### local-make
 Temporary solution to run make locally on the host
 
-```sh interactive
+```sh
 cd ${CRCLOCAL} && make
 ```
 
@@ -126,7 +126,7 @@ Default action is to compile. Performs the following:
   - `make cross`
 
 ### default alias compile
-```sh interactive
+```sh
 if ! apps ${APPNAME} source exists; then
   apps ${APPNAME} source checkout
 fi
