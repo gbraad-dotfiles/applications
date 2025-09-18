@@ -68,5 +68,5 @@ ping ${PINGER_HOST}
 
 ### screen
 ```sh
-screen apps pinger
+screen app pinger
 ```

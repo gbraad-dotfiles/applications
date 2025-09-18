@@ -4,9 +4,9 @@
 
 ### vars
 ```sh
-apps powerline check
+app powerline check
 powerline_available=$?
-apps fzf check
+app fzf check
 fzf_available=$?
 ```
 
@@ -18,10 +18,10 @@ fzf_available=$?
 ### install
 ```
 if [ $powerline_available -ne 0 ]; then
-    apps powerline install pip
+    app powerline install pip
 fi
 
 if [ $fzf_available -ne 0 ]; then
-    apps fzf install
+    app fzf install
 fi
 ```

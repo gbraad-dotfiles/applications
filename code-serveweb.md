@@ -8,7 +8,7 @@
 > [!NOTE]
 > Make sure to install the cli first, with:
 > ```
-> apps code install cli
+> app code install cli
 > ```
 
 
@@ -26,8 +26,8 @@ CODEPORT=8001
 
 ### install-service
 ```sh
-if ! apps code check cli; then
-  apps code install cli
+if ! app code check cli; then
+  app code install cli
 fi
 
 apps-service-install ${APPNAME} ${APPTITLE}

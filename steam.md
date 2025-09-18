@@ -19,10 +19,10 @@ dnf install -y steam
 
 ### default run run-desktop
 ```sh
-if apps steam check; then
+if app steam check; then
     ${cmd}
 else
-    apps steam run flatpak
+    app steam run flatpak
 fi
 ```
 

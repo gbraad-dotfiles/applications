@@ -106,14 +106,14 @@ fi
 ### connect
 ```sh
 secrets var tailscale_authkey
-apps tailscale up
+app tailscale up
 ```
 
 ### default status
 This returns the status and known nodes on the current tailnet
 
 ```sh
-if ! apps tailscale service active > /dev/null 2>&1; then
+if ! app tailscale service active > /dev/null 2>&1; then
   echo "Not running."
 else
   tailscale status | comment_filter
@@ -178,7 +178,7 @@ selected=$(echo "$exitnodes" | fzf --header="Select an exit node" --with-nth=1,2
 
 if [[ -z "$selected" ]]; then
   #echo "No exit node selected."
-  apps tailscale exitnode clear
+  app tailscale exitnode clear
   return 2
 fi
 
@@ -199,12 +199,12 @@ tailscale set --exit-node $(tailscale exit-node list | grep mull | fzf | awk '{p
 
 ### file
 ```sh
-apps taildrop run
+app taildrop run
 ```
 
 ### drive
 ```sh
-apps taildrive run
+app taildrive run
 ```
 
 ### ping

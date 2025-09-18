@@ -11,5 +11,5 @@ sudo systemctl enable --now cockpit.service
 
 ### default install
 ```sh
-apps cockpit install podman
+app cockpit install podman
 ```

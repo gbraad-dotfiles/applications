@@ -102,10 +102,10 @@ ${HOME}/.local/bin/codium
 
 ### alias default run run-desktop
 ```sh
-if apps codium check user; then
-   apps codium run user
-elif apps codium check appimage; then
-   apps codium run appimage
+if app codium check user; then
+   app codium run user
+elif app codium check appimage; then
+   app codium run appimage
 else
    command -v codium
 fi

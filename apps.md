@@ -5,7 +5,7 @@
 
 ### default alias run
 ```sh
-run_apps() {
+apps_fuzzy_pick() {
   local applist
   apps_list=$(app --list-apps)
 
@@ -43,7 +43,12 @@ run_apps() {
   
   [[ -z $action ]] && return 2
 
-  app $appname $action 
+  echo $appname $action
+}
+
+run_apps() {
+  action=($(apps_fuzzy_pick))
+  app $action
 }
 
 run_apps

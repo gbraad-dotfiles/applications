@@ -52,10 +52,10 @@ ${APPSHOME}/${APPNAME}.AppImage
 
 ### user-install
 ```sh
-apps libreoffice install appimage
+app libreoffice install appimage
 ${APPSHOME}/${APPNAME}.AppImage --appimage-extract
 mv squashfs-root ${APPSHOME}/${APPNAME}
-apps libreoffice remove appimage
+app libreoffice remove appimage
 ```
 
 ### user-remove
@@ -80,14 +80,14 @@ ${APPSHOME}/${APPNAME}/AppRun
 
 ### alias default run run-desktop
 ```sh
-if apps libreoffice check; then
+if app libreoffice check; then
     $cmd
-elif apps libreoffice check user; then
-    apps libreoffice run user
-elif apps libreoffice check appimage; then
-    apps libreoffice run appimage
-elif apps libreoffice check flatpak; then
-    apps libreoffice run flatpak
+elif app libreoffice check user; then
+    app libreoffice run user
+elif app libreoffice check appimage; then
+    app libreoffice run appimage
+elif app libreoffice check flatpak; then
+    app libreoffice run flatpak
 else
     echo "LibreOffice not installed"
 fi

@@ -24,8 +24,8 @@ pkg install ranger
 
 ### default run screen 
 ```sh
-if ! apps ranger check; then
-  #apps ranger install
+if ! app ranger check; then
+  #app ranger install
   echo "Not installed."
 fi
 screen ranger

@@ -20,10 +20,10 @@ unzip /tmp/itch-setup.zip -d /tmp
 
 ### default alias run-desktop
 ```sh
-if apps itch check user; then
-    apps itch run user
-elif apps itch check flatpak; then
-    apps itch run flatpak
+if app itch check user; then
+    app itch run user
+elif app itch check flatpak; then
+    app itch run flatpak
 else
     echo "${APPNAME} is not installed."
 fi

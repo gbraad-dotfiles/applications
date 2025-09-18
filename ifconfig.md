@@ -3,17 +3,17 @@
 
 ### ip
 ```sh
-apps ifconfig | jq -r '.ip'
+app ifconfig | jq -r '.ip'
 ```
 
 ### country
 ```sh
-apps ifconfig | jq -r '.country'
+app ifconfig | jq -r '.country'
 ```
 
 ### europe
 ```sh
-apps ifconfig | jq -r '.country_eu'
+app ifconfig | jq -r '.country_eu'
 ```
 
 ### default run alias

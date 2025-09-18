@@ -24,7 +24,7 @@ sudo dnf install -y mame
 
 ### default run
 ```sh
-if apps mame check flatpak; then
-  apps mame run flatpak
+if app mame check flatpak; then
+  app mame run flatpak
 fi
 ```

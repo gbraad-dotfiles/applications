@@ -13,7 +13,7 @@ flatpak run com.valvesoftware.SteamLink
 
 ### default run run-desktop
 ```sh
-apps steamlink run flatpak
+app steamlink run flatpak
 ```
 
 ### rpi-install

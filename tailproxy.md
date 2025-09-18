@@ -19,10 +19,10 @@ tailproxy() {
 Checks if Tailscale is installed
 
 ```sh
-if ! apps tailscale check; then
-  apps tailscale install
+if ! app tailscale check; then
+  app tailscale install
 fi
-apps ${APPNAME} service install
+app ${APPNAME} service install
 ```
 
 ### install-service
@@ -83,7 +83,7 @@ tailscaled --tun=userspace-networking \
 
 ### screen
 ```
-screen apps tailproxy run
+screen app tailproxy run
 ```
 
 ### ssh-config
@@ -119,7 +119,7 @@ fi
 ### connect
 ```sh
 secrets var tailscale_authkey
-apps tailproxy up
+app tailproxy up
 ```
 
 ### expose
@@ -133,7 +133,7 @@ tailscale serve --bg --tcp ${port} ${port}
 ### default status
 ```sh
 # Might be running in a screen when no systemd is available
-#if ! apps tailproxy service active > /dev/null 2>&1; then
+#if ! app tailproxy service active > /dev/null 2>&1; then
 #  echo "Not running."
 #else 
 tailproxy status | comment_filter
@@ -185,12 +185,12 @@ tailproxy set --exit-node $(tailproxy exit-node list | grep mull | fzf | awk '{p
 
 ### select-exitnode
 ```sh
-tailproxy set --exit-node $(apps tailproxy status exitnode | awk '{print $2}' | fzf)
+tailproxy set --exit-node $(app tailproxy status exitnode | awk '{print $2}' | fzf)
 ```
 
 ### ping
 ```sh
-NODE=$(apps tailproxy status online | awk '{print $1, $2}' | fzf | awk '{print  $1}')
+NODE=$(app tailproxy status online | awk '{print $1, $2}' | fzf | awk '{print  $1}')
 tailproxy ping ${NODE}
 ```
 

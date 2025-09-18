@@ -39,8 +39,8 @@ systemctl --user disable --now ${SVCNAME}
 
 ### restart-service
 ```sh
-apps ${APPNAME} service stop
-apps ${APPNAME} service start
+app ${APPNAME} service stop
+app ${APPNAME} service start
 ```
 
 ### start-service
@@ -89,8 +89,8 @@ tailscale serve --bg --tcp ${COPYPARTY_PORT} ${COPYPARTY_PORT}
 
 ### default alias run run-service
 ```sh
-if ! apps copyparty check; then
-  apps copyparty install
+if ! app copyparty check; then
+  app copyparty install
 fi
 
 COPYPARTYARGS=( "-i" "${COPYPARTY_HOST}" "-p" "${COPYPARTY_PORT}" )

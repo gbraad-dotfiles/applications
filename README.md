@@ -10,9 +10,9 @@ The `apps` helper script is a Zsh utility designed to provide a fuzzy, interacti
   - **Fuzzy App Selection:** Browse and select from available application definitions using `fzf`.
   - **Section/Action Picker:** Select specific actions (sections) to run for each app, such as `install`, `update`, or custom actions.
   - **Modular App Definitions:** Application actions are defined in Markdown files (one per app), allowing for easy organization and documentation.
-  - **Exit Code Propagation:** Correctly returns the exit status of script blocks, enabling use in shell conditionals (`if apps ...; then ...`).
-  - **Pipeable Output:** Ensures only script output is sent to `stdout`; logs and info go to `stderr`, so you can safely pipe output (e.g. `apps tailscale status | grep online`).
-  - **Lightweight & Extensible:** Easily add new apps or actions by creating or editing Markdown files.
+  - **Exit Code Propagation:** Correctly returns the exit status of script blocks, enabling use in shell conditionals (`if app ...; then ...`).
+  - **Pipeable Output:** Ensures only script output is sent to `stdout`; logs and info go to `stderr`, so you can safely pipe output (e.g. `app tailscale status | grep online`).
+  - **Lightweight & Extensible:** Easily add new app or actions by creating or editing Markdown files.
 
 
 ## Getting Started
@@ -61,30 +61,30 @@ Prompts you to select an app and then an action/section to run.
 
 ### Fuzzy Action Selection for a Specific App
 ```sh
-apps bundle/essential
+app bundle/essential
 ```
 
 Prompts you to select an action/section for bundle/essential.
 
 ### Run a Specific App Action Directly
 ```sh
-apps tailscale install
+app tailscale install
 ```
 
 Runs the install action for tailscale, applying any OS/packager-specific overrides.
 
 ### Use in Conditionals
 ```sh
-if apps obsidian check user; then
+if app obsidian check user; then
     echo "Obsidian user install detected!"
 fi
 ```
 
-The exit code from the script block is returned, so you can use apps in if/elif/else statements.
+The exit code from the script block is returned, so you can use app in if/elif/else statements.
 
 ### Pipeable Output
 ```sh
-apps tailscale status | grep online
+app tailscale status | grep online
 ```
 
 Only the output from the script block is sent to stdout, so piping and grepping works as expected.
@@ -99,7 +99,7 @@ Only the output from the script block is sent to stdout, so piping and grepping 
 Version=1.0
 Type=Application
 Name=OnlyOffice desktop editors
-Exec=zsh -c "dotfiles source; apps onlyoffice run -bg"
+Exec=zsh -c "dotfiles source; app onlyoffice run -bg"
 Icon=prompt-icon-128.png
 Keywords=apps
 Terminal=false
@@ -114,7 +114,7 @@ Categories=Utility;
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=apps launcher
+Name=app launcher
 Exec=zsh -c "dotfiles source; apps"
 Icon=prompt-icon-128.png
 Keywords=apps

@@ -50,8 +50,8 @@ git clone https://github.com/crc-org/crc ${CRCLOCAL}
 This action changes to the local source directory.
 
 ```sh
-if ! apps ${APPNAME} source exists; then
-  echo "Run: 'apps ${APPNAME} source checkout' first."
+if ! app ${APPNAME} source exists; then
+  echo "Run: 'app ${APPNAME} source checkout' first."
   return
 fi
 cd ${CRCLOCAL}
@@ -59,8 +59,8 @@ cd ${CRCLOCAL}
 
 ### code
 ```sh
-if ! apps ${APPNAME} source exists; then
-  echo "Run: 'apps ${APPNAME} source checkout' first."
+if ! app ${APPNAME} source exists; then
+  echo "Run: 'app ${APPNAME} source checkout' first."
   return
 fi
 code ${CRCLOCAL}
@@ -127,13 +127,13 @@ Default action is to compile. Performs the following:
 
 ### default alias compile
 ```sh
-if ! apps ${APPNAME} source exists; then
-  apps ${APPNAME} source checkout
+if ! app ${APPNAME} source exists; then
+  app ${APPNAME} source checkout
 fi
-if ! apps ${APPNAME} devenv exists; then
-  apps ${APPNAME} devenv start
+if ! app ${APPNAME} devenv exists; then
+  app ${APPNAME} devenv start
 fi
-apps ${APPNAME} make clean
-apps ${APPNAME} make cross
+app ${APPNAME} make clean
+app ${APPNAME} make cross
 ```
 

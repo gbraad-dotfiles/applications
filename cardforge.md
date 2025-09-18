@@ -10,7 +10,7 @@ Forge is a dynamic and open-source Rules Engine tailored for Magic: The Gatherin
 ### fedora-install
 ```sh
 sudo dnf install -y java-21-openjdk
-apps cardforge install user
+app cardforge install user
 ```
 
 ### user-install

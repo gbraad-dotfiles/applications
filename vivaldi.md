@@ -30,10 +30,10 @@ APPNAME=Vivaldi
 
 ### default alias run run-desktop
 ```sh background
-if apps vivaldi check; then
+if app vivaldi check; then
     $cmd
-elif apps vivaldi check flatpak; then
-    apps vivaldi run flatpak
+elif app vivaldi check flatpak; then
+    app vivaldi run flatpak
 fi
 ```
 
@@ -116,12 +116,12 @@ ${APPSHOME}/${APPNAME}.AppImage
 
 ### user-install
 ```sh
-apps vivaldi install appimage
+app vivaldi install appimage
 ${APPSHOME}/${APPNAME}.AppImage --appimage-extract
 mv squashfs-root ${APPSHOME}/${APPNAME}
 sudo chown root ${APPSHOME}/${APPNAME}/vivaldi-sandbox
 sudo chmod 4755 ${APPSHOME}/${APPNAME}/vivaldi-sandbox
-apps vivaldi remove appimage
+app vivaldi remove appimage
 ```
 
 ### user-remove

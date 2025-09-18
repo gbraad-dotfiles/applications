@@ -47,10 +47,10 @@ ${APPSHOME}/${APPNAME}.AppImage
 
 ### user-install
 ```sh
-apps noteshub install appimage
+app noteshub install appimage
 ${APPSHOME}/${APPNAME}.AppImage --appimage-extract
 mv squashfs-root ${APPSHOME}/${APPNAME}
-apps noteshub remove appimage
+app noteshub remove appimage
 ```
 
 ### user-remove
@@ -75,12 +75,12 @@ xdg-open https://www.noteshub.app/notebooks
 
 ### alias default run run-desktop
 ```sh background
-if apps noteshub check user; then
-    apps noteshub run user
-elif apps noteshub check appimage; then
-    apps noteshub run appimage
-elif apps noteshub check flatpak; then
-    apps noteshub run flatpak
+if app noteshub check user; then
+    app noteshub run user
+elif app noteshub check appimage; then
+    app noteshub run appimage
+elif app noteshub check flatpak; then
+    app noteshub run flatpak
 else
     echo "${APPNAME} is not installed in ${APPSHOME}."
 fi

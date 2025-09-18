@@ -20,8 +20,8 @@ CODIUMHOST=0.0.0.0
 
 ### install-service
 ```sh
-if ! apps ${APPNAME} check; then
-  apps ${APPNAME} install
+if ! app ${APPNAME} check; then
+  app ${APPNAME} install
 fi
 
 apps-service-install ${APPNAME} ${APPTITLE}
@@ -133,7 +133,7 @@ ${CODIUMHOME}/latest/bin/codium-server --without-connection-token --host ${CODIU
 
 ### screen
 ```
-screen apps codium-server run
+screen app codium-server run
 ```
 
 ---
@@ -144,9 +144,9 @@ screen apps codium-server run
 #### install
 ```sh
 if is_root; then
-  apps codium-server install system
+  app codium-server install system
 else
-  apps codium-server install user
+  app codium-server install user
 fi
 ```
 

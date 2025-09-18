@@ -32,5 +32,5 @@ devenv gofedora rm
 
 ### alias
 ```sh
-apps devenv/gofedora
+app devenv/gofedora
 ```

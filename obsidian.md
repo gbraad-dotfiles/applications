@@ -37,10 +37,10 @@ ${APPSHOME}/${APPNAME}.AppImage
 
 ### user-install
 ```sh
-apps obsidian install appimage
+app obsidian install appimage
 ${APPSHOME}/${APPNAME}.AppImage --appimage-extract
 mv squashfs-root ${APPSHOME}/${APPNAME}
-apps obsidian remove appimage
+app obsidian remove appimage
 ```
 
 ### user-remove
@@ -83,12 +83,12 @@ echo "Open Obsidian at https://${ip}:8444"
 
 ### alias default run run-desktop
 ```sh background
-if apps obsidian check user; then
-    apps obsidian run user
-elif apps obsidian check appimage; then
-    apps obsidian run appimage
-elif apps obsidian check flatpak; then
-    apps obsidian run flatpak
+if app obsidian check user; then
+    app obsidian run user
+elif app obsidian check appimage; then
+    app obsidian run appimage
+elif app obsidian check flatpak; then
+    app obsidian run flatpak
 else
     echo "${APPNAME} is not installed in ${APPSHOME}."
 fi

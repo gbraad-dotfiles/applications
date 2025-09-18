@@ -18,7 +18,7 @@ gh workflow run tailscale-ssh-dotscreen-amd64
 
 ### connect-runner
 ```sh
-apps ${APPNAME} run --arg DOTUSER=runner
+app ${APPNAME} run --arg DOTUSER=runner
 ```
 
 ### default alias run

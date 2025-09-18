@@ -50,10 +50,10 @@ sudo apt-get remove onlyoffice-desktopeditors
 
 ### user-install
 ```sh
-apps onlyoffice install appimage
+app onlyoffice install appimage
 ${APPSHOME}/${APPNAME}.AppImage --appimage-extract
 mv squashfs-root ${APPSHOME}/${APPNAME}
-apps onlyoffice remove appimage
+app onlyoffice remove appimage
 ```
 
 ### user-check
@@ -109,12 +109,12 @@ echo "Open OnlyOffice at https://${ip}:8444"
 
 ### alias default run run-desktop
 ```sh
-if apps onlyoffice check user; then
-    apps onlyoffice run user
-elif apps onlyoffice check appimage; then
-    apps onlyoffice run appimage
-elif apps onlyoffice check flatpak; then
-    apps onlyooffice run flatpak
+if app onlyoffice check user; then
+    app onlyoffice run user
+elif app onlyoffice check appimage; then
+    app onlyoffice run appimage
+elif app onlyoffice check flatpak; then
+    app onlyooffice run flatpak
 else
     echo "${APPNAME} is not installed in ${APPSHOME}."
 fi

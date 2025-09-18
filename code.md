@@ -78,7 +78,7 @@ flatpak run com.visualstudio.code
 
 ### cli-install
 ```sh
-if apps code check cli; then
+if app code check cli; then
    echo "Already installed"
    exit 0
 fi
@@ -103,7 +103,7 @@ rm -f ${LOCALBIN}/code
 
 ### user-install
 ```sh
-if apps code check user; then
+if app code check user; then
    echo "Already installed"
    exit 0
 fi
@@ -133,8 +133,8 @@ ${APPSHOME}/code/code
 
 ### alias default run run-desktop
 ```sh
-if apps code check user; then
-   apps code run user
+if app code check user; then
+   app code run user
 else
    command -v code
 fi

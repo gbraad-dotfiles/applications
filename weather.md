@@ -10,17 +10,17 @@ CITIES=("Beijing" "Amsterdam" "Apeldoorn")
 
 ### ams amsterdam ams-alias amsterdam-alias
 ```sh
-apps weather query --arg CITY="Amsterdam"
+app weather query --arg CITY="Amsterdam"
 ```
 
 ### apd apeldoorn apd-alias apeldoorn-alias
 ```sh
-apps weather query --arg CITY="Apeldoorn"
+app weather query --arg CITY="Apeldoorn"
 ```
 
 ### pek peking beijing pek-alias peking-alias beijing-alias
 ```sh
-apps weather query --arg CITY="Beijing"
+app weather query --arg CITY="Beijing"
 ```
 
 ### query
@@ -32,7 +32,7 @@ curl -sL https://wttr.in/${CITY}
 ```sh
 CITY=$(printf "%s\n" "${CITIES[@]}" | fzf)
 if [[ -n ${CITY} ]]; then
-  apps weather query --arg CITY=${CITY}
+  app weather query --arg CITY=${CITY}
 fi
 unset CITY CITIES
 ```

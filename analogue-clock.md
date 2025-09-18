@@ -26,7 +26,7 @@ rm -f /tmp/clock.zip
 
 ### alias default run run-desktop
 ```sh
-if apps analogue-clock check; then 
+if app analogue-clock check; then 
     ${APPSHOME}/${APPNAME}/clock
 else
     echo "Not installed"

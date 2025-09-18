@@ -67,6 +67,6 @@ jupyter notebook --ip ${JUPYTERHOST} --IdentityProvider.token=''
 
 ### screen
 ```sh
-screen apps jupyter-notebook run
+screen app jupyter-notebook run
 ```
 

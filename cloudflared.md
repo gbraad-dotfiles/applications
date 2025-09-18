@@ -10,8 +10,8 @@ SVCNAME=dotfiles-apps-${APPNAME}
 
 ### install-service
 ```sh
-if ! apps ${APPNAME} check; then
-  apps ${APPNAME} install
+if ! app ${APPNAME} check; then
+  app ${APPNAME} install
 fi
 
 apps-service-install ${APPNAME} ${APPTITLE}
@@ -29,8 +29,8 @@ systemctl --user disable --now ${SVCNAME}
 
 ### restart-service
 ```sh
-apps ${APPNAME} service stop
-apps ${APPNAME} service start
+app ${APPNAME} service stop
+app ${APPNAME} service start
 ```
 
 ### start-service

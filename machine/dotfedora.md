@@ -29,8 +29,8 @@ systemctl --user disable --now ${SVCNAME}
 
 ### restart-service
 ```sh
-apps ${APPNAME} service stop
-apps ${APPNAME} service start
+app ${APPNAME} service stop
+app ${APPNAME} service start
 ```
 
 ### start-service
@@ -97,7 +97,7 @@ machine gofedora rm
 
 ### alias
 ```sh
-apps machine/dotfedora
+app machine/dotfedora
 ```
 
 ### console ssh

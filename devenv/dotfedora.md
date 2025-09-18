@@ -32,5 +32,5 @@ devenv dotfedora rm
 
 ### alias
 ```sh
-apps devenv/dotfedora
+app devenv/dotfedora
 ```

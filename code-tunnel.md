@@ -16,8 +16,8 @@ SVCNAME=dotfiles-apps-${APPNAME}
 
 ### install-service
 ```sh
-if ! apps code check cli; then
-  apps code install cli
+if ! app code check cli; then
+  app code install cli
 fi
 
 apps-service-install ${APPNAME} ${APPTITLE}

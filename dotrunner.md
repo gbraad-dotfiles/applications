@@ -117,7 +117,7 @@ run_machine_workflow
 
 ### connect connect-alias
 ```sh
-apps tailshell runner connect
+app tailshell runner connect
 ```
 
 ### default run alias
@@ -127,12 +127,12 @@ select_workflow_type() {
   local selected
   selected=$(printf "%s\n" "${options[@]}" | fzf --prompt="Workflow type> ")
   case "$selected" in
-    runner)  apps dotrunner runner ;;
-    devenv)  apps dotrunner devenv ;;
-    rshell)  apps dotrunner rshell ;;
-    machine) apps dotrunner machine ;;
-    connect) apps dotrunner connect ;;
-    status)  apps dotrunner status ;;
+    runner)  app dotrunner runner ;;
+    devenv)  app dotrunner devenv ;;
+    rshell)  app dotrunner rshell ;;
+    machine) app dotrunner machine ;;
+    connect) app dotrunner connect ;;
+    status)  app dotrunner status ;;
     *) echo "No workflow type selected."; return 1 ;;
   esac
 }

@@ -18,17 +18,17 @@ gh workflow run tailscale-ssh-dotscreen-amd64
 
 ### runner-user
 ```sh
-apps ${APPNAME} run --arg DOTUSER=runner
+app ${APPNAME} run --arg DOTUSER=runner
 ```
 
 ### gbraad-user
 ```sh
-apps ${APPNAME} run --arg DOTUSER=gbraad
+app ${APPNAME} run --arg DOTUSER=gbraad
 ```
 
 ### root-user
 ```sh
-apps ${APPNAME} run --arg DOTUSER=root
+app ${APPNAME} run --arg DOTUSER=root
 ```
 
 ### default alias run

@@ -3,7 +3,7 @@
 ### shared
 ```sh
 launcher_commands=(
-   apps devenvs devboxes machines userctl
+   app devenvs devboxes machines userctl
 )
 ```
 
@@ -13,11 +13,11 @@ select_launch_type() {
   local selected
   selected=$(printf "%s\n" "${launcher_commands[@]}" | fzf --prompt="Type> ")
   case "$selected" in
-    apps)     apps ;;
-    devenvs)  apps devenvs ;;
-    devboxes) apps devboxes ;;
-    machines) apps machines ;;
-    userctl)  apps userctl ;; 
+    apps)     app ;;
+    devenvs)  app devenvs ;;
+    devboxes) app devboxes ;;
+    machines) app machines ;;
+    userctl)  app userctl ;; 
    *) echo "Nothing selected"; return 1 ;;
   esac
 }

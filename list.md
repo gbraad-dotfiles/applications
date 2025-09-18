@@ -54,7 +54,7 @@ git pull
 cd -
 
 echo "Generate aliases"
-apps list aliases
+app list aliases
 ```
 
 ### switch
@@ -95,7 +95,7 @@ Generate aliases for application defintion that use an `alias` section
 > Needs to run in `interactive`-mode to allow the aliases to be exported
 
 ```sh
-if [[ $(dotini apps --get "apps.aliases") == true ]]; then
+if [[ $(dotini app --get "apps.aliases") == true ]]; then
     # Find all .md files in APPSDIR and subfolders
     find "${APPSREPO}" -type f -name '*.md' | while read -r mdfile; do
         appname="${mdfile##*/}"
@@ -106,10 +106,10 @@ if [[ $(dotini apps --get "apps.aliases") == true ]]; then
 
         if [[ "${folder}" == "$(basename "${APPSREPO}")" ]]; then
             alias_name="${appname}"
-            alias_cmd="apps ${appname} alias"
+            alias_cmd="app ${appname} alias"
         else
             alias_name="${folder}-${appname}"
-            alias_cmd="apps ${folder}/${appname} alias"
+            alias_cmd="app ${folder}/${appname} alias"
         fi
 
         if grep -E -q '^##.*\balias\b' "$mdfile"; then
