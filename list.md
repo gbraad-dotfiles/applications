@@ -49,7 +49,7 @@ show_apps_tree() {
 
 ### update
 ```sh
-cd ${APPSDIR}
+cd ${APPSREPO}
 git pull
 cd -
 
@@ -59,7 +59,7 @@ apps list aliases
 
 ### switch
 ```sh
-cd ${APPSDIR}
+cd ${APPSREPO}
 git remote remove origin
 git remote add origin git@github.com:gbraad-dotfiles/applications
 git fetch
@@ -69,19 +69,19 @@ cd - > /dev/null
 
 ### log
 ```sh
-cd ${APPSDIR}
+cd ${APPSREPO}
 git log -n 2
 ```
 
 ### show
 ```sh
-echo "App defintions in ${APPSDIR}"
-show_apps_tree ${APPSDIR} "  "
+echo "App defintions in ${APPSREPO}"
+show_apps_tree ${APPSREPO} "  "
 ````
 
 ### reset
 ```sh
-cd ${APPSDIR}
+cd ${APPSREPO}
 git stash
 git fetch origin
 git reset --hard origin/main
@@ -97,14 +97,14 @@ Generate aliases for application defintion that use an `alias` section
 ```sh
 if [[ $(dotini apps --get "apps.aliases") == true ]]; then
     # Find all .md files in APPSDIR and subfolders
-    find "${APPSDIR}" -type f -name '*.md' | while read -r mdfile; do
+    find "${APPSREPO}" -type f -name '*.md' | while read -r mdfile; do
         appname="${mdfile##*/}"
         appname="${appname%.md}"
 
         folder="$(dirname "${mdfile}")"
         folder="${folder##*/}"
 
-        if [[ "${folder}" == "$(basename "${APPSDIR}")" ]]; then
+        if [[ "${folder}" == "$(basename "${APPSREPO}")" ]]; then
             alias_name="${appname}"
             alias_cmd="apps ${appname} alias"
         else
@@ -123,7 +123,7 @@ fi
 Lists all application names that have a `run-service` section
 
 ```sh
-for mdfile in "${APPSDIR}"/*.md; do
+for mdfile in "${APPSREPO}"/*.md; do
     appname="${mdfile:t:r}"
     if grep -E -q '^##.*\brun-service\b' "$mdfile"; then
         echo ${appname}
@@ -135,7 +135,7 @@ done
 Lists all application names that have a `run-desktop` section`
 
 ```sh
-for mdfile in "${APPSDIR}"/*.md; do
+for mdfile in "${APPSREPO}"/*.md; do
     appname="${mdfile:t:r}"
     if grep -E -q '^##.*\brun-desktop\b' "$mdfile"; then
         echo ${appname}
