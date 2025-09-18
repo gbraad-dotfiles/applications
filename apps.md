@@ -3,7 +3,7 @@
 ### info
 
 ### pick
-```sh
+```sh evaluate
 apps_fuzzy_pick() {
   local applist
   apps_list=$(app --list-apps)
@@ -48,7 +48,7 @@ apps_fuzzy_pick
 ```
 
 ### default alias run
-```sh
+```sh evaluate
 run_apps() {
   action=($(apps pick))
   local exitcode=$?
