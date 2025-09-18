@@ -115,6 +115,10 @@ if [[ $(dotini apps --get "apps.aliases") == true ]]; then
         fi
     done
 fi
+
+unset FILENAME
+unset APPNAME
+unset TITLE
 ```
 
 ### services
