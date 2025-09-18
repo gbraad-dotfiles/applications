@@ -1,6 +1,6 @@
 # Application list
 
-### shared
+### show
 ```sh
 show_apps_tree() {
   local dir="$1"
@@ -45,6 +45,9 @@ show_apps_tree() {
     fi
   done
 }
+
+echo "App defintions in ${APPSREPO}"
+show_apps_tree ${APPSREPO} "  "
 ```
 
 ### update
@@ -73,12 +76,6 @@ cd ${APPSREPO}
 git log -n 2
 ```
 
-### show
-```sh
-echo "App defintions in ${APPSREPO}"
-show_apps_tree ${APPSREPO} "  "
-````
-
 ### reset
 ```sh
 cd ${APPSREPO}
@@ -94,10 +91,11 @@ Generate aliases for application defintion that use an `alias` section
 > [!NOTE]
 > Needs to run in `interactive`-mode to allow the aliases to be exported
 
-```sh
-if [[ $(dotini app --get "apps.aliases") == true ]]; then
+```sh evaluate
+if [[ $(dotini apps --get "apps.aliases") == true ]]; then
     # Find all .md files in APPSDIR and subfolders
     find "${APPSREPO}" -type f -name '*.md' | while read -r mdfile; do
+
         appname="${mdfile##*/}"
         appname="${appname%.md}"
 
@@ -112,7 +110,7 @@ if [[ $(dotini app --get "apps.aliases") == true ]]; then
             alias_cmd="app ${folder}/${appname} alias"
         fi
 
-        if grep -E -q '^##.*\balias\b' "$mdfile"; then
+        if grep -E -q '^###.*\balias\b' "$mdfile"; then
             alias "${alias_name}"="${alias_cmd}"
         fi
     done

@@ -51,6 +51,8 @@ apps_fuzzy_pick
 ```sh
 run_apps() {
   action=($(apps pick))
+  local exitcode=$?
+  [[ "$exitcode" -gt 0 ]] && return $exitcode
   [[ -z $action ]] && return 3
 
   app $action
