@@ -88,7 +88,7 @@ tailscale serve --bg --tcp ${COPYPARTY_PORT} ${COPYPARTY_PORT}
 ---
 
 ### default alias run run-service
-```sh
+```sh evaluate
 if ! app copyparty check; then
   app copyparty install
 fi
