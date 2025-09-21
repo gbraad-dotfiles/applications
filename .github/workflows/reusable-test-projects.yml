@@ -1,5 +1,5 @@
-name: test-apps-actions
-run-name: Test apps install with project builds
+name: test-app-actions
+run-name: Test app install with project builds
 
 on:
   workflow_dispatch:
@@ -50,27 +50,27 @@ jobs:
         with:
           upstream: true
 
-      - name: Run apps command - checkout projects/crc
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - checkout projects/crc
+        uses: gbraad-dotfiles/app-action@main
         with:
           appname: projects/crc
           action: source checkout
 
-      - name: Run apps command - checkout projects/macadam
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - checkout projects/macadam
+        uses: gbraad-dotfiles/app-action@main
         with:
           appname: projects/macadam
           action: source checkout
 
       # separate checkout and compile due to docker permissions
-      - name: Run apps command - compile projects/crc
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - compile projects/crc
+        uses: gbraad-dotfiles/app-action@main
         with:
           appname: projects/crc
           action: compile
 
-      - name: Run apps command - compile projects/macadam
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - compile projects/macadam
+        uses: gbraad-dotfiles/app-action@main
         with:
           appname: projects/macadam
           action: compile

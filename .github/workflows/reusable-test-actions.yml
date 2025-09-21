@@ -1,5 +1,5 @@
-name: test-apps-actions
-run-name: Test apps install with apps-action
+name: test-app-actions
+run-name: Test app install with app-action
 
 on:
   workflow_dispatch:
@@ -28,7 +28,7 @@ on:
         default: "amd64"
 
 jobs:
-  test-apps-actions:
+  test-app-actions:
     runs-on: ${{ inputs.runs-on }}${{ inputs.arch == 'arm64' && '-arm' || '' }}
 
     steps:
@@ -43,39 +43,39 @@ jobs:
         with:
           upstream: true
 
-      - name: Run apps command - install code
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - install code
+        uses: gbraad-dotfiles/app-action@main
         with:
           appname: code
           action: install
 
-      - name: Run apps command - install codium
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - install codium
+        uses: gbraad-dotfiles/app-action@main
         with:
           appname: codium
           action: install
 
-      - name: Run apps command - install codium-server
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - install codium-server
+        uses: gbraad-dotfiles/app-action@main
         with:
           appname: codium-server
           action: install
 
-      - name: Run apps command - install clion
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - install clion
+        uses: gbraad-dotfiles/app-action@main
         with: 
           appname: clion
           action: install
 
-      - name: Run apps command - install obsidian
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - install obsidian
+        uses: gbraad-dotfiles/app-action@main
         with: 
           appname: obsidian
           action: install
           packager: user
 
-      - name: Run apps command - install vivaldi
-        uses: gbraad-dotfiles/apps-action@main
+      - name: Run app command - install vivaldi
+        uses: gbraad-dotfiles/app-action@main
         with: 
           appname: vivaldi
           action: install
