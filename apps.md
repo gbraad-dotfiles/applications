@@ -2,13 +2,30 @@
 
 ### info
 
-### pick
+### pick all
+```sh evaluate
+app --list-apps | apps_fuzzy_pick
+```
+
+### desktop
+```sh
+app list desktop | apps_fuzzy_pick
+```
+
+### services
+```sh
+app list services | apps_fuzzy_pick
+```
+
+### evaluate
 ```sh evaluate
 apps_fuzzy_pick() {
-  local applist
-  apps_list=$(app --list-apps)
+  local apps_list=()
+  while IFS= read -r line; do
+    apps_list+=("$line")
+  done
 
-  app=$(echo -e "${apps_list[@]}" | column -t -s $'\t' | \
+  app=$(printf "%s\n" "${apps_list[@]}" | column -t -s $'\t' | \
       fzf --prompt="Select app: " \
           --header=$'Enter: select\tCtrl+R: run\tCtrl+B: run bg\tCtrl+I: install\tCtrl+N: info\tF5: export .desktop\tF6: export .service' \
           --bind "ctrl-r:accept" \
@@ -44,7 +61,6 @@ apps_fuzzy_pick() {
 
   echo $appname $action
 }
-apps_fuzzy_pick
 ```
 
 ### update
@@ -54,8 +70,12 @@ app list update
 
 ### default alias run
 ```sh evaluate
+if ! type apps_fuzzy_pick >/dev/null 2>&1; then
+  app pick evaluate
+fi
+
 run_apps() {
-  action=($(apps pick))
+  action=($(apps all))
   local exitcode=$?
   [[ "$exitcode" -gt 0 ]] && return $exitcode
   [[ -z $action ]] && return 3

@@ -125,23 +125,38 @@ unset TITLE
 Lists all application names that have a `run-service` section
 
 ```sh
-for mdfile in "${APPSREPO}"/*.md; do
-    appname="${mdfile:t:r}"
-    if grep -E -q '^##.*\brun-service\b' "$mdfile"; then
-        echo ${appname}
+apps_list_services_and_descs() {
+  local appspath="$1"
+  find -L "$appspath" -type f -name '*.md' ! -name 'README.md' | sort | while IFS= read -r file; do
+    # Check for 'run-service' in a level-3 heading
+    if grep -Eq '^###.*\brun-service\b' "$file"; then
+      relpath="${file#$appspath/}"
+      relpath="${relpath%.md}"
+      desc=$(grep -m1 '^# ' "$file" | sed 's/^# //')
+      printf "%s\t%s\n" "$relpath" "$desc"
     fi
-done
+  done
+}
+apps_list_services_and_descs ${APPSREPO}
 ```
 
 ### desktop
 Lists all application names that have a `run-desktop` section`
 
 ```sh
-for mdfile in "${APPSREPO}"/*.md; do
-    appname="${mdfile:t:r}"
-    if grep -E -q '^##.*\brun-desktop\b' "$mdfile"; then
-        echo ${appname}
+apps_desktop_names_and_descs() {
+  local appspath="$1"
+  find -L "$appspath" -type f -name '*.md' ! -name 'README.md' | sort | while IFS= read -r file; do
+    # Check for 'run-service' in a level-3 heading
+    if grep -Eq '^###.*\brun-desktop\b' "$file"; then
+      relpath="${file#$appspath/}"
+      relpath="${relpath%.md}"
+      desc=$(grep -m1 '^# ' "$file" | sed 's/^# //')
+      printf "%s\t%s\n" "$relpath" "$desc"
     fi
-done
+  done
+}
+
+apps_desktop_names_and_descs ${APPSREPO}
 ```
 
