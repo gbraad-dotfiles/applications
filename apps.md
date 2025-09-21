@@ -17,7 +17,7 @@ app list desktop | apps_fuzzy_pick
 app list services | apps_fuzzy_pick
 ```
 
-### evaluate
+### shared 
 ```sh evaluate
 apps_fuzzy_pick() {
   local apps_list=()
@@ -70,10 +70,6 @@ app list update
 
 ### default alias run
 ```sh evaluate
-if ! type apps_fuzzy_pick >/dev/null 2>&1; then
-  app pick evaluate
-fi
-
 run_apps() {
   action=($(apps all))
   local exitcode=$?
