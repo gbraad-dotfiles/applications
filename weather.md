@@ -34,5 +34,4 @@ CITY=$(printf "%s\n" "${CITIES[@]}" | fzf)
 if [[ -n ${CITY} ]]; then
   app ${APPNAME} query --arg CITY=${CITY}
 fi
-unset CITY CITIES
 ```
