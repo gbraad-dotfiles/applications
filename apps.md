@@ -64,7 +64,11 @@ apps_fuzzy_pick() {
 ```
 
 ### update
-```sh
+
+> [!NOTE]
+> `evaluate` so aliases get properly set in the current shell
+
+```sh evaluate
 app list update
 ```
 
