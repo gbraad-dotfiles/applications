@@ -72,6 +72,11 @@ apps_fuzzy_pick() {
 app list update
 ```
 
+### cd
+```sh evaluate
+cd ${APPSREPO}
+```
+
 ### default alias run
 ```sh evaluate
 run_apps() {
