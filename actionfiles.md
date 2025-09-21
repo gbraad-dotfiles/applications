@@ -3,15 +3,25 @@
 ### vars
 ```sh
 ACTREPO="https://github.com/gbraad-dotfiles/actionfiles"
-ACTPATH="${HOME}/Projects/actionfiles"
+ACTPATH="${HOME}/Projects/gbraad-dotfiles/actionfiles"
 ```
 
-### `checkout`
+### exists
 ```sh
-git clone ${ACTREPO} ${HOME}/Projects/actionfiles
+[ -d ${ACTPATH} ]
 ```
 
-### `update`
+### cd
+```sh evaluate
+cd ${ACTPATH}
+```
+
+### checkout
+```sh
+git clone ${ACTREPO} ${ACTPATH}
+```
+
+### update
 ```sh
 cd ${ACTPATH}
 git pull
@@ -37,3 +47,9 @@ run ${ACTPATH}/projects/macadam.md compile
 run ${ACTPATH}/projects/gvproxy.md compile
 ```
 
+### default run alias
+```sh
+if ! app ${APPNAME} exists; then
+  app ${APPNAME} checkout
+fi
+```
