@@ -6,18 +6,18 @@ ACTREPO="https://github.com/gbraad-dotfiles/actionfiles"
 ACTPATH="${HOME}/Projects/actionfiles"
 ```
 
-### `source checkout`
+### `checkout`
 ```sh
 git clone ${ACTREPO} ${HOME}/Projects/actionfiles
 ```
 
-### `source update`
+### `update`
 ```sh
 cd ${ACTPATH}
 git pull
 ```
 
-### `reset permissions`
+### `reset runner`
 ```sh
 run ${ACTPATH}/runner.md reset permissions
 ```
