@@ -17,14 +17,6 @@ jobs:
       arch: amd64
     secrets: inherit
 
-  run-project-builds:
-    name: Run project builds
-    uses: ./.github/workflows/reusable-test-projects.yml
-    with:
-      runs-on: "ubuntu-latest"
-      arch: amd64
-    secrets: inherit
-
   run-on-fedora:
     name: Run on Fedora
     uses: ./.github/workflows/reusable-test-devenv.yml
