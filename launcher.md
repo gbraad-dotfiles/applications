@@ -3,17 +3,17 @@
 ### shared
 ```sh
 launcher_commands=(
-   app devenvs devboxes machines userctl
+   apps devenvs devboxes machines userctl
 )
 ```
 
 ### default alias run
-```sh
+```sh evaluate
 select_launch_type() {
   local selected
   selected=$(printf "%s\n" "${launcher_commands[@]}" | fzf --prompt="Type> ")
   case "$selected" in
-    apps)     app ;;
+    apps)     app apps all;;
     devenvs)  app devenvs ;;
     devboxes) app devboxes ;;
     machines) app machines ;;
