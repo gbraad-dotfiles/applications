@@ -52,4 +52,10 @@ run ${ACTPATH}/projects/gvproxy.md compile
 if ! app ${APPNAME} exists; then
   app ${APPNAME} checkout
 fi
+app ${APPNAME} aliases
+```
+
+### aliases
+```sh evaluate
+alias dotfedora="run ${ACTPATH}/machine/dotfedora.md"
 ```
