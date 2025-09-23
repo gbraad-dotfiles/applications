@@ -3,7 +3,7 @@
 ### shared
 ```sh
 gif_commands=(
-   status diff add commit
+   status diff add commit push
 )
 ```
 
@@ -17,6 +17,7 @@ select_gif_action() {
     diff)   git diff ;;
     add)    git status --short | fzf -m | awk '{print $2}' | xargs git add ;;
     commit) git commit ;;
+    push)   git push ;;
    *) echo "Nothing selected"; return 1 ;;
   esac
 }
