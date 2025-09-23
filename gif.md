@@ -19,6 +19,15 @@ git add .
 git commit -m "Apply cleaned changes"
 ```
 
+### reset
+```sh evaluate
+if git diff --quiet; then
+  echo "No changes"
+  return 0
+fi
+git reset -p 
+```
+
 ### stage
 ```sh evaluate
 if git diff --quiet; then
