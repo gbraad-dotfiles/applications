@@ -5,6 +5,25 @@
 git status
 ```
 
+### patch
+```sh evaluate
+if git diff --quiet; then
+  echo "No changes to save as a patch."
+  return 0
+fi
+git diff > /tmp/gif.patch
+vim /tmp/gif.patch
+git checkout -b cleaned-changes HEAD
+git apply /tmp/gif.patch
+git add .
+git commit -m "Apply cleaned changes"
+```
+
+### stage
+```sh evaluate
+git status --short | fzf -m | awk '{print $2}' | xargs -o -I{} git add -e {}
+```
+
 ### diff
 ```sh evaluate
 git diff | vim -R -c 'set syntax=diff' -
