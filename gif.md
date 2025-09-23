@@ -1,25 +1,45 @@
 # Fuzzy Git
 
-### shared
+### status
 ```sh
-gif_commands=(
-   status diff add commit push
-)
+git status
+```
+
+### diff
+```sh
+git diff
+```
+
+### add
+```sh
+git status --short | fzf -m | awk '{print $2}' | xargs git add
+```
+
+### commit
+```sh
+git commit
+```
+
+### push
+```sh
+git push
 ```
 
 ### default alias run
 ```sh evaluate
 select_gif_action() {
+  local gif_commands=(
+    $(app gif --list-actions | grep -vE '^(run|alias|var|default|shared)$')
+  )
+
   local selected
   selected=$(printf "%s\n" "${gif_commands[@]}" | fzf --prompt="Do> ")
-  case "$selected" in
-    status) git status;;
-    diff)   git diff ;;
-    add)    git status --short | fzf -m | awk '{print $2}' | xargs git add ;;
-    commit) git commit ;;
-    push)   git push ;;
-   *) echo "Nothing selected"; return 1 ;;
-  esac
+  if [ -z "$selected" ]; then
+    echo "Nothing selected"
+    return 1
+  fi
+
+  app ${APPNAME} "$selected"
 }
 
 select_gif_action
