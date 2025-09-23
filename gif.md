@@ -5,6 +5,25 @@
 git status
 ```
 
+### add
+```sh
+if git diff --quiet; then
+  echo "No changes"
+  return 0
+fi
+git status --short | fzf -m | awk '{print $2}' | xargs git add
+```
+
+### commit
+```sh evaluate
+git commit
+```
+
+### push
+```sh
+git push
+```
+
 ### patch
 ```sh evaluate
 if git diff --quiet; then
@@ -50,25 +69,6 @@ fi
 ### diff
 ```sh evaluate
 git diff | vim -R -c 'set syntax=diff' -
-```
-
-### add
-```sh
-if git diff --quiet; then
-  echo "No changes"
-  return 0
-fi
-git status --short | fzf -m | awk '{print $2}' | xargs git add
-```
-
-### commit
-```sh evaluate
-git commit
-```
-
-### push
-```sh
-git push
 ```
 
 ### default alias run
