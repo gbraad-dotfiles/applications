@@ -20,7 +20,7 @@ if ! app code check cli; then
   app code install cli
 fi
 
-apps-service-install ${APPNAME} ${APPTITLE}
+apps_service_install ${APPNAME} ${APPTITLE}
 ```
 
 ### enable-service
