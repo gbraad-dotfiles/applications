@@ -8,7 +8,7 @@ git status
 ### patch
 ```sh evaluate
 if git diff --quiet; then
-  echo "No changes to save as a patch."
+  echo "No changes"
   return 0
 fi
 git diff > /tmp/gif.patch
@@ -21,6 +21,10 @@ git commit -m "Apply cleaned changes"
 
 ### stage
 ```sh evaluate
+if git diff --quiet; then
+  echo "No changes"
+  return 0
+fi
 git status --short | fzf -m | awk '{print $2}' | xargs -o -I{} git add -e {}
 ```
 
@@ -31,6 +35,10 @@ git diff | vim -R -c 'set syntax=diff' -
 
 ### add
 ```sh
+if git diff --quiet; then
+  echo "No changes"
+  return 0
+fi
 git status --short | fzf -m | awk '{print $2}' | xargs git add
 ```
 
