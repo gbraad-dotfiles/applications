@@ -9,11 +9,14 @@ Installs Codium server
 
 ### vars
 ```sh
-APPNAME=codium-server
-APPTITLE="Codium server"
 SVCNAME=dotfiles-apps-${APPNAME}
-CODIUMHOME=${HOME}/.codium
-CODIUMHOST=0.0.0.0
+```
+
+### config
+```ini
+[codium]
+    path="${HOME}/.codium"
+    host="0.0.0.0"
 ```
 
 ---
@@ -109,13 +112,13 @@ _installcodiumserverdownload() {
 
 ### check
 ```sh
-[ -x "${CODIUMHOME}/latest/bin/codium-server" ]
+[ -x "${CODIUM_PATH}/latest/bin/codium-server" ]
 ```
 
 ### install
 ```sh
-_installcodiumserverdownload ${CODIUMHOME}
-ln -sfn "${CODIUMHOME}/latest/bin/codium-server" "${LOCALBIN}/codium-server"
+_installcodiumserverdownload ${CODIUM_PATH}
+ln -sfn "${CODIUM_PATH}/latest/bin/codium-server" "${LOCALBIN}/codium-server"
 
 # install extensions
 ${LOCALBIN}/codium-server --install-extension gbraad.extensionpack
@@ -123,12 +126,12 @@ ${LOCALBIN}/codium-server --install-extension gbraad.extensionpack
 
 ### remove
 ```sh
-rm -rf ${CODIUMHOME}
+rm -rf ${CODIUM_PATH}
 ```
 
 ### alias run run-service
 ```sh
-${CODIUMHOME}/latest/bin/codium-server --without-connection-token --host ${CODIUMHOST}
+${CODIUM_PATH}/latest/bin/codium-server --without-connection-token --host ${CODIUM_HOST}
 ```
 
 ### screen
