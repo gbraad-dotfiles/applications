@@ -28,6 +28,16 @@ fi
 git status --short | fzf -m | awk '{print $2}' | xargs -o -I{} git add -e {}
 ```
 
+### rebase
+```sh evaluate
+commit=$(git log --oneline --decorate | fzf --reverse --prompt="Rebase from> " | awk '{print $1}')
+if [ -n "$commit" ]; then
+  git rebase -i "$commit"
+else
+  echo "No commit selected."
+fi
+```
+
 ### diff
 ```sh evaluate
 git diff | vim -R -c 'set syntax=diff' -
