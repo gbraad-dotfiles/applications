@@ -6,8 +6,8 @@ git status
 ```
 
 ### diff
-```sh
-git diff
+```sh evaluate
+git diff | vim -R -c 'set syntax=diff' -
 ```
 
 ### add
@@ -29,7 +29,7 @@ git push
 ```sh evaluate
 select_gif_action() {
   local selected
-  selected=$(printf "%s\n" $(app ${APPNAME} --list-actions) | fzf --prompt="Do> ")
+  selected=$(app ${APPNAME} --list-actions | fzf --prompt="Do> ")
   if [ -z "$selected" ]; then
     echo "Nothing selected"
     return 1
