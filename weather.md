@@ -3,11 +3,6 @@
 ### info
 This displays a weather forecast
 
-### vars
-```sh
-CITIES=("Beijing" "Amsterdam" "Apeldoorn")
-```
-
 ### ams amsterdam
 ```sh
 app ${APPNAME} query --arg CITY="Amsterdam"
@@ -30,7 +25,7 @@ curl -sL https://wttr.in/${CITY}
 
 ### default run alias
 ```sh
-CITY=$(printf "%s\n" "${CITIES[@]}" | fzf)
+CITY=$(app ${APPNAME} --list-actions | grep -vE '^(query)$' | fzf)
 if [[ -n ${CITY} ]]; then
   app ${APPNAME} query --arg CITY=${CITY}
 fi
