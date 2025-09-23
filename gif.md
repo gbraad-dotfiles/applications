@@ -84,5 +84,9 @@ select_gif_action() {
   app ${APPNAME} "$selected"
 }
 
-select_gif_action
+if [ -d "./.git" ]; then
+  select_gif_action
+else
+  echo "Not a git maintained folder"
+fi
 ```
