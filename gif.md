@@ -39,6 +39,13 @@ git commit -m "Apply cleaned changes"
 ```
 
 ### reset
+```sh
+git stash
+git fetch origin
+git reset --hard origin/main
+```
+
+### unstage
 ```sh evaluate
 if git diff --quiet; then
   echo "No changes"
