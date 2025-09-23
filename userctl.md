@@ -4,7 +4,7 @@
 ### shared
 ```sh
 userctl_commands=(
-  status restart start stop enable disable remove journal
+  status restart start stop enable disable remove journal 
 )
 
 userctl_units() {
@@ -36,7 +36,7 @@ create_user_session() {
 ```
 
 ### default alias run
-```sh 
+```sh evaluate
 run_userctl() {
   local chosen_command=$(printf "%s\n" "${userctl_commands[@]}" | fzf --prompt="userctl command> ")
   [[ -z "$chosen_command" ]] && return 1
@@ -65,7 +65,7 @@ run_userctl() {
     systemctl --user daemon-reload
     echo "$unit.service removed."
   elif [[ "$chosen_command" == "journal" ]]; then
-    journalctl --user -u "$unit.service"
+    journalctl --user -f -u "$unit.service"
   else
     systemctl --user "$chosen_command" "$unit.service"
   fi
