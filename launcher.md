@@ -3,7 +3,7 @@
 ### shared
 ```sh
 launcher_commands=(
-   apps devenvs devboxes machines userctl
+   apps devenvs devboxes machines actions userctl
 )
 ```
 
@@ -17,8 +17,9 @@ select_launch_type() {
     devenvs)  app devenvs ;;
     devboxes) app devboxes ;;
     machines) app machines ;;
+    actions)  app actions ;;
     userctl)  app userctl ;; 
-   *) echo "Nothing selected"; return 1 ;;
+    *) echo "Nothing selected"; return 1 ;;
   esac
 }
 
