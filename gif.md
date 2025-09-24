@@ -7,10 +7,6 @@ git status
 
 ### add
 ```sh
-if git diff --quiet; then
-  echo "No changes"
-  return 0
-fi
 git status --short | fzf -m | awk '{print $2}' | xargs git add
 ```
 
