@@ -92,30 +92,33 @@ Generate aliases for application defintion that use an `alias` section
 > Needs to run in `interactive`-mode to allow the aliases to be exported
 
 ```sh evaluate
-if [[ $(dotini apps --get "apps.aliases") == true ]]; then
+apps_aliases() {
+  if [[ $(dotini apps --get "apps.aliases") == true ]]; then
     # Find all .md files in APPSDIR and subfolders
     find "${APPSREPO}" -type f -name '*.md' | while read -r mdfile; do
 
-        appname="${mdfile##*/}"
-        appname="${appname%.md}"
+      appname="${mdfile##*/}"
+      appname="${appname%.md}"
 
-        folder="$(dirname "${mdfile}")"
-        folder="${folder##*/}"
+      folder="$(dirname "${mdfile}")"
+      folder="${folder##*/}"
 
-        if [[ "${folder}" == "$(basename "${APPSREPO}")" ]]; then
-            alias_name="${appname}"
-            alias_cmd="app ${appname} alias"
-        else
-            alias_name="${folder}-${appname}"
-            alias_cmd="app ${folder}/${appname} alias"
-        fi
+      if [[ "${folder}" == "$(basename "${APPSREPO}")" ]]; then
+        alias_name="${appname}"
+        alias_cmd="app ${appname} alias"
+      else
+        alias_name="${folder}-${appname}"
+        alias_cmd="app ${folder}/${appname} alias"
+      fi
 
-        if grep -E -q '^###.*\balias\b' "$mdfile"; then
-            alias "${alias_name}"="${alias_cmd}"
-        fi
+      if grep -E -q '^###.*\balias\b' "$mdfile"; then
+        alias "${alias_name}"="${alias_cmd}"
+      fi
     done
-fi
+  fi
+}
 
+apps_aliases
 unset FILENAME
 unset APPNAME
 unset TITLE
