@@ -105,10 +105,10 @@ apps_aliases() {
 
       if [[ "${folder}" == "$(basename "${APPSREPO}")" ]]; then
         alias_name="${appname}"
-        alias_cmd="app ${appname} alias"
+        alias_cmd="app ${appname}"   # use default
       else
         alias_name="${folder}-${appname}"
-        alias_cmd="app ${folder}/${appname} alias"
+        alias_cmd="app ${folder}/${appname}"  # use default
       fi
 
       if grep -E -q '^###.*\balias\b' "$mdfile"; then
