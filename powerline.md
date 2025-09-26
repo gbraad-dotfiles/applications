@@ -12,7 +12,7 @@ sudo dnf install powerline tmux-powerline vim-powerline
 
 ### pip-install
 ```sh
-pip install --user powerline-status
+pip install --force-reinstall --user powerline-status
 ```
 
 ### apt-install
