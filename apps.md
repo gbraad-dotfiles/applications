@@ -91,6 +91,13 @@ app list update
 cd ${APPSREPO}
 ```
 
+### resident
+```sh evaluate
+while true; do
+  app ${APPNAME}
+done
+```
+
 ### default alias run
 ```sh evaluate
 run_apps() {
