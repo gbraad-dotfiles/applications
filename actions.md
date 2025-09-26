@@ -57,8 +57,15 @@ actions_fuzzy_pick() {
 app ${APPNAME} run --arg WHERE=$(pwd)
 ```
 
+### resident
+```sh evaluate
+while true; do
+  app ${APPNAME}
+done
+```
+
 ### default alias run
-```sh
+```sh evaluate
 run_actions() {
   if [ -n "$1" ] && [ -d "$1" ]; then
     dir=$1
