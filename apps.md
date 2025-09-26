@@ -29,9 +29,9 @@ apps_fuzzy_pick() {
 
   app=$(printf "%s\n" "${apps_list[@]}" | column -t -s $'\t' | \
       fzf --prompt="Select app: " \
-          --header=$'Enter: select\tCtrl+R: run\tCtrl+B: run bg\tCtrl+I: install\tCtrl+J: info\tF5: export .desktop\tF6: export .service\tCtrl+E: edit\tCtrl+N: new'\
+          --header=$'Enter: select\tCtrl+R: run\tCtrl+B: run bg\tCtrl+I: install\tCtrl+J: info\tF5: export .desktop\tF6: export .service\tCtrl+E: edit\tCtrl+N: new\tCtrl+K: config'\
           --bind "ctrl-r:accept" \
-          --expect=enter,ctrl-r,ctrl-i,ctrl-j,ctrl-n,ctrl-b,ctrl-e,f5,f6 )
+          --expect=enter,ctrl-r,ctrl-i,ctrl-j,ctrl-n,ctrl-b,ctrl-e,ctrl-k,f5,f6 )
 
   app_line=("${(@f)app}")
   key="${app_line[1]}"
@@ -58,6 +58,7 @@ apps_fuzzy_pick() {
       return
       ;;
     ctrl-e) echo "${appname} --edit"; return ;;
+    ctrl-k) echo "${appname} --config"; return ;;
     # return 130 to match Ctrl-C behaviour
     f5)     apps_desktop_install "$appname" "$apptitle"; return 130 ;;
     f6)     apps_service_install "$appname" "$apptitle"; return 130 ;;
