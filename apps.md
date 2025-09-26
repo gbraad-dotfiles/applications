@@ -29,9 +29,9 @@ apps_fuzzy_pick() {
 
   app=$(printf "%s\n" "${apps_list[@]}" | column -t -s $'\t' | \
       fzf --prompt="Select app: " \
-          --header=$'Enter: select\tCtrl+R: run\tCtrl+B: run bg\tCtrl+I: install\tCtrl+J: info\tF5: export .desktop\tF6: export .service\tCtrl+E: edit\tCtrl+N: new\tCtrl+K: config'\
+          --header=$'Enter: select\tCtrl+R: run\tCtrl+B: run bg\tCtrl+S: screen\tCtrl+I: install\tCtrl+J: info\tF5: export .desktop\tF6: export .service\tCtrl+E: edit\tCtrl+N: new\tCtrl+K: config'\
           --bind "ctrl-r:accept" \
-          --expect=enter,ctrl-r,ctrl-i,ctrl-j,ctrl-n,ctrl-b,ctrl-e,ctrl-k,f5,f6 )
+          --expect=enter,ctrl-r,ctrl-s,ctrl-i,ctrl-j,ctrl-n,ctrl-b,ctrl-e,ctrl-k,f5,f6 )
 
   app_line=("${(@f)app}")
   key="${app_line[1]}"
@@ -42,6 +42,7 @@ apps_fuzzy_pick() {
 
   case "$key" in
     ctrl-r) echo "${appname} run"; return ;;
+    ctrl-s) echo "${appname} run --screen"; return ;;
     ctrl-b) echo "${appname} run --background"; return ;;
     ctrl-i) echo "${appname} install"; return ;;
     ctrl-j) echo "${appname} info"; return ;;
