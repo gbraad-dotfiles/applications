@@ -14,7 +14,9 @@ app list desktop | apps_fuzzy_pick
 
 ### services
 ```sh
-app list services | apps_fuzzy_pick
+#apps="$(app list services)"
+#apps_fuzzy_pick <<< "$apps"
+app list services | apps_fuzzy_pick 
 ```
 
 ### shared 
@@ -27,25 +29,35 @@ apps_fuzzy_pick() {
 
   app=$(printf "%s\n" "${apps_list[@]}" | column -t -s $'\t' | \
       fzf --prompt="Select app: " \
-          --header=$'Enter: select\tCtrl+R: run\tCtrl+B: run bg\tCtrl+I: install\tCtrl+N: info\tF5: export .desktop\tF6: export .service' \
+          --header=$'Enter: select\tCtrl+R: run\tCtrl+B: run bg\tCtrl+I: install\tCtrl+J: info\tF5: export .desktop\tF6: export .service\tCtrl+E: edit\tCtrl+N: new'\
           --bind "ctrl-r:accept" \
-          --expect=enter,ctrl-r,ctrl-i,ctrl-n,ctrl-b,f5,f6 )
+          --expect=enter,ctrl-r,ctrl-i,ctrl-j,ctrl-n,ctrl-b,ctrl-e,f5,f6 )
 
-  local -a app_line appname apptitle
   app_line=("${(@f)app}")
   key="${app_line[1]}"
   selected="${app_line[2]}"
-
-  [[ -z "$selected" ]] && return 1
   fields=(${(z)selected})
   appname="${fields[1]}"
-  apptitle="${fields[2, -1]}"
+  apptitle="${fields[2,-1]}"
 
   case "$key" in
-    ctrl-r) app $appname run; return ;;
-    ctrl-b) app $appname run --background; return ;;
-    ctrl-i) app $appname install; return ;;
-    ctrl-n) app $appname info; return ;;
+    ctrl-r) echo "${appname} run"; return ;;
+    ctrl-b) echo "${appname} run --background"; return ;;
+    ctrl-i) echo "${appname} install"; return ;;
+    ctrl-j) echo "${appname} info"; return ;;
+    ctrl-n)
+      new_appname=$(fzf --prompt="New app name: " --phony --print-query --bind 'enter:accept')
+      new_appname=$(echo "$new_appname" | head -n1)
+      if [[ -n "$new_appname" ]]; then
+        if [[ "$new_appname" == */* ]]; then
+          dirpart="${new_appname%/*}"
+          mkdir -p -- "$dirpart"
+        fi
+        echo "${new_appname} --edit"
+      fi
+      return
+      ;;
+    ctrl-e) echo "${appname} --edit"; return ;;
     # return 130 to match Ctrl-C behaviour
     f5)     apps_desktop_install "$appname" "$apptitle"; return 130 ;;
     f6)     apps_service_install "$appname" "$apptitle"; return 130 ;;
