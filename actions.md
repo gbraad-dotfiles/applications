@@ -37,15 +37,15 @@ actions_fuzzy_pick() {
   acttitle="${fields[2, -1]}"
 
   case "$key" in
-    ctrl-r) action $actfile run; return ;;
-    ctrl-b) action $actfile run --background; return ;;
+    ctrl-r) echo "$actfile run"; return ;;
+    ctrl-b) echo "$actfile run --background"; return ;;
     *)      ;;
   esac
 
   [[ -z $actname ]] && return 1
 
   local action
-  action=$(action $dir/$actname --list-actions | tac | fzf --prompt="Select action: ")
+  action=$(action $dir/$actname --list-actions | grep -vE '^(info|run|alias|vars|default|shared)$' | tac | fzf --prompt="Select action: ")
   
   [[ -z $action ]] && return 2
 
@@ -85,7 +85,13 @@ run_actions() {
   [[ "$exitcode" -gt 0 ]] && return $exitcode
   [[ -z $picked_action ]] && return 3
 
-  action "$picked_actfile" "${picked_action[@]}"
+  # inject ${APPNAME} to be compatible with app
+  local appname
+  appname="${picked_actfile%.md}"
+  appname="${appname##*/}"
+  local common_args=(--arg APPNAME="${appname}" --arg CONFIGPATH="${APPSCONFIG}")
+
+  action "$picked_actfile" "${picked_action[@]}" ${common_args[@]}
 }
 
 run_actions $WHERE
