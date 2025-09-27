@@ -93,7 +93,7 @@ Generate aliases for application defintion that use an `alias` section
 
 ```sh evaluate
 apps_aliases() {
-  if [[ $(dotini apps --get "apps.aliases") == true ]]; then
+  if [[ $(dotini launcher --get "launcher.aliases") == true ]]; then
     # Find all .md files in APPSDIR and subfolders
     find "${APPSREPO}" -type f -name '*.md' | while read -r mdfile; do
 
