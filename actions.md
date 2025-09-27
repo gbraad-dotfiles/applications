@@ -89,7 +89,8 @@ run_actions() {
   local appname
   appname="${picked_actfile%.md}"
   appname="${appname##*/}"
-  local common_args=(--arg APPNAME="${appname}" --arg CONFIGPATH="${APPSCONFIG}")
+  local common_args=(--arg APPNAME="${appname}")
+  # --arg CONFIGPATH="${APPSCONFIG}")
 
   action "$picked_actfile" "${picked_action[@]}" ${common_args[@]}
 }
