@@ -45,7 +45,7 @@ actions_fuzzy_pick() {
   [[ -z $actname ]] && return 1
 
   local action
-  action=$(action $dir/$actname --list-actions | grep -vE '^(info|run|alias|vars|default|shared)$' | tac | fzf --prompt="Select action: ")
+  action=$(action $dir/$actname --list-actions | grep -vE '^(info|alias|vars|default|shared)$' | tac | fzf --prompt="Select action: ")
   
   [[ -z $action ]] && return 2
 
