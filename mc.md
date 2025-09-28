@@ -18,6 +18,6 @@ brew install mc
 ```
 
 ### default run
-```sh
-screen mc
+```sh evaluate
+/usr/bin/mc
 ```
