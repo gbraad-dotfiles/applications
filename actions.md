@@ -53,7 +53,7 @@ actions_fuzzy_pick() {
 }
 
 ### here
-```sh
+```sh evaluate
 app ${APPNAME} run --arg WHERE=$(pwd)
 ```
 
@@ -63,6 +63,13 @@ app ${APPNAME} run --arg WHERE=$(pwd)
 ```sh evaluate
 while true; do
   app ${APPNAME}
+done
+```
+
+### resident-here
+```sh evaluate
+while true; do
+  app ${APPNAME} here
 done
 ```
 
