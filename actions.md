@@ -58,6 +58,8 @@ app ${APPNAME} run --arg WHERE=$(pwd)
 ```
 
 ### resident
+"Terminate, Stay Resident"
+
 ```sh evaluate
 while true; do
   app ${APPNAME}

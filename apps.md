@@ -91,7 +91,10 @@ app list update
 cd ${APPSREPO}
 ```
 
+
 ### resident
+"Terminate, Stay Resident"
+
 ```sh evaluate
 while true; do
   app ${APPNAME}
