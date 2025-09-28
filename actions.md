@@ -51,6 +51,7 @@ actions_fuzzy_pick() {
 
   echo $dir/$actname $action
 }
+```
 
 ### here
 ```sh evaluate
