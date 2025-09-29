@@ -26,9 +26,9 @@ notebooks_fuzzy_pick() {
   local nbselect
   nbselect=$(printf "%s\n" "$list" | \
     fzf --prompt="Select notebook: " \
-        --header=$'Enter: select\tCtrl+R: execute\tCtrl+S: sync' \
+        --header=$'Enter: select\tCtrl+R: execute\tCtrl+S: sync\tCtrl+E: edit' \
         --bind "ctrl-r:accept" \
-        --expect=enter,ctrl-r,ctrl-s)
+        --expect=enter,ctrl-r,ctrl-s,ctrl-e)
 
   local -a nb_line
   nb_line=("${(@f)nbselect}")
@@ -39,14 +39,16 @@ notebooks_fuzzy_pick() {
   local -a fields
   fields=(${(z)selected})
   local nbfile="${fields[1]}"
+  nbfile="${dir}/${nbfile}"
 
   case "$key" in
-    ctrl-r) echo "${dir}/${nbfile} execute"; return ;;
-    ctrl-s) echo "${dir}/${nbfile} sync"; return ;;
+    ctrl-r) echo "${nbfile} execute"; return ;;
+    ctrl-s) echo "${nbfile} sync"; return ;;
+    ctrl-e) echo "${nbfile} edit"; return ;;
     *)      ;;
   esac
 
-  echo ${dir}/${nbfile} execute
+  echo ${nbfile} execute
 }
 ```
 
