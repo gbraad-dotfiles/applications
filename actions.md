@@ -106,4 +106,5 @@ run_actions() {
 }
 
 run_actions $WHERE
+unset WHERE
 ```
