@@ -41,12 +41,12 @@ notebooks_fuzzy_pick() {
   local nbfile="${fields[1]}"
 
   case "$key" in
-    ctrl-r) echo "$nbfile execute"; return ;;
-    ctrl-s) echo "$nbfile sync"; return ;;
+    ctrl-r) echo "${dir}/${nbfile} execute"; return ;;
+    ctrl-s) echo "${dir}/${nbfile} sync"; return ;;
     *)      ;;
   esac
 
-  echo $dir/$nbfile execute
+  echo ${dir}/${nbfile} execute
 }
 ```
 
