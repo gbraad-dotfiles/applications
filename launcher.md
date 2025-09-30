@@ -3,8 +3,17 @@
 ### shared
 ```sh
 launcher_commands=(
-   apps devenvs devboxes machines actions userctl
+   apps devenvs devboxes machines actions playbooks notebooks userctl
 )
+```
+
+### resident
+"Terminate, Stay Resident"
+i
+```sh evaluate
+while true; do
+  app ${APPNAME}
+done
 ```
 
 ### default alias run
@@ -12,15 +21,8 @@ launcher_commands=(
 select_launch_type() {
   local selected
   selected=$(printf "%s\n" "${launcher_commands[@]}" | fzf --prompt="Type> ")
-  case "$selected" in
-    apps)     app apps all;;
-    devenvs)  app devenvs ;;
-    devboxes) app devboxes ;;
-    machines) app machines ;;
-    actions)  app actions ;;
-    userctl)  app userctl ;; 
-    *) echo "Nothing selected"; return 1 ;;
-  esac
+
+  [[ -n $selected ]] && app $selected  
 }
 
 select_launch_type
