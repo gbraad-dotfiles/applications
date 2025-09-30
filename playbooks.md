@@ -56,9 +56,9 @@ playbooks_fuzzy_pick() {
   local pbselect
   pbselect=$(printf "%s\n" "$list"| column -t -s $'\t' | \
     fzf --prompt="Select playbook: " \
-        --header=$'Enter: select\tCtrl+R: execute\tCtrl+E: edit' \
+        --header=$'Enter: select\tCtrl+R: execute\tCtrl+E: edit\tF5: remote, F6: devenv, F7: machine' \
         --bind "ctrl-r:accept" \
-        --expect=enter,ctrl-r,ctrl-e)
+        --expect=enter,ctrl-r,ctrl-e,f5,f6,f7)
 
   local -a pb_line
   pb_line=("${(@f)pbselect}")
@@ -75,9 +75,9 @@ playbooks_fuzzy_pick() {
     ctrl-r) echo "${pbfile} execute"; return ;;
     ctrl-s) echo "${pbfile} sync"; return ;;
     ctrl-e) echo "${pbfile} edit"; return ;;
-    # remote   tailshell online nodes
-    # machine  running machines
-    # devenv   running devenvs
+    f5)     echo "${pbfile} remote"; return ;;
+    f6)     echo "${pbfile} devenv"; return ;;
+    f7)     echo "${pbfile} machine"; return ;;
     *)      ;;
   esac
 
