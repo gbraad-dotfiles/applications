@@ -7,6 +7,16 @@
     path="${HOME}/Projects/gbraad-dotfiles/notebooks"
 ```
 
+### pick
+```sh
+notebooks_pick() {
+  local chosen_target
+  chosen_target=$(printf "%s\n" "$(notebooks_list_names $NOTEBOOKS_PATH)" | fzf --prompt="Choose notebook> ")
+  echo "$chosen_target" | awk '{print $1}'
+}
+notebooks_pick
+```
+
 ### shared
 ```sh
 notebooks_list_names() {
