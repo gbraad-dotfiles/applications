@@ -1,8 +1,9 @@
 # Actions
 
-### vars
-```sh
-ACTPATH="${HOME}/Projects/gbraad-dotfiles/actionfiles"
+### config
+```ini
+[actionfiles]
+    path="${HOME}/Projects/gbraad-dotfiles/actionfiles"
 ```
 
 ### shared
@@ -80,7 +81,7 @@ run_actions() {
   if [ -n "$1" ] && [ -d "$1" ]; then
     dir=$1
   else
-    dir=${ACTPATH}
+    dir=${ACTIONFILES_PATH}
     if ! app actionfiles exists ; then
       app actionfiles checkout
     fi

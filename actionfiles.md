@@ -6,45 +6,32 @@ ACTREPO="https://github.com/gbraad-dotfiles/actionfiles"
 ACTPATH="${HOME}/Projects/gbraad-dotfiles/actionfiles"
 ```
 
+### config
+```ini
+[actionfiles]
+    repo="https://github.com/gbraad-dotfiles/actionfiles"
+    path="${HOME}/Projects/gbraad-dotfiles/actionfiles"
+```
+
 ### exists
 ```sh
-[ -d ${ACTPATH} ]
+[ -d ${ACTIONFILES_PATH} ]
 ```
 
 ### cd
 ```sh evaluate
-cd ${ACTPATH}
+cd ${ACTIONFILES_PATH}
 ```
 
 ### checkout
 ```sh
-git clone ${ACTREPO} ${ACTPATH}
+git clone ${ACTIONFILES_REPO} ${ACTIONFILES_PATH}
 ```
 
 ### update
 ```sh
-cd ${ACTPATH}
+cd ${ACTIONFILES_PATH}
 git pull
-```
-
-### `reset runner`
-```sh
-run ${ACTPATH}/runner.md reset permissions
-```
-
-### `compile crc`
-```sh
-run ${ACTPATH}/projects/crc.md compile
-```
-
-### `compile macadam`
-```sh
-run ${ACTPATH}/projects/macadam.md compile
-```
-
-### `compile gvproxy`
-```sh
-run ${ACTPATH}/projects/gvproxy.md compile
 ```
 
 ### default run alias
@@ -57,7 +44,7 @@ app ${APPNAME} aliases
 
 ### aliases
 ```sh evaluate
-alias dotfedora="run ${ACTPATH}/machine/dotfedora.md"
+alias dotfedora="run ${ACTIONFILES_PATH}/machine/dotfedora.md"
 ```
 
 ### aliases
@@ -70,8 +57,8 @@ Generate aliases for Actionfiles that use an `alias` section
 actions_aliases() {
   local actname actfile folder alias_name alias_cmd
   if [[ $(dotini apps --get "apps.aliases") == true ]]; then
-    # Find all .md files in APPSDIR and subfolders
-    find "${ACTPATH}" -type f -name '*.md' | while read -r mdfile; do
+    # Find all .md files in ACTIONFILES_PATH and subfolders
+    find "${ACTIONFILES_PATH}" -type f -name '*.md' | while read -r mdfile; do
 
       actfile="${mdfile##*/}"
       actname="${actfile%.md}"
@@ -79,12 +66,12 @@ actions_aliases() {
       folder="$(dirname "${mdfile}")"
       folder="${folder##*/}"
 
-      if [[ "${folder}" == "$(basename "${ACTPATH}")" ]]; then
+      if [[ "${folder}" == "$(basename "${ACTIONFILES_PATH}")" ]]; then
         alias_name="${actname}"
-        alias_cmd="action ${ACTPATH}/${actfile}"
+        alias_cmd="action ${ACTIONFILES_PATH}/${actfile}"
       else
         alias_name="${folder}-${actname}"
-        alias_cmd="action ${ACTPATH}/${folder}/${actfile}"
+        alias_cmd="action ${ACTIONFILES_PATH}/${folder}/${actfile}"
       fi
 
       if grep -E -q '^###.*\balias\b' "$mdfile"; then
