@@ -25,7 +25,7 @@ tailshell_pick_online() {
     .Peer[]
     | select(.Online == true and .sshHostKeys != null and (.sshHostKeys | length > 0))
     | "\(.HostName)\t\(.TailscaleIPs[0])"
-  ' | column -t -s $'\t' | fzf | awk '{print $2}'
+  ' | column -t -s $'\t' | fzf --multi | awk '{print $2}'
 }
 tailshell_pick_online
 ```

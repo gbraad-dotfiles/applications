@@ -56,9 +56,9 @@ playbooks_fuzzy_pick() {
   local pbselect
   pbselect=$(printf "%s\n" "$list"| column -t -s $'\t' | \
     fzf --prompt="Select playbook: " \
-        --header=$'Enter: select\tCtrl+R: execute\tCtrl+E: edit\tF5: remote, F6: devenv, F7: machine' \
+        --header=$'Enter: select\tCtrl+R: execute\tCtrl+E: edit\tF5: hosts, F6: remote, F7: devenv, F8: machine' \
         --bind "ctrl-r:accept" \
-        --expect=enter,ctrl-r,ctrl-e,f5,f6,f7)
+        --expect=enter,ctrl-r,ctrl-e,f5,f6,f7,f8)
 
   local -a pb_line
   pb_line=("${(@f)pbselect}")
@@ -75,9 +75,10 @@ playbooks_fuzzy_pick() {
     ctrl-r) echo "${pbfile} execute"; return ;;
     ctrl-s) echo "${pbfile} sync"; return ;;
     ctrl-e) echo "${pbfile} edit"; return ;;
-    f5)     echo "${pbfile} remote"; return ;;
-    f6)     echo "${pbfile} devenv"; return ;;
-    f7)     echo "${pbfile} machine"; return ;;
+    f5)     echo "${pbfile} hosts"; return ;;
+    f6)     echo "${pbfile} remote"; return ;;
+    f7)     echo "${pbfile} devenv"; return ;;
+    f8)     echo "${pbfile} machine"; return ;;
     *)      ;;
   esac
 
@@ -135,6 +136,10 @@ run_playbooks() {
 
   local picked_host
   case "$picked_command" in
+    "hosts")
+      picked_host=$(app tailshell pick online)
+      picked_host=$(echo "$picked_host" | tr '\n' ',')
+      ;;
     "remote")
       picked_host=$(app tailshell pick online)
       ;;
