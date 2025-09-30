@@ -127,14 +127,17 @@ run_playbooks() {
   [[ -z $picked_command ]] && return 3
 
   local picked_host
-  # if command remote, devenv, machine
-  # "remote")
-  #   app tailshell pick online
-  # "devenv")
-  #   app devenvs pick running
-  # "machine")
-  #   app machines pick running
-  picked_host=""
+  case "$picked_command" in
+    "remote")
+      picked_host=$(app tailshell pick online)
+      ;;
+    "devenv")
+      picked_host=$(app devenvs pick running)
+      ;;
+    "machine")
+      picked_host=$(app machines pick running)
+      ;;
+  esac
 
   playbook $picked_playbook $picked_command $picked_host
 }
