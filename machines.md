@@ -1,5 +1,46 @@
 # Machines
 
+
+### pick
+```sh
+machines_pick() {
+    local targets chosen_target target_prefix target_list
+    targets=$(machine_targets)
+    target_list=""
+    declare -A known_prefixes
+    if [[ -n "$targets" ]]; then
+      while IFS=$'\t' read -r prefix state; do
+        target_list+="$prefix\t[$state]\n"
+        known_prefixes["$prefix"]=1
+      done <<< "$targets"
+    fi
+    for prefix in $(machine_prefixes); do
+      if [[ -z "${known_prefixes[$prefix]}" ]]; then
+        target_list+="$prefix\t[Create]\n"
+      fi
+    done
+    target_list=$(echo -e "$target_list" | sed '/^$/d')
+
+    chosen_target=$(echo -e ${target_list} | column -t -s $'\t' | fzf --prompt="Choose target> ")
+    [[ -z "$chosen_target" ]] && return 1
+    target_prefix=$(echo "$chosen_target" | awk '{print $1}')
+    echo "$target_prefix"
+}
+machines_pick
+```
+
+### running-pick
+```sh
+machines_pick_running() {
+    local chosen_target target_prefix
+    chosen_target=$(echo -e $(machine_running_targets) | column -t -s $'\t' | fzf --prompt="Choose target> ")
+    [[ -z "$chosen_target" ]] && return 1
+    target_prefix=$(echo "$chosen_target" | awk '{print $1}')
+    echo "$target_prefix"
+}
+machines_pick_running
+```
+
 ### default alias run
 ```sh evaluate
 run_machines() {
@@ -42,7 +83,7 @@ run_machines() {
   target_prefix=$(echo "$chosen_target" | awk '{print $1}')
 
   if [[ "$chosen_command" == "status" ]]; then
-    chosen_command=$(printf "%s\n" "${devenv_commands[@]}" | fzf --prompt="Devenv command> ")
+    chosen_command=$(printf "%s\n" "${machine_commands[@]}" | fzf --prompt="Machine command> ")
     [[ -z "$chosen_command" ]] && return                                                       
   fi
 
@@ -62,6 +103,7 @@ run_machines() {
   fi
   
   if [[ "$chosen_command" == "playbook" ]]; then
+    # app playbooks pick
     playbook_file=$(find . -type f ! -path './.*/*' -name '*.yml' -o -name '*.yaml' | sed 's|^\./||' | fzf --prompt="Select playbook: " --exit-0)
     if [ -z "$playbook_file" ]; then
       echo "No playbook selected."
