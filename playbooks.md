@@ -7,19 +7,26 @@
     path="${HOME}/Projects/gbraad-dotfiles/playbooks"
 ```
 
+### here-pick
+```sh
+playbooks_pick $(pwd)
+```
+
 ### pick
 ```sh
-playbooks_pick() {
-  local chosen_target
-  chosen_target=$(printf "%s\n" "$(playbooks_list_names $PLAYBOOKS_PATH)" | fzf --prompt="Choose playbook> ")
-  chosen_target=$(echo "$chosen_target" | awk '{print $1}')
-  [[ -n ${chosen_target} ]] && echo ${PLAYBOOKS_PATH}/${chosen_target}
-}
-playbooks_pick
+playbooks_pick ${PLAYBOOKS_PATH}
 ```
 
 ### shared
 ```sh
+playbooks_pick() {
+  local chosen_target
+  local dir=$1
+  chosen_target=$(printf "%s\n" "$(playbooks_list_names $dir)" | column -t -s $'\t' | fzf --prompt="Choose playbook> ")
+  chosen_target=$(echo "$chosen_target" | awk '{print $1}')
+  [[ -n ${chosen_target} ]] && echo ${dir}/${chosen_target}
+}
+
 playbooks_list_names() {
   local playbookpath="$1"
   find -L "$playbookpath" -type d -name '.*' -prune -o \
