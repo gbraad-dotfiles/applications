@@ -1,9 +1,10 @@
 # Notebooks
 
-### vars
-```sh
-NBREPO="https://github.com/gbraad-dotfiles/notebooks"
-NBPATH="${HOME}/Projects/gbraad-dotfiles/notebooks"
+### config
+```ini
+[notebooks]
+    repo="https://github.com/gbraad-dotfiles/notebooks"
+    path="${HOME}/Projects/gbraad-dotfiles/notebooks"
 ```
 
 ### shared
@@ -54,22 +55,22 @@ notebooks_fuzzy_pick() {
 
 ### exists
 ```sh
-[ -d ${NBPATH} ]
+[ -d ${NOTEBOOKS_PATH} ]
 ```
 
 ### cd
 ```sh evaluate
-cd ${NBPATH}
+cd ${NOTEBOOKS_PATH}
 ```
 
 ### checkout
 ```sh
-git clone ${NBREPO} ${NBPATH}
+git clone ${NOTEBOOKS_REPO} ${NOTEBOOKS_PATH}
 ```
 
 ### update
 ```sh
-cd ${NBPATH}
+cd ${NOTEBOOKS_PATH}
 git pull
 ```
 
@@ -100,7 +101,7 @@ run_notebooks() {
   if [ -n "$1" ] && [ -d "$1" ]; then
     dir=$1
   else
-    dir=${NBPATH}
+    dir=${NOTEBOOKS_PATH}
     if ! app ${APPNAME} exists ; then
       app ${APPNAME} checkout
     fi
