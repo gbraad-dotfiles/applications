@@ -7,6 +7,17 @@
     path="${HOME}/Projects/gbraad-dotfiles/playbooks"
 ```
 
+### pick
+```sh
+playbooks_pick() {
+  local chosen_target
+  chosen_target=$(printf "%s\n" "$(playbooks_list_names $PLAYBOOKS_PATH)" | fzf --prompt="Choose playbook> ")
+  chosen_target=$(echo "$chosen_target" | awk '{print $1}')
+  echo ${PLAYBOOKS_PATH}/${chosen_target}
+}
+playbooks_pick
+```
+
 ### shared
 ```sh
 playbooks_list_names() {
@@ -57,6 +68,9 @@ playbooks_fuzzy_pick() {
     ctrl-r) echo "${pbfile} execute"; return ;;
     ctrl-s) echo "${pbfile} sync"; return ;;
     ctrl-e) echo "${pbfile} edit"; return ;;
+    # remote   tailshell online nodes
+    # machine  running machines
+    # devenv   running devenvs
     *)      ;;
   esac
 
@@ -112,7 +126,17 @@ run_playbooks() {
   [[ "$exitcode" -gt 0 ]] && return $exitcode
   [[ -z $picked_command ]] && return 3
 
-  playbook $picked_playbook $picked_command
+  local picked_host
+  # if command remote, devenv, machine
+  # "remote")
+  #   app tailshell pick online
+  # "devenv")
+  #   app devenvs pick running
+  # "machine")
+  #   app machines pick running
+  picked_host=""
+
+  playbook $picked_playbook $picked_command $picked_host
 }
 
 run_playbooks $PBWHERE
