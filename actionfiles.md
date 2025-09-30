@@ -7,6 +7,18 @@
     path="${HOME}/Projects/gbraad-dotfiles/actionfiles"
 ```
 
+### shared
+```sh
+actionfiles_list_names_and_descs() {
+  local actionpath="$1"
+  find -L "$actionpath" -type f -name '*.md' | sort | while IFS= read -r file; do
+    relpath="${file#$actionpath/}"
+    desc=$(grep -m1 '^# ' "$file" | sed 's/^# //')
+    printf "%s\t%s\n" "$relpath" "$desc"
+  done
+}
+```
+
 ### exists
 ```sh evaluate
 [ -d ${ACTIONFILES_PATH} ]
@@ -39,6 +51,17 @@ app ${APPNAME} aliases
 ### aliases
 ```sh evaluate
 alias dotfedora="run ${ACTIONFILES_PATH}/machine/dotfedora.md"
+```
+
+### pick
+```sh
+actionfiles_pick() {
+  local chosen_target
+  chosen_target=$(printf "%s\n" "$(actionfiles_list_names_and_descs $ACTIONFILES_PATH)" | column -t -s $'\t' | fzf --prompt="Choose actionfile> ")
+  chosen_target=$(echo "$chosen_target" | awk '{print $1}')
+  echo ${ACTIONFILES_PATH}/${chosen_target}
+}
+actionfiles_pick
 ```
 
 ### aliases
