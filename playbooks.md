@@ -13,7 +13,7 @@ playbooks_pick() {
   local chosen_target
   chosen_target=$(printf "%s\n" "$(playbooks_list_names $PLAYBOOKS_PATH)" | fzf --prompt="Choose playbook> ")
   chosen_target=$(echo "$chosen_target" | awk '{print $1}')
-  echo ${PLAYBOOKS_PATH}/${chosen_target}
+  [[ -n ${chosen_target} ]] && echo ${PLAYBOOKS_PATH}/${chosen_target}
 }
 playbooks_pick
 ```

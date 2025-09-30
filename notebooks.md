@@ -7,19 +7,26 @@
     path="${HOME}/Projects/gbraad-dotfiles/notebooks"
 ```
 
+### here-pick
+```sh
+notebooks_pick $(pwd)
+```
+
 ### pick
 ```sh
-notebooks_pick() {
-  local chosen_target
-  chosen_target=$(printf "%s\n" "$(notebooks_list_names $NOTEBOOKS_PATH)" | fzf --prompt="Choose notebook> ")
-  chosen_target=$(echo "$chosen_target" | awk '{print $1}')
-  echo ${NOTEBOOKS_PATH}/${chosen_target}
-}
-notebooks_pick
+notebooks_pick ${NOTEBOOKS_PATH}
 ```
 
 ### shared
 ```sh
+notebooks_pick() {
+  local chosen_target
+  local dir=$1
+  chosen_target=$(printf "%s\n" "$(notebooks_list_names $dir)" | fzf --prompt="Choose notebook> ")
+  chosen_target=$(echo "$chosen_target" | awk '{print $1}')
+  [[ -n ${chosen_target} ]] && echo ${dir}/${chosen_target}
+}
+
 notebooks_list_names() {
   local notebookpath=$1
   find -L "$notebookpath" \( -name "*.md" -o -name "*.ipynb" \) -type f \

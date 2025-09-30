@@ -93,7 +93,7 @@ run_devenvs() {
   fi
 
   if [[ "$chosen_command" == "playbook" ]]; then
-    playbook_file=$(find . -type f ! -path './.*/*' -name '*.yml' -o -name '*.yaml' | sed 's|^\./||' | fzf --prompt="Select playbook: " --exit-0)
+    playbook_file=$(app playbooks pick)
     if [ -z "$playbook_file" ]; then
       echo "No playbook selected."
       return 1
