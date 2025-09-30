@@ -17,6 +17,14 @@ actionfiles_list_names_and_descs() {
     printf "%s\t%s\n" "$relpath" "$desc"
   done
 }
+
+actionfiles_pick() {
+  local chosen_target
+  local dir=$1
+  chosen_target=$(printf "%s\n" "$(actionfiles_list_names_and_descs $dir)" | column -t -s $'\t' | fzf --prompt="Choose actionfile> ")
+  chosen_target=$(echo "$chosen_target" | awk '{print $1}')
+  echo ${dir}/${chosen_target}
+}
 ```
 
 ### exists
@@ -53,15 +61,14 @@ app ${APPNAME} aliases
 alias dotfedora="run ${ACTIONFILES_PATH}/machine/dotfedora.md"
 ```
 
+### here-pick
+```sh
+actionfiles_pick $(pwd)
+```
+
 ### pick
 ```sh
-actionfiles_pick() {
-  local chosen_target
-  chosen_target=$(printf "%s\n" "$(actionfiles_list_names_and_descs $ACTIONFILES_PATH)" | column -t -s $'\t' | fzf --prompt="Choose actionfile> ")
-  chosen_target=$(echo "$chosen_target" | awk '{print $1}')
-  echo ${ACTIONFILES_PATH}/${chosen_target}
-}
-actionfiles_pick
+actionfiles_pick ${ACTIONFILES_PATH}
 ```
 
 ### aliases
