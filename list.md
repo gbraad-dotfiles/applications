@@ -46,13 +46,13 @@ show_apps_tree() {
   done
 }
 
-echo "App defintions in ${APPSREPO}"
-show_apps_tree ${APPSREPO} "  "
+echo "App defintions in ${APPS_PATH}"
+show_apps_tree ${APPS_PATH} "  "
 ```
 
 ### update
 ```sh
-cd ${APPSREPO}
+cd ${APPS_PATH}
 git pull
 cd -
 
@@ -62,7 +62,7 @@ app list aliases
 
 ### switch
 ```sh
-cd ${APPSREPO}
+cd ${APPS_PATH}
 git remote remove origin
 git remote add origin git@github.com:gbraad-dotfiles/applications
 git fetch
@@ -72,13 +72,13 @@ cd - > /dev/null
 
 ### log
 ```sh
-cd ${APPSREPO}
+cd ${APPS_PATH}
 git log -n 2
 ```
 
 ### reset
 ```sh
-cd ${APPSREPO}
+cd ${APPS_PATH}
 git stash
 git fetch origin
 git reset --hard origin/main
@@ -95,7 +95,7 @@ Generate aliases for application defintion that use an `alias` section
 apps_aliases() {
   if [[ $(dotini launcher --get "launcher.aliases") == true ]]; then
     # Find all .md files in APPSDIR and subfolders
-    find "${APPSREPO}" -type f -name '*.md' | while read -r mdfile; do
+    find "${APPS_PATH}" -type f -name '*.md' | while read -r mdfile; do
 
       appname="${mdfile##*/}"
       appname="${appname%.md}"
@@ -103,7 +103,7 @@ apps_aliases() {
       folder="$(dirname "${mdfile}")"
       folder="${folder##*/}"
 
-      if [[ "${folder}" == "$(basename "${APPSREPO}")" ]]; then
+      if [[ "${folder}" == "$(basename "${APPS_PATH}")" ]]; then
         alias_name="${appname}"
         alias_cmd="app ${appname}"   # use default
       else
@@ -140,7 +140,7 @@ apps_list_services_and_descs() {
     fi
   done
 }
-apps_list_services_and_descs ${APPSREPO}
+apps_list_services_and_descs ${APPS_PATH}
 ```
 
 ### desktop
@@ -160,6 +160,6 @@ apps_desktop_names_and_descs() {
   done
 }
 
-apps_desktop_names_and_descs ${APPSREPO}
+apps_desktop_names_and_descs ${APPS_PATH}
 ```
 
