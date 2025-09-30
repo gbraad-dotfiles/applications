@@ -1,11 +1,5 @@
 # Actions
 
-### config
-```ini
-[actionfiles]
-    path="${HOME}/Projects/gbraad-dotfiles/actionfiles"
-```
-
 ### shared
 ```sh
 actions_list_names_and_descs() {
@@ -81,10 +75,10 @@ run_actions() {
   if [ -n "$1" ] && [ -d "$1" ]; then
     dir=$1
   else
-    dir=${ACTIONFILES_PATH}
     if ! app actionfiles exists ; then
       app actionfiles checkout
     fi
+    dir=${ACTIONFILES_PATH}
   fi
 
   local result picked_actfile picked_action
@@ -101,7 +95,7 @@ run_actions() {
   appname="${picked_actfile%.md}"
   appname="${appname##*/}"
   local common_args=(--arg APPNAME="${appname}")
-  # --arg CONFIGPATH="${APPSCONFIG}")
+  # --arg CONFIGPATH="${APPS_CONFIG}")
 
   action "$picked_actfile" "${picked_action[@]}" ${common_args[@]}
 }

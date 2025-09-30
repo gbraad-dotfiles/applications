@@ -7,7 +7,17 @@
     path="${HOME}/Projects/gbraad-dotfiles/playbooks"
 ```
 
+### shared
+```sh
+
+
+```
+
 ### default alias run
 ```sh
-echo "Playbooks: ${PLAYBOOKS_PATH}"
+run_playbooks() {
+
+}
+
+run_playbooks
 ```

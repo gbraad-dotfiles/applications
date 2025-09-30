@@ -1,11 +1,5 @@
 # Actionfiles
 
-### vars
-```sh
-ACTREPO="https://github.com/gbraad-dotfiles/actionfiles"
-ACTPATH="${HOME}/Projects/gbraad-dotfiles/actionfiles"
-```
-
 ### config
 ```ini
 [actionfiles]
@@ -14,7 +8,7 @@ ACTPATH="${HOME}/Projects/gbraad-dotfiles/actionfiles"
 ```
 
 ### exists
-```sh
+```sh evaluate
 [ -d ${ACTIONFILES_PATH} ]
 ```
 

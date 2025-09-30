@@ -1,7 +1,5 @@
 # Applications launcher
 
-### info
-
 ### pick all
 ```sh evaluate
 app --list-apps | apps_fuzzy_pick
@@ -88,7 +86,7 @@ app list update
 
 ### cd
 ```sh evaluate
-cd ${APPSREPO}
+cd ${APPS_PATH}
 ```
 
 
