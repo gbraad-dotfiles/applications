@@ -137,7 +137,7 @@ run_playbooks() {
   case "$picked_command" in
     "hosts")
       picked_host=$(app tailshell pick online)
-      picked_host=$(echo "$picked_host" | tr '\n' ',')
+      [[ -n $picked_host ]] && picked_host=$(echo "$picked_host" | tr '\n' ',')
       ;;
     "remote")
       picked_host=$(app tailshell pick online)
@@ -149,6 +149,10 @@ run_playbooks() {
       picked_host=$(app machines pick running)
       ;;
   esac
+
+  if [[ "$picked_command" != "execute" && "$picked_command" != "edit" && -z "$picked_host" ]]; then
+    return 1
+  fi
 
   playbook $picked_playbook $picked_command $picked_host
 }
