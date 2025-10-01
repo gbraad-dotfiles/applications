@@ -73,7 +73,6 @@ playbooks_fuzzy_pick() {
 
   case "$key" in
     ctrl-r) echo "${pbfile} execute"; return ;;
-    ctrl-s) echo "${pbfile} sync"; return ;;
     ctrl-e) echo "${pbfile} edit"; return ;;
     f5)     echo "${pbfile} hosts"; return ;;
     f6)     echo "${pbfile} remote"; return ;;
