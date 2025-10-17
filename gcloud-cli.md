@@ -19,7 +19,7 @@ app ${APPNAME} env install
 
 ### install-env
 ```sh
-echo "app ${APPNAME} env" > ~/.zshrc.d/app-${APPNAME}.zsh
+echo "command -v app >/dev/null && app ${APPNAME} env" > ~/.zshrc.d/app-${APPNAME}.zsh
 ```
 
 ### env

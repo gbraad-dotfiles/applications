@@ -9,3 +9,8 @@ npm install -g @anthropic-ai/claude-code
 ```sh evaluate
 ${NPMGLOBAL}/bin/claude
 ```
+
+### serve
+```sh evaluate
+${NPMGLOBAL}/bin/claude mcp serve
+```
