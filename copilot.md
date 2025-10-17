@@ -10,7 +10,7 @@ sudo npm install -g @github/copilot
 app ${APPNAME} install npm
 ```
 
-### run
+### default alias run
 ```sh evaluate
-copilot
+${NPMGLOBAL}/bin/copilot
 ```

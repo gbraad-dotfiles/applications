@@ -63,7 +63,7 @@ status_dotrunner() {
 status_dotrunner
 ```
 
-### runner
+### start create runner
 ```sh
 run_runner_workflow() {
   local runner
@@ -115,7 +115,7 @@ run_machine_workflow() {
 run_machine_workflow
 ```
 
-### connect
+### connect shell login
 ```sh evaluate
 app tailshell runner connect
 ```
@@ -123,15 +123,15 @@ app tailshell runner connect
 ### default run alias
 ```sh
 select_workflow_type() {
-  local options=("runner" "devenv" "machine" "rshell" "connect" "status")
+  local options=("runner" "devenv" "machine" "rshell" "connect" "status" "create" "shell" "start" "login")
   local selected
   selected=$(printf "%s\n" "${options[@]}" | fzf --prompt="Workflow type> ")
   case "$selected" in
-    runner)  app dotrunner runner ;;
+    runner | create | start)  app dotrunner runner ;;
+    connect | shell | login) app dotrunner connect ;;
     devenv)  app dotrunner devenv ;;
     rshell)  app dotrunner rshell ;;
     machine) app dotrunner machine ;;
-    connect) app dotrunner connect ;;
     status)  app dotrunner status ;;
     *) echo "No workflow type selected."; return 1 ;;
   esac
