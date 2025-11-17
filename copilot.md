@@ -2,7 +2,7 @@
 
 ### npm-install
 ```sh
-sudo npm install -g @github/copilot
+npm install -g @github/copilot
 ```
 
 ### install
