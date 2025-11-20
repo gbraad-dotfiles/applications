@@ -18,8 +18,8 @@ ${NPMGLOBAL}/bin/claude
 
 ### proxied
 ```sh evaluate
-p $CLAUDE_PROXY
-app $APPNAME run
+p ${CLAUDE_PROXY}
+app ${APPNAME} run
 ```
 
 ### serve
