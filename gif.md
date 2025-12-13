@@ -41,6 +41,11 @@ git fetch origin
 git reset --hard origin/main
 ```
 
+### summary
+```sh evaluate
+git log -1 --stat
+```
+
 ### unstage
 ```sh evaluate
 if git diff --quiet; then
