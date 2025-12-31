@@ -15,5 +15,7 @@ mkdir -p ${APPSHOME}/VCVRack/
 cd ${APPSHOME}/VCVRack/
 wget https://vcvrack.com/downloads/Rack-SDK-2.5.2-lin-x64.zip
 unzip Rack-SDK-2.5.2-lin-x64.zip 
+wget https://vcvrack.com/downloads/Rack-SDK-2.5.2-win-x64.zip
+unzip Rack-SDK-2.5.2-win-x64.zip -d Rack-SDK-win-x64
 ```
 
