@@ -8,7 +8,7 @@
 ```
 
 ### install
-```
+```sh
 mkdir -p ${APPSHOME}/VCVRack
 cd ${APPSHOME}/VCVRack
 wget https://vcvrack.com/downloads/${VCVRACK_VERSION}
