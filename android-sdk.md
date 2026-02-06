@@ -1,9 +1,9 @@
 # Android SDK
 
 ### fedora-install
-```sh
+```sh evaluate
 # Install dependencies
-sudo dnf install -y wget unzip java-21-openjdk
+sudo dnf install -y wget unzip java-17-openjdk
 
 app ${APPNAME} env
 
@@ -18,15 +18,21 @@ mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools $ANDROID_HOME/cmdline-tools/lates
 rm cmdline-tools.zip
 
 # Accept licenses
+sdkmanager --no_https "cmake;3.22.1"
 yes | sdkmanager --licenses
 
 # Install SDK components
-sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3"
+sdkmanager --no_https "platform-tools" "platforms;android-33" "build-tools;33.0.2"
 
 # Download and unzip NDK
 wget https://dl.google.com/android/repository/android-ndk-r26b-linux.zip -O ndk.zip
 unzip ndk.zip -d ${ANDROID_HOME}/ndk
 rm ndk.zip
+
+wget https://services.gradle.org/distributions/gradle-8.5-bin.zip -O gradle.zip
+unzip gradle.zip -d ${GRADLE_HOME}
+rm gradle.zip
+
 ```
 
 ### env
@@ -34,6 +40,7 @@ Set up environment variables
 
 ```sh evaluate
 export ANDROID_HOME=/opt/android-sdk
+export GRADLE_HOME=/opt/gradle
 export ANDROID_NDK_HOME=${ANDROID_HOME}/ndk/android-ndk-r26b
-export PATH=$PATH:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_NDK_HOME}
+export PATH=$PATH:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_NDK_HOME}:${GRADLE_HOME}/gradle-8.5/bin
 ```
