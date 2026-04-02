@@ -140,3 +140,7 @@ else
 fi
 ```
 
+### run-xpra
+```sh
+/usr/bin/code
+```

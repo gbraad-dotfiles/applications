@@ -59,8 +59,8 @@ apps_fuzzy_pick() {
     ctrl-e) echo "${appname} --edit"; return ;;
     ctrl-k) echo "${appname} --config"; return ;;
     # return 130 to match Ctrl-C behaviour
-    f5)     apps_desktop_install "$appname" "$apptitle"; return 130 ;;
-    f6)     apps_service_install "$appname" "$apptitle"; return 130 ;;
+    f5)     apps_desktop_install "${appname}" "${apptitle}"; return 130 ;;
+    f6)     apps_service_install "${appname}" "${apptitle}"; return 130 ;;
     *)      ;;
   esac
 

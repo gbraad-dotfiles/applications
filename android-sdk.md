@@ -35,7 +35,7 @@ rm gradle.zip
 
 ```
 
-### env
+### default env
 Set up environment variables
 
 ```sh evaluate

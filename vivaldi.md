@@ -28,6 +28,11 @@ APPNAME=Vivaldi
 [ -x $cmd ]
 ```
 
+### run-xpra
+```sh
+$cmd
+```
+
 ### default alias run run-desktop
 ```sh background
 if app vivaldi check; then
@@ -137,4 +142,9 @@ rm -rf ${APPSHOME}/${APPNAME}
 ### user-run
 ```sh
 ${APPSHOME}/${APPNAME}/vivaldi
+```
+
+### run-xpra
+```sh
+$cmd
 ```

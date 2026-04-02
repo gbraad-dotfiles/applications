@@ -48,7 +48,7 @@ rm -rf ${APPSHOME}/${APPNAME}
 [ -x "${APPSHOME}/${APPNAME}/obsidian" ]
 ```
 
-### user-run
+### user-run run-xpra
 ```sh
 "${APPSHOME}/${APPNAME}/obsidian" --no-sandbox
 ```
